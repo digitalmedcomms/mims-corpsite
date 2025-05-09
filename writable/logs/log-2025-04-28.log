@@ -1,9 +1,0 @@
-CRITICAL - 2025-04-28 08:08:38 --> Invalid file: Pages/our-solutions/index.php
-#0 /Library/WebServer/Documents/mims-corpsite/vendor/codeigniter4/framework/system/View/View.php(198): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('Pages/our-solut...')
-#1 /Library/WebServer/Documents/mims-corpsite/vendor/codeigniter4/framework/system/Common.php(1089): CodeIgniter\View\View->render('Pages/our-solut...', Array, true)
-#2 /Library/WebServer/Documents/mims-corpsite/app/Controllers/Solutions.php(37): view('Pages/our-solut...')
-#3 /Library/WebServer/Documents/mims-corpsite/vendor/codeigniter4/framework/system/CodeIgniter.php(825): App\Controllers\Solutions->index()
-#4 /Library/WebServer/Documents/mims-corpsite/vendor/codeigniter4/framework/system/CodeIgniter.php(412): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Solutions))
-#5 /Library/WebServer/Documents/mims-corpsite/vendor/codeigniter4/framework/system/CodeIgniter.php(320): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
-#6 /Library/WebServer/Documents/mims-corpsite/public/index.php(38): CodeIgniter\CodeIgniter->run()
-#7 {main}
