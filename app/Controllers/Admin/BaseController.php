@@ -36,7 +36,7 @@ class BaseController extends Base
      *
      * @var array
      */
-    protected $helpers = ['Custom_helper', 'form', 'url', 'cookie', 'text'];
+    protected $helpers = ['custom_helper', 'form', 'url', 'cookie', 'text'];
 
     # Create Custom variable
     protected $bcrypt;

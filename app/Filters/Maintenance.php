@@ -14,7 +14,7 @@ class Maintenance implements FilterInterface
 
 	public function before(RequestInterface $request, $arguments = null)
 	{
-		helper('Custom');
+		helper('custom');
 		if (get_general_settings()->maintenance_mode_status == 1) {
 			if (!is_admin()) {
 				return redirect()->to(base_url('maintenance'));
