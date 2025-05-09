@@ -1,0 +1,111 @@
+@import '../mixin';
+
+#about{
+    #our-advantage{
+        .our-advantage-container{
+            max-width: 1100px;
+            margin: 30px auto 20px;
+            .col-item{
+                background: #fff;
+                border: 2px solid #F6F6F6;
+                padding: 40px 30px;
+                align-self: stretch;
+                .item-icon{
+                    max-width: 70px;
+                    margin-bottom: 20px;
+                    img{
+                        max-width: 60px;;
+                    }
+                }
+                .item-title{
+                    font-family: 'Exo 2';
+                    font-size: 20px;
+                    font-weight: 600;
+                    margin-bottom: 20px;
+                }
+                .item-desc{
+                    font-size: 17px;
+                }
+            }
+        }
+    }
+
+
+    #our-people{
+        .img-title{
+            max-width: 600px;
+            margin: auto;
+            img{
+                width: 100%;
+            }
+        }
+        .our-people-container{
+            max-width: 1100px;
+            padding: 15px;
+            margin: 10px auto;
+            .col-item{
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 15px;
+                align-self: stretch;
+                .item-img{
+                    width: 100%;
+                    position: relative;
+                    margin-bottom: 60px;
+                    height: 220px;
+                    border-radius: 20px;
+                    > img{
+                        display: none;
+                        border-radius: 20px;
+                        width: 100%;
+                    }
+                    .item-img-icon{
+                        width: 60px;
+                        height: 60px;
+                        text-align: center;
+                        background: #fff;
+                        border-radius: 5px;
+                        box-shadow: 0px 4px 4.5px 0px #AF929229;
+                        padding: 8px 5px;
+                        position: absolute;
+                        left: 15px;
+                        bottom: -35px;
+                        img{
+                            max-width: 45px;
+                            max-height: 45px;
+                        }
+                    }
+                }
+                .buttons{
+                    margin-top: auto;
+                    padding-top: 10px;
+                }
+                .divider{
+                    margin: 25px 0;
+                    width: 100%;
+                    position: relative;
+                    height: 2px;
+                    &:after{
+                        content: '';
+                        position: absolute;
+                        right: 0;
+                        height: 2px;
+                        top: 0;
+                        width: 50%;
+                        background: #E9EFFC;
+                    }
+                    &:before{
+                        content: '';
+                        position: absolute;
+                        left: 0;
+                        top: 0;
+                        height: 2px;
+                        width: 50%;
+                        background: #EC1E28;
+                    }
+                }
+            }
+        }
+    }
+}

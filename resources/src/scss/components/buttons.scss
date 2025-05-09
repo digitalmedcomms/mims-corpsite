@@ -1,0 +1,69 @@
+@import '../mixin';
+
+.btn{
+    border-radius: 5px;
+    width: auto;
+    font-size: 18px;
+    padding: 8px 30px;
+    font-weight: 400;
+    text-decoration: none;
+    &:hover{
+        text-decoration: none;
+    }
+}
+
+.btn-primary{
+    background: #EC1E28;
+    color: #fff;
+    border: 1px solid #EC1E28;
+    transition: all 1s ease;
+    &:hover{
+        background: #fff;
+        color: #EC1E28;
+    }
+}
+
+.btn-secondary{
+    background: transparent;
+    color: #EC1E28;
+    border: 1px solid #EC1E28;
+    transition: all 1s ease;
+    &:hover{
+        background: #EC1E28;
+        color: #fff;
+        border: 1px solid #EC1E28;
+    }
+}
+
+.btn-blue{
+    background: #24345F;
+    color: #fff;
+    border: 1px solid #24345F;
+    transition: all 1s ease;
+    &:hover{
+        color: #24345F;
+        background: #fff;
+    }
+}
+
+.btn-red{
+    background: #FFF6F6;
+    color: #EC1E28;
+    border: 1px solid #FFF6F6;
+    transition: all 1s ease;
+    &:hover{
+        border: 1px solid #EC1E28;
+        background: #EC1E28;
+        color: #FFF6F6;
+    }
+
+}
+.btn-blue-invert{
+    background: #fff;
+    color: #24345F;
+    border: 1px solid #24345F;
+    &:hover{
+        background: #24345F;
+        color: #fff;
+    }
+}

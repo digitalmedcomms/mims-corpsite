@@ -1,0 +1,84 @@
+@import '../mixin';
+#hcp-container{
+    .banner{
+        .bg-left{
+            bottom: -13%;
+            left: -2%;
+        }
+        .bg-right{
+            right: -3%;
+        }
+    }
+
+    #drug-references-and-guidelines{
+        padding: 40px 0;
+        .section{
+            padding: 0;
+            margin: 40px auto;
+            max-width: 1920px;
+        }
+        .section-two-cols{
+            display: flex;
+            align-items: flex-start;
+            justify-content: flex-start;
+            gap: 2%;
+            min-height: 450px;
+            .col-item{
+                width: 49%;
+                display: flex;
+                align-items: flex-start;
+                justify-content: flex-start;
+                align-self: stretch;
+                flex-direction: column;
+            }
+        }
+    }
+
+    #clinical-decision-support-tools{
+        padding: 40px 0;
+        .section{
+            padding: 0;
+            margin: 40px auto;
+            max-width: 1920px;
+        }
+        .section-two-cols{
+            display: flex;
+            align-items: flex-start;
+            justify-content: flex-start;
+            gap: 2%;
+            min-height: 450px;
+            .col-item{
+                width: 49%;
+                display: flex;
+                align-items: flex-start;
+                justify-content: flex-start;
+                align-self: stretch;
+                flex-direction: column;
+            }
+        }
+    }
+
+    #professional-development{
+        padding: 40px 0;
+        .section{
+            padding: 0;
+            margin: 40px auto;
+            max-width: 1920px;
+        }
+        .section-two-cols{
+            display: flex;
+            align-items: flex-start;
+            justify-content: flex-start; 
+            gap: 2%;
+            min-height: 450px;
+            .col-item{
+                width: 49%;
+                display: flex;
+                align-items: flex-start;
+                justify-content: flex-start;
+                align-self: stretch;
+                flex-direction: column;
+            }
+        }
+    }
+}

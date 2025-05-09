@@ -1,0 +1,37 @@
+{
+    "pages": {
+        "notfound": [
+            "src/scss/pages/notfound.scss"
+        ],
+        "home": [
+            "src/scss/pages/home.scss"
+        ],
+        "about": [
+            "src/scss/pages/about.scss"
+        ],
+        "solutions": [
+            "src/scss/pages/solutions.scss"
+        ],
+        "solutions-hcp": [
+            "src/scss/pages/solutions-hcp.scss"
+        ],
+        "solutions-companies": [
+            "src/scss/pages/solutions-companies.scss"
+        ],
+        "solutions-institution": [
+            "src/scss/pages/solutions-institution.scss"
+        ]
+    },
+    "components": {
+        "bootstrap": "src/scss/plugins/bootstrap-4.5.2/bootstrap.user-optimized.css",
+        "bootstrap-main": "src/scss/plugins/bootstrap/bootstrap.min.css",
+        "bootstrap-select": "src/scss/plugins/bootstrap-select.min.css",
+        "global": "src/scss/global.scss",
+        "animations": "src/scss/animations.scss",
+        "fontawesome": "src/scss/plugins/font-awesome-5.14.0/all.css",
+        "buttons": "src/scss/components/buttons.scss",
+        "owl": "src/scss/plugins/owl-carousel-2.3.4/owl.carousel.min.css",
+        "navigation_bar": "src/scss/components/navigation_bar.scss",
+        "footer": "src/scss/components/footer.scss"
+    }
+}
