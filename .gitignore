@@ -2,3 +2,4 @@ resources/
 console/
 writable/logs/*
 writable/session/*
+.env
