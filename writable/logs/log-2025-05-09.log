@@ -1,0 +1,18 @@
+CRITICAL - 2025-05-09 01:29:51 --> Call to undefined function App\Filters\get_general_settings()
+#0 /data/webserver/staging/mims-corpsite/vendor/codeigniter4/framework/system/Filters/Filters.php(173): App\Filters\Maintenance->before()
+#1 /data/webserver/staging/mims-corpsite/vendor/codeigniter4/framework/system/CodeIgniter.php(386): CodeIgniter\Filters\Filters->run()
+#2 /data/webserver/staging/mims-corpsite/vendor/codeigniter4/framework/system/CodeIgniter.php(320): CodeIgniter\CodeIgniter->handleRequest()
+#3 /data/webserver/staging/mims-corpsite/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2025-05-09 01:29:52 --> Call to undefined function App\Filters\get_general_settings()
+#0 /data/webserver/staging/mims-corpsite/vendor/codeigniter4/framework/system/Filters/Filters.php(173): App\Filters\Maintenance->before()
+#1 /data/webserver/staging/mims-corpsite/vendor/codeigniter4/framework/system/CodeIgniter.php(386): CodeIgniter\Filters\Filters->run()
+#2 /data/webserver/staging/mims-corpsite/vendor/codeigniter4/framework/system/CodeIgniter.php(320): CodeIgniter\CodeIgniter->handleRequest()
+#3 /data/webserver/staging/mims-corpsite/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2025-05-09 01:29:53 --> Call to undefined function App\Filters\get_general_settings()
+#0 /data/webserver/staging/mims-corpsite/vendor/codeigniter4/framework/system/Filters/Filters.php(173): App\Filters\Maintenance->before()
+#1 /data/webserver/staging/mims-corpsite/vendor/codeigniter4/framework/system/CodeIgniter.php(386): CodeIgniter\Filters\Filters->run()
+#2 /data/webserver/staging/mims-corpsite/vendor/codeigniter4/framework/system/CodeIgniter.php(320): CodeIgniter\CodeIgniter->handleRequest()
+#3 /data/webserver/staging/mims-corpsite/public/index.php(38): CodeIgniter\CodeIgniter->run()
+#4 {main}
