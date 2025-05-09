@@ -80,8 +80,8 @@ defined('EXIT__AUTO_MAX')      || define('EXIT__AUTO_MAX', 125); // highest auto
 
 
 define('DOMAIN', $_SERVER['SERVER_NAME']);
-define('DOMAIN_URL', (isset($_SERVER['HTTPS']) ? 'https://' : 'http://') . $_SERVER['SERVER_NAME'] . '/');
-define('BASE_URL', (isset($_SERVER['HTTPS']) ? 'https://' : 'http://') . $_SERVER['SERVER_NAME'] . str_replace('index.php', '', $_SERVER['SCRIPT_NAME']));
+define('DOMAIN_URL', (isset($_SERVER['HTTPS']) ? 'https://' : (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https' ? 'https://' : 'http://')) . $_SERVER['SERVER_NAME'] . '/');
+define('BASE_URL', (isset($_SERVER['HTTPS']) ? 'https://' : (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https' ? 'https://' : 'http://')) . $_SERVER['SERVER_NAME'] . str_replace('index.php', '', $_SERVER['SCRIPT_NAME']));
 define('BASE_URL_PATH', str_replace('index.php', '', $_SERVER['SCRIPT_NAME']));
 define('IS_HTTPS_ENABLED', isset($_SERVER['HTTPS']) ? true : false);
 
