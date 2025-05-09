@@ -14,7 +14,7 @@ class Authorization implements FilterInterface
 
 	public function before(RequestInterface $request, $arguments = null)
 	{
-		helper('custom');
+		helper('Custom');
 		$this->menuModel  	= new MenuManagementModel();
 		$this->permissionModel  	= new RolesPermissionsModel();
 		$segment 			= $request->uri->getSegment(2);

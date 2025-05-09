@@ -9,7 +9,7 @@ class Faker extends Seeder
 {
 	public function run()
 	{
-		helper('custom');
+		helper('Custom');
 		$faker = \Faker\Factory::create('id_ID');
 		// Data Login 
 		$userModel = new UsersModel();
