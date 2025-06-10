@@ -6,6 +6,34 @@
                     <div class="container">
                         <div class="banner-item">
                             <div class="left-side">
+                                <h1 class="wow fadeIn" data-wow-duration="2s" data-wow-delay="1s">Empowering<br>healthcare communities to improve patient outcomes</h1>
+                                <div class="buttons wow fadeIn" data-wow-duration="1s" data-wow-delay="3s">
+                                    <a href="" class="btn btn-blue">Learn More</a>
+                                    <a href="" class="btn btn-blue-invert">Contact Us</a>
+                                </div>
+                            </div>
+                            <div class="right-side">
+                                <div class="img-featured wow fadeInRight" data-wow-duration="1s" data-wow-delay="2s">
+                                    <!-- <img src="<?php echo IMG_URL . 'doctor-banner-1.png'; ?>" alt=""> -->
+
+                                    <div class="bubble-text">
+                                        <div class="bubble-kicker">Commnuity</div>
+                                        <div class="bubble-message text-red">Trusted by over 2 Million HCPs</div>
+                                    </div>
+                                    <div class="bubble-text">
+                                        <div class="bubble-kicker">Since 1963</div>
+                                        <div class="bubble-message text-red">#1 source of medical knowledge</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="line-bg" style="background: url('<?php echo IMG_URL . 'line-red.png'; ?>') center center no-repeat;"></div>
+                </div>
+                <div class="item">
+                    <div class="container">
+                        <div class="banner-item">
+                            <div class="left-side">
                                 <h1 class="wow fadeIn" data-wow-duration="2s" data-wow-delay="1s">Leaders in Healthcare</h1>
                                 <div class="banner-description wow fadeInUp" data-wow-delay="1.5s">Asia Pacific leading multi-channel provider of trusted, 
     quality medical information, medical education and knowledge
@@ -32,12 +60,6 @@
                         </div>
                     </div>
                     <div class="line-bg" style="background: url('<?php echo IMG_URL . 'line-red.png'; ?>') center center no-repeat;"></div>
-                </div>
-                <div class="item">
-                    <div class="banner-item">
-                        
-                    </div>
-
                 </div>
             </div>
         <!-- </div> -->

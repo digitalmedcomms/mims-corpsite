@@ -1,5 +1,5 @@
 <div id="our-solutions">
-    <div class="page-banner" style="background: url('<?php echo IMG_URL . 'our-solutions-banner.png'; ?>') center center no-repeat;background-size: cover;">
+    <div class="page-banner" style="background: url('<?php echo IMG_URL . 'our-solutions-banner.png'; ?>') center right no-repeat;background-size: cover;">
         <div class="container">
             <div class="left-side">
                 <h1 class="wow fadeIn" data-wow-duration="2s" data-wow-delay="1s">Our Solutions</h1>

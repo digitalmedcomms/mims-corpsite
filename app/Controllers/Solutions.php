@@ -19,6 +19,7 @@ class Solutions extends BaseController
                 'description' => 'MIMS is headquartered in Singapore. We have a strong presence in Asia Pacific supported by over 1,000 employees across 36 local offices.',
                 'image' => IMG_URL . ''
             ),
+            'nav' => 'solutions',
             'styles' => array(
                 'plugins/font_awesome',
                 COMPILED_ASSETS_PATH . 'css/components/bootstrap',
@@ -45,6 +46,7 @@ class Solutions extends BaseController
                 ASSETS_URL . 'js/plugins/bootstrap/bootstrap.min.js',
                 ASSETS_URL . 'js/components/global.min.js',
                 ASSETS_URL . 'js/plugins/owl.carousel.min.js',
+                ASSETS_URL . 'js/components/wow.min.js',
                 ASSETS_URL . 'js/components/navigation_bar.min.js',
                 ASSETS_URL . 'js/pages/home.min.js',
             )
@@ -68,6 +70,7 @@ class Solutions extends BaseController
                 'description' => 'MIMS is headquartered in Singapore. We have a strong presence in Asia Pacific supported by over 1,000 employees across 36 local offices.',
                 'image' => IMG_URL . ''
             ),
+            'nav' => 'solutions',
             'styles' => array(
                 'plugins/font_awesome',
                 COMPILED_ASSETS_PATH . 'css/components/bootstrap',
@@ -94,6 +97,7 @@ class Solutions extends BaseController
                 ASSETS_URL . 'js/plugins/bootstrap/bootstrap.min.js',
                 ASSETS_URL . 'js/components/global.min.js',
                 ASSETS_URL . 'js/plugins/owl.carousel.min.js',
+                ASSETS_URL . 'js/components/wow.min.js',
                 ASSETS_URL . 'js/components/navigation_bar.min.js',
                 ASSETS_URL . 'js/pages/home.min.js',
             )
@@ -116,6 +120,7 @@ class Solutions extends BaseController
                 'description' => 'MIMS is headquartered in Singapore. We have a strong presence in Asia Pacific supported by over 1,000 employees across 36 local offices.',
                 'image' => IMG_URL . ''
             ),
+            'nav' => 'solutions',
             'styles' => array(
                 'plugins/font_awesome',
                 COMPILED_ASSETS_PATH . 'css/components/bootstrap',
@@ -138,12 +143,15 @@ class Solutions extends BaseController
                     'integrity' => 'sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=',
                     'crossorigin' => 'anonymous'
                 ),
+                // 'https://unpkg.com/embla-carousel/embla-carousel.umd.js',
                 ASSETS_URL . 'js/plugins/popper.min.js',
                 ASSETS_URL . 'js/plugins/bootstrap/bootstrap.min.js',
                 ASSETS_URL . 'js/components/global.min.js',
                 ASSETS_URL . 'js/plugins/owl.carousel.min.js',
+                ASSETS_URL . 'js/plugins/owl.carousel.linked.js',
+                ASSETS_URL . 'js/components/wow.min.js',
                 ASSETS_URL . 'js/components/navigation_bar.min.js',
-                ASSETS_URL . 'js/pages/home.min.js',
+                ASSETS_URL . 'js/pages/solution-companies.min.js',
             )
         ))
         .view('components/footer');
@@ -164,6 +172,7 @@ class Solutions extends BaseController
                 'description' => 'MIMS is headquartered in Singapore. We have a strong presence in Asia Pacific supported by over 1,000 employees across 36 local offices.',
                 'image' => IMG_URL . ''
             ),
+            'nav' => 'solutions',
             'styles' => array(
                 'plugins/font_awesome',
                 COMPILED_ASSETS_PATH . 'css/components/bootstrap',
@@ -189,6 +198,7 @@ class Solutions extends BaseController
                 ASSETS_URL . 'js/plugins/popper.min.js',
                 ASSETS_URL . 'js/plugins/bootstrap/bootstrap.min.js',
                 ASSETS_URL . 'js/components/global.min.js',
+                ASSETS_URL . 'js/components/wow.min.js',
                 ASSETS_URL . 'js/plugins/owl.carousel.min.js',
                 ASSETS_URL . 'js/components/navigation_bar.min.js',
                 ASSETS_URL . 'js/pages/home.min.js',

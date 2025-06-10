@@ -30,9 +30,8 @@
                     <h3>Site Map</h3>
                     <ul>
                         <li><a href="">Home</a></li>
-                        <li><a href="">About MIMS</a></li>
-                        <li><a href="">Our Products & Services</a></li>
-                        <li><a href="">Global Offices</a></li>
+                        <li><a href="">About Us</a></li>
+                        <li><a href="">Our Solutions</a></li>
                         <li><a href="">News & Updates</a></li>
                         <li><a href="">Join Us</a></li>
                         <li><a href="">Contact Us</a></li>
@@ -40,7 +39,7 @@
                     </ul>
                 </div>
                 <div class="latest-news">
-                    <h3>Latest News & Blog</h3>
+                    <!-- <h3>Latest News & Blog</h3> -->
                     Sign-up for our latest news & articles<br>
                     <div class="newsletter">
                         <input type="text" placeholder="Email Address" class="form-control" id="email-newsletter">

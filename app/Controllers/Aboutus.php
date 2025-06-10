@@ -19,6 +19,7 @@ class Aboutus extends BaseController
                 'description' => 'MIMS is headquartered in Singapore. We have a strong presence in Asia Pacific supported by over 1,000 employees across 36 local offices.',
                 'image' => IMG_URL . ''
             ),
+            'nav' => 'aboutus',
             'styles' => array(
                 'plugins/font_awesome',
                 COMPILED_ASSETS_PATH . 'css/components/bootstrap',
@@ -29,6 +30,7 @@ class Aboutus extends BaseController
                 COMPILED_ASSETS_PATH . 'css/components/buttons',
                 COMPILED_ASSETS_PATH . 'css/components/global',
                 COMPILED_ASSETS_PATH . 'css/components/animations',
+                COMPILED_ASSETS_PATH . 'css/components/timeline',
                 COMPILED_ASSETS_PATH . 'css/components/navigation_bar',
                 COMPILED_ASSETS_PATH . 'css/components/footer',
                 COMPILED_ASSETS_PATH . 'css/pages/about'
@@ -45,8 +47,10 @@ class Aboutus extends BaseController
                 ASSETS_URL . 'js/plugins/bootstrap/bootstrap.min.js',
                 ASSETS_URL . 'js/components/global.min.js',
                 ASSETS_URL . 'js/plugins/owl.carousel.min.js',
+                ASSETS_URL . 'js/components/wow.min.js',
+                ASSETS_URL . 'js/plugins/timeline.min.js',
                 ASSETS_URL . 'js/components/navigation_bar.min.js',
-                ASSETS_URL . 'js/pages/home.min.js',
+                ASSETS_URL . 'js/pages/about.min.js',
             )
         ))
         .view('components/footer');

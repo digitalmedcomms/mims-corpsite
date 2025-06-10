@@ -76,4 +76,4 @@
 </head>
 <body data-scroll-animation="true">
 <div class="tp-home">
-    <?php echo view('components/navigation_bar'); ?>
+    <?php echo view('components/navigation_bar', ['nav' => (isset($nav) ? $nav : '')]); ?>
