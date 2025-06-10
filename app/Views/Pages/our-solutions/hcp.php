@@ -71,7 +71,7 @@
 
     <div id="clinical-decision-support-tools">
         <div class="section">
-            <div class="section-bg-img bg-right" style="background: url('<?php echo IMG_URL . 'our-solutions/hcp-cds-tools-bg.png'; ?>') center center no-repeat;background-size: cover;"></div>
+            <div class="section-bg-img bg-right" style="background: url('<?php echo IMG_URL . 'timeline/mims-cds-module-bg.png'; ?>') center center no-repeat;background-size: cover;"></div>
             <div class="container">
                 <div class="section-two-cols">
                     <div class="col-item">
@@ -93,7 +93,7 @@
 
     <div id="professional-development">
         <div class="section">
-            <div class="section-bg-img bg-left" style="background: url('<?php echo IMG_URL . 'our-solutions/hcp-prof-development-bg.png'; ?>') center center no-repeat;background-size: cover;"></div>
+            <div class="section-bg-img bg-left" style="background: url('<?php echo IMG_URL . 'timeline/mims-hcp-recruitment-bg.png'; ?>') center center no-repeat;background-size: cover;"></div>
             <div class="container">
                 <div class="section-two-cols">
                     <div class="col-item"></div>

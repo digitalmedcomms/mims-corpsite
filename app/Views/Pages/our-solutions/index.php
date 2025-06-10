@@ -12,11 +12,11 @@
     <div id="hcp">
         <div class="section">
             <div class="container">
-                <h2 class="text-blue text-center">
+                <h2 class="text-blue text-center wow bounceIn">
                     For Healthcare Professionals
                 </h2>
                 <div class="section-three-cols">
-                    <div class="col-item">
+                    <div class="col-item wow fadeIn" data-wow-delay="0.5s">
                         <div class="item-icon">
                             <img src="<?php echo IMG_URL . 'our-solutions/guidelines-icon.png'; ?>" alt="">
                         </div>
@@ -30,7 +30,7 @@
                             <a href="" class="btn btn-red">Read More <i class="fa fa-arrow-right"></i></a>
                         </div>
                     </div>
-                    <div class="col-item">
+                    <div class="col-item wow fadeIn" data-wow-delay="0.8s">
                         <div class="item-icon">
                             <img src="<?php echo IMG_URL . 'our-solutions/clinical-decision-icon.png'; ?>" alt="">
                         </div>
@@ -44,7 +44,7 @@
                             <a href="" class="btn btn-red">Read More <i class="fa fa-arrow-right"></i></a>
                         </div>
                     </div>
-                    <div class="col-item">
+                    <div class="col-item wow fadeIn" data-wow-delay="1.1s">
                         <div class="item-icon">
                             <img src="<?php echo IMG_URL . 'our-solutions/prof-dev-icon.png'; ?>" alt="">
                         </div>
@@ -66,10 +66,10 @@
     <div id="institution">
         <div class="section">
             <div class="container">
-                <h2 class="text-blue text-center">For Healthcare Institutions</h2>
+                <h2 class="text-blue text-center wow bounceIn">For Healthcare Institutions</h2>
                 <div class="institution-container">
                     <div class="section-two-cols">
-                        <div class="col-item">
+                        <div class="col-item wow fadeIn" data-wow-delay="0.5s">
                             <div class="item-img" style="background: url(<?php echo IMG_URL. 'our-solutions/ref-clin-decision-support-img.png'; ?>) center center no-repeat; background-size: cover;"></div>
                             <div class="item-details">
                                 <div class="item-title text-blue">Reference & Clinical Decision Support</div>
@@ -81,7 +81,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-item">
+                        <div class="col-item wow fadeIn" data-wow-delay="1s">
                             <div class="item-img" style="background: url(<?php echo IMG_URL. 'our-solutions/hcp-recruitment-img.png'; ?>) center center no-repeat; background-size: cover;"></div>
                             <div class="item-details">
                                 <div class="item-title text-blue">HCP Recruitment</div>
@@ -102,9 +102,9 @@
     <div id="companies">
         <div class="section">
             <div class="container">
-                <h2 class="text-blue text-center">For Pharmaceutical Companies</h2>
+                <h2 class="text-blue text-center wow bounceIn">For Pharmaceutical Companies</h2>
                 <div class="companies-container section-three-cols">
-                    <div class="col-item">
+                    <div class="col-item wow fadeIn" data-wow-delay="0.5s">
                         <div class="item-icon">
                             <img src="<?php echo IMG_URL. 'our-solutions/drug-listing-icon.png'; ?>" alt="">
                         </div>
@@ -118,7 +118,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-item">
+                    <div class="col-item wow fadeIn" data-wow-delay="1s">
                         <div class="item-icon">
                             <img src="<?php echo IMG_URL. 'our-solutions/medical-communications-icon.png'; ?>" alt="">
                         </div>
@@ -132,7 +132,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-item">
+                    <div class="col-item wow fadeIn" data-wow-delay="1.5s">
                         <div class="item-icon">
                             <img src="<?php echo IMG_URL. 'our-solutions/marketing-platform-icon.png'; ?>" alt="">
                         </div>

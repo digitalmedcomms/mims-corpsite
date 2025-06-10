@@ -16,19 +16,19 @@
 
     <div id="section-2">
         <div id="our-advantage" class="section">
-            <h2 class="text-blue text-center">Our Advantage</h2>
+            <h2 class="text-blue text-center wow fadeInDown">Our Advantage</h2>
             <div class="our-advantage-container section-three-cols">
-                <div class="col-item">
+                <div class="col-item wow fadeIn" data-wow-delay="0.3s">
                     <div class="item-icon"><img src="<?php echo IMG_URL . 'trusted-icon.png'; ?>" alt=""></div>
                     <div class="item-title text-blue">Trusted Medical Resources</div>
                     <div class="item-desc text-grayish-blue">For 60 years, MIMS has been a peerless partner and a trusted source of medical knowledge, empowering healthcare communities to improve lives.</div>
                 </div>
-                <div class="col-item">
+                <div class="col-item wow fadeIn" data-wow-delay="0.5s">
                     <div class="item-icon"><img src="<?php echo IMG_URL . 'diverse-icon.png'; ?>" alt=""></div>
                     <div class="item-title text-blue">Diverse Healthcare Solutions</div>
                     <div class="item-desc text-grayish-blue">Best-known for our unique and widely accessed drug directory, MIMS hosts a wealth of healthcare services to healthcare institutions, pharmaceutical companies and healthcare professionals.</div>
                 </div>
-                <div class="col-item">
+                <div class="col-item wow fadeIn" data-wow-delay="0.7s">
                     <div class="item-icon"><img src="<?php echo IMG_URL . 'apac-presence-icon.png'; ?>" alt=""></div>
                     <div class="item-title text-blue">Essential APAC Presence</div>
                     <div class="item-desc text-grayish-blue">With offices in 17 markets in Asia Pacific, we have in-depth knowledge of each local market and their unique features, direct networks and relationships with your stakeholders, and can deliver compelling, locally-relevant solutions.</div>
@@ -44,16 +44,18 @@
                 <div class="timeline js-timeline">
                     <div data-time="1963">
                         <div class="section">
-                            <div class="section-bg-img bg-right" style="background: url('<?php echo IMG_URL . 'our-solutions/hcp-drug-reference-guide-bg.png'; ?>') center center no-repeat;background-size: cover;"></div>
+                            <div class="section-bg-img bg-right wow fadeInRight" data-wow-delay="2s" style="background: url('<?php echo IMG_URL . 'timeline/mims-drug-reference-book-bg.png'; ?>') center center no-repeat;background-size: cover;">
+                                <img src="<?php echo IMG_URL . 'timeline/mims-drug-reference-book.png'; ?>" alt="">
+                            </div>
                             <div class="container">
                                 <div class="section-two-cols">
                                     <div class="col-item">
-                                        <h2 class="text-red text-dmsans">1963</h2>
-                                        <h3 class="text-blue text-dmsans">Launch of MIMS Drug Reference Book</h3>
+                                        <h2 class="text-red text-dmsans wow bounceIn" data-wow-delay="0.5s">1963</h2>
+                                        <h3 class="text-blue text-dmsans wow fadeIn" data-wow-delay="0.8s">Launch of MIMS Drug Reference Book</h3>
                                         <div class="desc text-grayish-blue">
-                                            <p>In September 1963, the company's first medical information journal was published in Australia as <strong>Monthly Index of Medical Specialties</strong> - the acronym of which still occupies pride of place as the company's name, MIMS</p>
-                                            <p>The 1st edition of <strong>Drug Index for Malaysia & Singapore</strong> (DIMS) was published in 1968.</p>
-                                            <p>The <strong>MIMS Drug Reference Book</strong> was subsequently published across South East Asia - Philippines, Hong Kong, Indonesia, Thailand, Korea, Taiwan, Vietnam, China and India.</p>
+                                            <p class="wow fadeIn" data-wow-delay="1.2s">In September 1963, the company's first medical information journal was published in Australia as <strong>Monthly Index of Medical Specialties</strong> - the acronym of which still occupies pride of place as the company's name, MIMS</p>
+                                            <p class="wow fadeIn" data-wow-delay="1.4s">The 1st edition of <strong>Drug Index for Malaysia & Singapore</strong> (DIMS) was published in 1968.</p>
+                                            <p class="wow fadeIn" data-wow-delay="1.6s">The <strong>MIMS Drug Reference Book</strong> was subsequently published across South East Asia - Philippines, Hong Kong, Indonesia, Thailand, Korea, Taiwan, Vietnam, China and India.</p>
                                         </div>
                                     </div>
                                     <div class="col-item"></div>
@@ -63,7 +65,9 @@
                     </div>
                     <div data-time="1974">
                         <div class="section">
-                            <div class="section-bg-img bg-right" style="background: url('<?php echo IMG_URL . 'our-solutions/hcp-drug-reference-guide-bg.png'; ?>') center center no-repeat;background-size: cover;"></div>
+                            <div class="section-bg-img bg-right" style="background: url('<?php echo IMG_URL . 'timeline/mims-publication-bg.png'; ?>') center center no-repeat;background-size: cover;">
+                                <img src="<?php echo IMG_URL . 'timeline/mims-publication.png'; ?>" alt="">
+                            </div>
                             <div class="container">
                                 <div class="section-two-cols">
                                     <div class="col-item">
@@ -82,7 +86,7 @@
                     </div>
                     <div data-time="1985">
                         <div class="section">
-                            <div class="section-bg-img bg-right" style="background: url('<?php echo IMG_URL . 'our-solutions/hcp-drug-reference-guide-bg.png'; ?>') center center no-repeat;background-size: cover;"></div>
+                            <div class="section-bg-img bg-right" style="background: url('<?php echo IMG_URL . 'timeline/mims-marketing-solution-bg.png'; ?>') center left no-repeat;background-size: cover;"></div>
                             <div class="container">
                                 <div class="section-two-cols">
                                     <div class="col-item">
@@ -99,7 +103,9 @@
                     </div>
                     <div data-time="1997">
                         <div class="section">
-                            <div class="section-bg-img bg-right" style="background: url('<?php echo IMG_URL . 'our-solutions/hcp-drug-reference-guide-bg.png'; ?>') center center no-repeat;background-size: cover;"></div>
+                            <div class="section-bg-img bg-right" style="background: url('<?php echo IMG_URL . 'timeline/mims-online-bg.png'; ?>') center center no-repeat;background-size: cover;">
+                                <img src="<?php echo IMG_URL . 'timeline/mims-online-1997.png'; ?>" alt="">
+                            </div>
                             <div class="container">
                                 <div class="section-two-cols">
                                     <div class="col-item">
@@ -117,7 +123,9 @@
                     </div>
                     <div data-time="2003">
                         <div class="section">
-                            <div class="section-bg-img bg-right" style="background: url('<?php echo IMG_URL . 'our-solutions/hcp-drug-reference-guide-bg.png'; ?>') center center no-repeat;background-size: cover;"></div>
+                            <div class="section-bg-img bg-right" style="background: url('<?php echo IMG_URL . 'timeline/mims-cds-module-bg.png'; ?>') center center no-repeat;background-size: cover;">
+                                <div class="bordered-img" style="background: url('<?php echo IMG_URL . 'timeline/mims-cds-module.png'; ?>') center center no-repeat;background-size: cover;"></div>
+                            </div>
                             <div class="container">
                                 <div class="section-two-cols">
                                     <div class="col-item">
@@ -134,7 +142,9 @@
                     </div>
                     <div data-time="2008">
                         <div class="section">
-                            <div class="section-bg-img bg-right" style="background: url('<?php echo IMG_URL . 'our-solutions/hcp-drug-reference-guide-bg.png'; ?>') center center no-repeat;background-size: cover;"></div>
+                            <div class="section-bg-img bg-right" style="background: url('<?php echo IMG_URL . 'timeline/mims-online-bg-2008.png'; ?>') center center no-repeat;background-size: cover;">
+                                <img src="<?php echo IMG_URL . 'timeline/mims-online.png'; ?>" alt="">
+                            </div>
                             <div class="container">
                                 <div class="section-two-cols">
                                     <div class="col-item">
@@ -154,7 +164,7 @@
                     </div>
                     <div data-time="2011">
                         <div class="section">
-                            <div class="section-bg-img bg-right" style="background: url('<?php echo IMG_URL . 'our-solutions/hcp-drug-reference-guide-bg.png'; ?>') center center no-repeat;background-size: cover;"></div>
+                            <div class="section-bg-img bg-right" style="background: url('<?php echo IMG_URL . 'timeline/mims-online-cpd-bg.png'; ?>') center center no-repeat;background-size: cover;"></div>
                             <div class="container">
                                 <div class="section-two-cols">
                                     <div class="col-item">
@@ -171,7 +181,9 @@
                     </div>
                     <div data-time="2013">
                         <div class="section">
-                            <div class="section-bg-img bg-right" style="background: url('<?php echo IMG_URL . 'our-solutions/hcp-drug-reference-guide-bg.png'; ?>') center center no-repeat;background-size: cover;"></div>
+                            <div class="section-bg-img bg-right" style="background: url('<?php echo IMG_URL . 'timeline/mims-mobile-app-bg.png'; ?>') center center no-repeat;background-size: cover;">
+                                <img src="<?php echo IMG_URL . 'timeline/mims-mobile-app.png'; ?>" alt="">
+                            </div>
                             <div class="container">
                                 <div class="section-two-cols">
                                     <div class="col-item">
@@ -191,7 +203,7 @@
                     </div>
                     <div data-time="2015">
                         <div class="section">
-                            <div class="section-bg-img bg-right" style="background: url('<?php echo IMG_URL . 'our-solutions/hcp-drug-reference-guide-bg.png'; ?>') center center no-repeat;background-size: cover;"></div>
+                            <div class="section-bg-img bg-right" style="background: url('<?php echo IMG_URL . 'timeline/mims-hcp-recruitment-bg.png'; ?>') center center no-repeat;background-size: cover;"></div>
                             <div class="container">
                                 <div class="section-two-cols">
                                     <div class="col-item">
@@ -208,7 +220,9 @@
                     </div>
                     <div data-time="2021">
                         <div class="section">
-                            <div class="section-bg-img bg-right" style="background: url('<?php echo IMG_URL . 'our-solutions/hcp-drug-reference-guide-bg.png'; ?>') center center no-repeat;background-size: cover;"></div>
+                            <div class="section-bg-img bg-right" style="background: url('<?php echo IMG_URL . 'timeline/mims-mobile-app-bg-2021.png'; ?>') center center no-repeat;background-size: cover;">
+                                <img src="<?php echo IMG_URL . 'timeline/mims-mobile-app-2021.png'; ?>" alt="">
+                            </div>
                             <div class="container">
                                 <div class="section-two-cols">
                                     <div class="col-item">
@@ -226,7 +240,9 @@
                     </div>
                     <div data-time="2023">
                         <div class="section">
-                            <div class="section-bg-img bg-right" style="background: url('<?php echo IMG_URL . 'our-solutions/hcp-drug-reference-guide-bg.png'; ?>') center center no-repeat;background-size: cover;"></div>
+                            <div class="section-bg-img bg-right" style="background: url('<?php echo IMG_URL . 'timeline/mims-60th-anniv-bg.png'; ?>') center center no-repeat;background-size: cover;">
+                                <div class="bordered-img no-border" style="background: url('<?php echo IMG_URL . 'timeline/mims-60th-anniv.png'; ?>') center center no-repeat;background-size: cover;"></div>
+                            </div>
                             <div class="container">
                                 <div class="section-two-cols">
                                     <div class="col-item">
@@ -247,7 +263,9 @@
                     </div>
                     <div data-time="Present">
                         <div class="section">
-                            <div class="section-bg-img bg-right" style="background: url('<?php echo IMG_URL . 'our-solutions/hcp-drug-reference-guide-bg.png'; ?>') center center no-repeat;background-size: cover;"></div>
+                            <div class="section-bg-img bg-right" style="background: url('<?php echo IMG_URL . 'timeline/mims-present-bg.png'; ?>') center center no-repeat;background-size: cover;">
+                                <div class="bordered-img" style="background: url('<?php echo IMG_URL . 'timeline/mims-present.png'; ?>') center center no-repeat;background-size: cover;"></div>
+                            </div>
                             <div class="container">
                                 <div class="section-two-cols">
                                     <div class="col-item">
@@ -263,12 +281,12 @@
 
         </div>
         <div id="our-people" class="section">
-            <div class="img-title">
+            <div class="img-title wow fadeInDown" data-wow-delay="0.5s">
                 <img src="<?php echo IMG_URL. 'our-people.png'; ?>" alt="">
             </div>
             <div class="our-people-container">
                 <div class="section-three-cols">
-                    <div class="col-item">
+                    <div class="col-item wow fadeIn" data-wow-delay="0.8s">
                         <div class="item-img" style="background: url('<?php echo IMG_URL. 'leadership-img.png'; ?>') center center no-repeat;background-size: cover;">
                             <img src="<?php echo IMG_URL. 'leadership-img.png'; ?>" alt="">
                             <div class="item-img-icon"><img src="<?php echo IMG_URL. 'leadership-icon.png'; ?>" alt=""></div>
@@ -283,7 +301,7 @@
                             <a href="" class="btn btn-secondary">Read More</a>
                         </div>
                     </div>
-                    <div class="col-item">
+                    <div class="col-item wow fadeIn" data-wow-delay="1.2s">
                         <div class="item-img" style="background: url('<?php echo IMG_URL. 'locations-img.png'; ?>') center center no-repeat;background-size: cover;">
                             <img src="<?php echo IMG_URL. 'locations-img.png'; ?>" alt="">
                             <div class="item-img-icon"><img src="<?php echo IMG_URL. 'location-icon.png'; ?>" alt=""></div>
@@ -298,7 +316,7 @@
                             <a href="" class="btn btn-secondary">Read More</a>
                         </div>
                     </div>
-                    <div class="col-item">
+                    <div class="col-item wow fadeIn" data-wow-delay="1.4s">
                         <div class="item-img" style="background: url('<?php echo IMG_URL. 'join-team-img.png'; ?>') center center no-repeat;background-size: cover;">
                             <img src="<?php echo IMG_URL. 'join-team-img.png'; ?>" alt="">
                             <div class="item-img-icon"><img src="<?php echo IMG_URL. 'team-icon.png'; ?>" alt=""></div>
