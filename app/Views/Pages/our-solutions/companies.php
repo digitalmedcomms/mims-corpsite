@@ -14,63 +14,65 @@
     </div>
 
     <div class="container">
-        <div class="two-cols-header">
-            <div class="header-title">
-                <h2 class="text-blue">Medical Communications</h2>
+        <div id="medical-communications" class="section">
+            <div class="two-cols-header">
+                <div class="header-title">
+                    <h2 class="text-blue">Medical Communications</h2>
+                </div>
+                <div class="header-description text-grayish-blue">
+                    <p>MIMS Is your full-service agency partner for impactful, tailor-made medcomms solutions.</p>
+                    <p>With our 250+ strong team of health communication specialists, we have the right expertise to guide you in every step of the way to ensure your marketing and medical go-to-market plans are effective and Integrated.</p>
+                </div>
             </div>
-            <div class="header-description text-grayish-blue">
-                <p>MIMS Is your full-service agency partner for impactful, tailor-made medcomms solutions.</p>
-                <p>With our 250+ strong team of health communication specialists, we have the right expertise to guide you in every step of the way to ensure your marketing and medical go-to-market plans are effective and Integrated.</p>
-            </div>
-        </div>
 
-        <div id="medcomms-images-carousel" class="owl-carousel owl-theme wow fadeIn">
-            <div class="item">
-                <div class="img-carousel" style="background: url('<?php echo IMG_URL . 'our-solutions/companies/carousel-1-img.png'; ?>') center center no-repeat;background-size: cover;"></div>
+            <div id="medcomms-images-carousel" class="owl-carousel owl-theme wow fadeIn">
+                <div class="item">
+                    <div class="img-carousel" style="background: url('<?php echo IMG_URL . 'our-solutions/companies/carousel-1-img.png'; ?>') center center no-repeat;background-size: cover;"></div>
+                </div>
+                <div class="item">
+                    <div class="img-carousel" style="background: url('<?php echo IMG_URL . 'our-solutions/companies/carousel-2-img.png'; ?>') center center no-repeat;background-size: cover;"></div>
+                </div>
+                <div class="item">
+                    <div class="img-carousel" style="background: url('<?php echo IMG_URL . 'our-solutions/companies/carousel-3-img.png'; ?>') center center no-repeat;background-size: cover;"></div>
+                </div>
+                <div class="item">
+                    <div class="img-carousel" style="background: url('<?php echo IMG_URL . 'our-solutions/companies/carousel-1-img.png'; ?>') center center no-repeat;background-size: cover;"></div>
+                </div>
             </div>
-            <div class="item">
-                <div class="img-carousel" style="background: url('<?php echo IMG_URL . 'our-solutions/companies/carousel-2-img.png'; ?>') center center no-repeat;background-size: cover;"></div>
-            </div>
-            <div class="item">
-                <div class="img-carousel" style="background: url('<?php echo IMG_URL . 'our-solutions/companies/carousel-3-img.png'; ?>') center center no-repeat;background-size: cover;"></div>
-            </div>
-            <div class="item">
-                <div class="img-carousel" style="background: url('<?php echo IMG_URL . 'our-solutions/companies/carousel-1-img.png'; ?>') center center no-repeat;background-size: cover;"></div>
-            </div>
-        </div>
 
-        <div id="medcomms-title-carousel" class="owl-carousel owl-theme wow fadeIn">
-            <div class="item">
-                <a href="javascript:;" class="carousel-link">Impactful Scientific Content</a>
+            <div id="medcomms-title-carousel" class="owl-carousel owl-theme wow fadeIn">
+                <div class="item">
+                    <a href="javascript:;" class="carousel-link">Impactful Scientific Content</a>
+                </div>
+                <div class="item">
+                    <a href="javascript:;" class="carousel-link">Precision Medical Marketing</a>
+                </div>
+                <div class="item">
+                    <a href="javascript:;" class="carousel-link">Impactful Scientific Content</a>
+                </div>
+                <div class="item">
+                    <a href="javascript:;" class="carousel-link">Precision Medical Marketing</a>
+                </div>
             </div>
-            <div class="item">
-                <a href="javascript:;" class="carousel-link">Precision Medical Marketing</a>
-            </div>
-            <div class="item">
-                <a href="javascript:;" class="carousel-link">Impactful Scientific Content</a>
-            </div>
-            <div class="item">
-                <a href="javascript:;" class="carousel-link">Precision Medical Marketing</a>
-            </div>
-        </div>
 
-        <div id="medcomms-desc-carousel" class="owl-carousel owl-theme wow fadeIn">
-            <div class="item">
-                Expert strategy, writing, gap analysis, planning and advisory board for impactful healthcare communications
-            </div>
-            <div class="item">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-            </div>
-            <div class="item">
-                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-            </div>
-            <div class="item">
-                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            <div id="medcomms-desc-carousel" class="owl-carousel owl-theme wow fadeIn">
+                <div class="item">
+                    Expert strategy, writing, gap analysis, planning and advisory board for impactful healthcare communications
+                </div>
+                <div class="item">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                </div>
+                <div class="item">
+                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                </div>
+                <div class="item">
+                    Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                </div>
             </div>
         </div>
     </div>
 
-    <div id="drug-references-and-guidelines">
+    <div id="drug-listing">
         <div class="section">
             <div class="section-bg-img bg-left" style="background: url('<?php echo IMG_URL . 'our-solutions/companies/drug-listing-img.png'; ?>') center center no-repeat;background-size: cover;"></div>
             <div class="container">
@@ -97,58 +99,60 @@
 
 
     <div class="container">
-        <div class="two-cols-header">
-            <div class="header-title">
-                <h2 class="text-blue">Marketing Platform</h2>
+        <div id="marketing-platform" class="section">
+            <div class="two-cols-header">
+                <div class="header-title">
+                    <h2 class="text-blue">Marketing Platform</h2>
+                </div>
+                <div class="header-description text-grayish-blue">
+                    <p>MIMS's multi-channel ecosystem is Asia's #1 clinical and educational resource for healthcare professionals.</p>
+                    <p>Utilizing our channels, we provide a spectrum of services including <strong>sponsored content, online/offline ads, targeted EDM campaigns, surveys</strong> and <strong>accredited education</strong>.</p>
+                </div>
             </div>
-            <div class="header-description text-grayish-blue">
-                <p>MIMS's multi-channel ecosystem is Asia's #1 clinical and educational resource for healthcare professionals.</p>
-                <p>Utilizing our channels, we provide a spectrum of services including <strong>sponsored content, online/offline ads, targeted EDM campaigns, surveys</strong> and <strong>accredited education</strong>.</p>
-            </div>
-        </div>
 
-        <div id="marketing-images-carousel" class="owl-carousel owl-theme wow fadeIn">
-            <div class="item">
-                <div class="img-carousel" style="background: url('<?php echo IMG_URL . 'our-solutions/companies/carousel-1-img.png'; ?>') center center no-repeat;background-size: cover;"></div>
+            <div id="marketing-images-carousel" class="owl-carousel owl-theme wow fadeIn">
+                <div class="item">
+                    <div class="img-carousel" style="background: url('<?php echo IMG_URL . 'our-solutions/companies/carousel-1-img.png'; ?>') center center no-repeat;background-size: cover;"></div>
+                </div>
+                <div class="item">
+                    <div class="img-carousel" style="background: url('<?php echo IMG_URL . 'our-solutions/companies/carousel-2-img.png'; ?>') center center no-repeat;background-size: cover;"></div>
+                </div>
+                <div class="item">
+                    <div class="img-carousel" style="background: url('<?php echo IMG_URL . 'our-solutions/companies/carousel-3-img.png'; ?>') center center no-repeat;background-size: cover;"></div>
+                </div>
+                <div class="item">
+                    <div class="img-carousel" style="background: url('<?php echo IMG_URL . 'our-solutions/companies/carousel-1-img.png'; ?>') center center no-repeat;background-size: cover;"></div>
+                </div>
             </div>
-            <div class="item">
-                <div class="img-carousel" style="background: url('<?php echo IMG_URL . 'our-solutions/companies/carousel-2-img.png'; ?>') center center no-repeat;background-size: cover;"></div>
-            </div>
-            <div class="item">
-                <div class="img-carousel" style="background: url('<?php echo IMG_URL . 'our-solutions/companies/carousel-3-img.png'; ?>') center center no-repeat;background-size: cover;"></div>
-            </div>
-            <div class="item">
-                <div class="img-carousel" style="background: url('<?php echo IMG_URL . 'our-solutions/companies/carousel-1-img.png'; ?>') center center no-repeat;background-size: cover;"></div>
-            </div>
-        </div>
 
-        <div id="marketing-title-carousel" class="owl-carousel owl-theme wow fadeIn">
-            <div class="item">
-                <a href="javascript:;" class="carousel-link">Impactful Scientific Content</a>
+            <div id="marketing-title-carousel" class="owl-carousel owl-theme wow fadeIn">
+                <div class="item">
+                    <a href="javascript:;" class="carousel-link">Impactful Scientific Content</a>
+                </div>
+                <div class="item">
+                    <a href="javascript:;" class="carousel-link">Precision Medical Marketing</a>
+                </div>
+                <div class="item">
+                    <a href="javascript:;" class="carousel-link">Impactful Scientific Content</a>
+                </div>
+                <div class="item">
+                    <a href="javascript:;" class="carousel-link">Precision Medical Marketing</a>
+                </div>
             </div>
-            <div class="item">
-                <a href="javascript:;" class="carousel-link">Precision Medical Marketing</a>
-            </div>
-            <div class="item">
-                <a href="javascript:;" class="carousel-link">Impactful Scientific Content</a>
-            </div>
-            <div class="item">
-                <a href="javascript:;" class="carousel-link">Precision Medical Marketing</a>
-            </div>
-        </div>
 
-        <div id="marketing-desc-carousel" class="owl-carousel owl-theme wow fadeIn">
-            <div class="item">
-                Expert strategy, writing, gap analysis, planning and advisory board for impactful healthcare communications
-            </div>
-            <div class="item">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-            </div>
-            <div class="item">
-                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-            </div>
-            <div class="item">
-                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            <div id="marketing-desc-carousel" class="owl-carousel owl-theme wow fadeIn">
+                <div class="item">
+                    Expert strategy, writing, gap analysis, planning and advisory board for impactful healthcare communications
+                </div>
+                <div class="item">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                </div>
+                <div class="item">
+                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                </div>
+                <div class="item">
+                    Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                </div>
             </div>
         </div>
     </div>
