@@ -8,13 +8,13 @@
                             <div class="left-side">
                                 <h1 class="wow fadeIn" data-wow-duration="2s" data-wow-delay="1s">Empowering<br>healthcare communities to improve patient outcomes</h1>
                                 <div class="buttons wow fadeIn" data-wow-duration="1s" data-wow-delay="3s">
-                                    <a href="" class="btn btn-blue">Learn More</a>
-                                    <a href="" class="btn btn-blue-invert">Contact Us</a>
+                                    <!-- <a href="" class="btn btn-blue">Learn More</a>
+                                    <a href="" class="btn btn-blue-invert">Contact Us</a> -->
                                 </div>
                             </div>
                             <div class="right-side">
                                 <div class="img-featured wow fadeInRight" data-wow-duration="1s" data-wow-delay="2s">
-                                    <!-- <img src="<?php echo IMG_URL . 'doctor-banner-1.png'; ?>" alt=""> -->
+                                    <img src="<?php echo IMG_URL . 'banner-1-mims-empower.png'; ?>" alt="">
 
                                     <div class="bubble-text">
                                         <div class="bubble-kicker">Commnuity</div>
@@ -39,10 +39,10 @@
     quality medical information, medical education and knowledge
     services connecting healthcare communities. </div>
                                 <div class="buttons wow fadeIn" data-wow-duration="1s" data-wow-delay="3s">
-                                    <a href="" class="btn btn-blue">Learn More</a>
-                                    <a href="" class="btn btn-blue-invert">Contact Us</a>
+                                    <a href="<?php echo base_url('about-us'); ?>" class="btn btn-blue">Learn More</a>
+                                    <a href="<?php echo base_url('contact-us'); ?>" class="btn btn-blue-invert">Contact Us</a>
                                 </div>
-                            </div>
+                            </div>n
                             <div class="right-side">
                                 <div class="img-featured wow fadeInRight" data-wow-duration="1s" data-wow-delay="2s">
                                     <img src="<?php echo IMG_URL . 'doctor-banner-1.png'; ?>" alt="">

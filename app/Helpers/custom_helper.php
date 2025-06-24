@@ -117,7 +117,7 @@ if (!function_exists('trans')) {
 if (!function_exists('clean_number')) {
     function clean_number($num)
     {
-        $num = trim($num);
+        $num = $num;
         $num = intval($num);
         return $num;
     }
@@ -137,7 +137,7 @@ if (!function_exists('generate_unique_id')) {
 if (!function_exists('str_slug')) {
     function str_slug($str)
     {
-        $str = trim($str);
+        $str = $str;
         return url_title(convert_accented_characters($str), "-", true);
     }
 }
@@ -155,7 +155,7 @@ if (!function_exists('clean_str')) {
 if (!function_exists('remove_special_characters')) {
     function remove_special_characters($str, $is_slug = false)
     {
-        $str = trim($str);
+        $str = $str;
         $str = str_replace('#', '', $str);
         $str = str_replace(';', '', $str);
         $str = str_replace('!', '', $str);
@@ -674,7 +674,7 @@ if (!function_exists('get_favicon')) {
     {
         if (!empty($visual_settings)) {
             if (!empty($visual_settings->favicon) && file_exists(FCPATH . $visual_settings->favicon)) {
-                return base_url() . $visual_settings->favicon;
+                return base_url() . "/". $visual_settings->favicon;
             } else {
                 return base_url() . "/assets/admin/img/favicon.png";
             }
@@ -795,4 +795,34 @@ if (!function_exists('delete_file_from_server')) {
             unlink($full_path);
         }
     }
+}
+
+
+function p($arr = array()){
+    print "<pre>";
+    print_r($arr);
+    print "</pre>";
+}
+
+function pe($arr = array()){
+    p($arr);
+    exit();
+}
+
+function getStatusBadge($status){
+    $status_name = '';
+    $status_bg = '';
+    switch($status){
+        case 1:
+            $status_name = 'Active';
+            $status_bg = 'bg-success';
+            break;
+        case 0:
+            $status_name = 'Inactive';
+            $status_bg = 'bg-danger';
+            break;
+        default:
+            break;
+    }
+    return '<span style="padding: 5px 10px;font-size: 12px;" class="badge badge-dark '.$status_bg.'">' . $status_name . '</span>';
 }

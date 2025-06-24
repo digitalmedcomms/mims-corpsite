@@ -1,8 +1,8 @@
   <!-- Main Sidebar Container -->
-  <aside class="main-sidebar sidebar-dark-primary elevation-4">
+  <aside class="main-sidebar <?php echo check_dark_mode_enabled() ? 'sidebar-dark-primary' : 'sidebar-light-primary' ?>  elevation-4">
       <!-- Brand Logo -->
       <a href="<?php echo admin_url(); ?>" class="brand-link">
-          <img src="<?php echo base_url(); ?>/assets/admin/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+          <img src="<?php echo IMG_URL .'mims-logo-icon.png'; ?>" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
           <span class="brand-text font-weight-light"><?php echo get_general_settings()->application_name ?></span>
       </a>
 
@@ -12,7 +12,7 @@
 
 
           <!-- SidebarSearch Form -->
-          <div class="form-inline mt-3">
+          <!-- <div class="form-inline mt-3">
               <div class="input-group" data-widget="sidebar-search">
                   <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
                   <div class="input-group-append">
@@ -21,7 +21,7 @@
                       </button>
                   </div>
               </div>
-          </div>
+          </div> -->
 
           <!-- Sidebar Menu -->
           <nav class="mt-2">
@@ -73,6 +73,15 @@
                       <?php
                             endif;
                         endforeach;
+
+                        if($mCategory['menu_category'] == 'Common Page'){
+                        echo '<li class="nav-item">';
+                            echo '<a href="#" data-toggle="modal" data-target="#file_manager_image" class="nav-link">
+                                      <i class="nav-icon fa fa-file"></i>
+                                      <p>File Manager</p>
+                                  </a>';
+                        echo '<li>';
+                        }
                         ?>
                   <?php endforeach; ?>
 

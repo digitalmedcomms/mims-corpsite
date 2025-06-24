@@ -47,7 +47,7 @@ class LanguageTranslationsModel extends Model
         $paginateData = $this->select('language_translations.*')
             ->where('language_translations.lang_id', clean_number($lang_id));
 
-        $search = trim($request->getGet('q'));
+        $search = $request->getGet('q');
         if (!empty($search)) {
             $this->builder()->groupStart()
                 ->like('language_translations.label', clean_str($search))

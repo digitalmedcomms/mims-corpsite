@@ -34,17 +34,17 @@ class CityModel extends Model
             ->join('location_countries', 'location_cities.country_id = location_countries.id')
             ->join('location_states', 'location_cities.state_id = location_states.id');
 
-        $country = trim($this->request->getGet('country'));
+        $country = $this->request->getGet('country');
         if (!empty($country)) {
             $this->builder()->where('location_cities.country_id', clean_number($country));
         }
 
-        $state = trim($this->request->getGet('state'));
+        $state = $this->request->getGet('state');
         if (!empty($country)) {
             $this->builder()->where('location_cities.state_id', clean_number($state));
         }
 
-        $search = trim($this->request->getGet('search'));
+        $search = $this->request->getGet('search');
         if (!empty($search)) {
             $this->builder()->groupStart()
                 ->like('location_countries.name', clean_str($search))

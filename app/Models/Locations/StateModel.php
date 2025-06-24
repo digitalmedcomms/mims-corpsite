@@ -33,12 +33,12 @@ class StateModel extends Model
         $paginateData = $this->select('location_states.*, location_countries.name as country_name, location_countries.status as country_status')
             ->join('location_countries', 'location_states.country_id = location_countries.id');
 
-        $status = trim($this->request->getGet('country'));
+        $status = $this->request->getGet('country');
         if ($status != null && ($status == 1 || $status == 0)) {
             $this->builder()->where('location_states.country_id', clean_number($status));
         }
 
-        $search = trim($this->request->getGet('search'));
+        $search = $this->request->getGet('search');
         if (!empty($search)) {
             $this->builder()->groupStart()
                 ->like('location_states.name', clean_str($search))

@@ -44,7 +44,7 @@ class UserModel extends Model
     public function input_values()
     {
         $data = array(
-            'username' => strtolower(remove_special_characters(trim($this->request->getVar('username')))),
+            'username' => strtolower(remove_special_characters($this->request->getVar('username'))),
             'email' => $this->request->getVar('email'),
             'password' => $this->request->getVar('password')
         );
@@ -171,7 +171,7 @@ class UserModel extends Model
         $user = $this->get_user($id);
         if (!empty($user)) {
             $data = array(
-                'username' => strtolower(remove_special_characters(trim($this->request->getVar('username')))),
+                'username' => strtolower(remove_special_characters($this->request->getVar('username'))),
                 'first_name' => $this->request->getVar('first_name'),
                 'last_name' => $this->request->getVar('last_name'),
                 'email' => $this->request->getVar('email'),
@@ -496,7 +496,7 @@ class UserModel extends Model
             ->where('users.role !=', 'admin');
 
 
-        $search = trim($request->getGet('search'));
+        $search = $request->getGet('search');
         if (!empty($search)) {
             $this->builder()->groupStart()
                 ->like('users.username', clean_str($search))
@@ -506,17 +506,17 @@ class UserModel extends Model
                 ->groupEnd();
         }
 
-        $status = trim($request->getGet('status'));
+        $status = $request->getGet('status');
         if ($status != null && ($status == 1 || $status == 0)) {
             $this->builder()->where('users.status', clean_number($status));
         }
 
-        $email_status = trim($request->getGet('email_status'));
+        $email_status = $request->getGet('email_status');
         if ($email_status != null && ($email_status == 1 || $email_status == 0)) {
             $this->builder()->where('users.email_status', clean_number($email_status));
         }
 
-        $role = trim($request->getGet('role'));
+        $role = $request->getGet('role');
         if (!empty($role)) {
             $this->builder()->where('users.role', clean_str($role));
         }
@@ -541,7 +541,7 @@ class UserModel extends Model
             ->join('roles_permissions', 'users.role = roles_permissions.role')
             ->where('users.role', 'admin');
 
-        $search = trim($request->getGet('search'));
+        $search = $request->getGet('search');
         if (!empty($search)) {
             $this->builder()->groupStart()
                 ->like('users.username', clean_str($search))
@@ -551,12 +551,12 @@ class UserModel extends Model
                 ->groupEnd();
         }
 
-        $status = trim($request->getGet('status'));
+        $status = $request->getGet('status');
         if ($status != null && ($status == 1 || $status == 0)) {
             $this->builder()->where('users.status', clean_number($status));
         }
 
-        $email_status = trim($request->getGet('email_status'));
+        $email_status = $request->getGet('email_status');
         if ($email_status != null && ($email_status == 1 || $email_status == 0)) {
             $this->builder()->where('users.email_status', clean_number($email_status));
         }
@@ -685,7 +685,7 @@ class UserModel extends Model
     public function filter_admin()
     {
         $request = service('request');
-        $search = trim($request->getGet('search'));
+        $search = $request->getGet('search');
         if (!empty($search)) {
             $this->builder()->groupStart()
                 ->like('users.username', clean_str($search))
@@ -695,12 +695,12 @@ class UserModel extends Model
                 ->groupEnd();
         }
 
-        $status = trim($request->getGet('status'));
+        $status = $request->getGet('status');
         if ($status != null && ($status == 1 || $status == 0)) {
             $this->builder()->where('users.status', clean_number($status));
         }
 
-        $email_status = trim($request->getGet('email_status'));
+        $email_status = $request->getGet('email_status');
         if ($email_status != null && ($email_status == 1 || $email_status == 0)) {
             $this->builder()->where('users.email_status', clean_number($email_status));
         }

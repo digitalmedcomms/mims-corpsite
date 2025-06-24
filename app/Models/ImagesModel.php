@@ -72,9 +72,9 @@ class ImagesModel extends Model
     public function insert_image($data)
     {
         $image_data = array(
-            'image_big' => $data["image_big"],
+            // 'image_big' => $data["image_big"],
             'image_default' => $data["image_default"],
-            'image_slider' => $data["image_slider"],
+            // 'image_slider' => $data["image_slider"],
             'image_mid' => $data["image_mid"],
             'image_small' => $data["image_small"],
             'image_mime' => $data["image_mime"],
@@ -96,17 +96,17 @@ class ImagesModel extends Model
             $temp_path = $temp_data->getTempName() . $temp_data->getName();
             if ($temp_data->getClientExtension() == 'gif') {
                 $gif_path = $uploadModel->post_gif_image_upload($temp_data->getName());
-                $data["image_big"] = $gif_path;
+                // $data["image_big"] = $gif_path;
                 $data["image_default"] = $gif_path;
-                $data["image_slider"] = $gif_path;
+                // $data["image_slider"] = $gif_path;
                 $data["image_mid"] = $gif_path;
                 $data["image_small"] = $gif_path;
                 $data["image_mime"] = 'gif';
                 $data["file_name"] = @$temp_data->getClientName();
             } else {
-                $data["image_big"] = $uploadModel->post_big_image_upload($temp_path);
+                // $data["image_big"] = $uploadModel->post_big_image_upload($temp_path);
                 $data["image_default"] = $uploadModel->post_default_image_upload($temp_path);
-                $data["image_slider"] = $uploadModel->post_slider_image_upload($temp_path);
+                // $data["image_slider"] = $uploadModel->post_slider_image_upload($temp_path);
                 $data["image_mid"] = $uploadModel->post_mid_image_upload($temp_path);
                 $data["image_small"] = $uploadModel->post_small_image_upload($temp_path);
                 $data["image_mime"] = 'jpg';
@@ -144,9 +144,9 @@ class ImagesModel extends Model
         $image = $this->get_image($id);
         if (!empty($image)) {
             //delete image from server
-            delete_file_from_server($image->image_big);
+            // delete_file_from_server($image->image_big);
             delete_file_from_server($image->image_default);
-            delete_file_from_server($image->image_slider);
+            // delete_file_from_server($image->image_slider);
             delete_file_from_server($image->image_mid);
             delete_file_from_server($image->image_small);
             return $this->builder()->where('id', $id)->delete();

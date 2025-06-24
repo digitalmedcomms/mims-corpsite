@@ -30,6 +30,7 @@
     <link rel="stylesheet" href="<?php echo base_url(); ?>/assets/admin/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
     <link rel="stylesheet" href="<?php echo base_url(); ?>/assets/admin/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
     <link rel="stylesheet" href="<?php echo base_url(); ?>/assets/admin/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+    <link rel="stylesheet" href="<?php echo base_url(); ?>/assets/admin/css/bootstrap-select.min.css">
     <!-- jQuery -->
     <script src="<?php echo base_url(); ?>/assets/admin/plugins/jquery/jquery.min.js"></script>
 
@@ -102,6 +103,7 @@
     <script src="<?php echo base_url(); ?>/assets/admin/plugins/datatables-buttons/js/buttons.print.min.js"></script>
     <script src="<?php echo base_url(); ?>/assets/admin/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
     <script src="<?php echo base_url(); ?>/assets/admin/plugins/daterangepicker/daterangepicker.js"></script>
+    <script src="<?php echo base_url(); ?>/assets/admin/js/bootstrap-select.min.js"></script>
 
     <!-- SweetAlert2 -->
     <script src="<?php echo base_url(); ?>/assets/admin/plugins/sweetalert2/sweetalert2.all.min.js"></script>
@@ -146,6 +148,11 @@
     <?php if ($segment === 'dashboard' || empty($segment)) : ?>
         <script src="<?php echo base_url(); ?>/assets/admin/js/pages/dashboard-admin.js"></script>
     <?php endif; ?>
+
+
+    <script src="<?php echo base_url('assets/admin/js/datatables/datatables.min.js'); ?>" type="text/javascript"></script>
+    <script src="<?php echo base_url('assets/admin/js/datatables/datatable-pipelining.js'); ?>" type="text/javascript"></script>
+    <script src="<?php echo base_url('assets/admin/js/datatables/datatable-listing.js'); ?>" type="text/javascript"></script>
 
     <script>
         $(document).ready(function() {

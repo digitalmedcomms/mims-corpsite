@@ -41,8 +41,8 @@ class Filters extends BaseConfig
             // 'honeypot',
             'csrf' => ['except' => ['vr-run-internal-cron', 'api/*']],
             // 'invalidchars',
-            'isLoggedIn'    => ['except' => ['/', 'Auth/*', 'api/*', 'blocked', 'maintenance', 'about-us', 'our-solutions', 'our-solutions/*']],
-            'isGranted'     => ['except' => ['/', 'Auth/*', 'api/*', 'blocked', 'maintenance', 'about-us', 'our-solutions', 'our-solutions/*']],
+            'isLoggedIn'    => ['except' => ['/', 'Auth/*', 'api/*', 'blocked', 'maintenance', 'about-us', 'our-solutions', 'our-solutions/*', 'our-leaders', 'contact-us']],
+            'isGranted'     => ['except' => ['/', 'Auth/*', 'api/*', 'blocked', 'maintenance', 'about-us', 'our-solutions', 'our-solutions/*', 'our-leaders', 'contact-us']],
             'isMaintenance' => ['except' => ['Auth/*', 'api/*', 'blocked', 'admin/*', 'maintenance']],
         ],
         'after' => [

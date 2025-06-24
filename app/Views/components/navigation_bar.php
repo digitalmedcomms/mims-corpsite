@@ -66,8 +66,8 @@
                                                 <div class="menu-item border-right">
                                                     <a href="<?php echo base_url('our-solutions/for-pharmaceutical-companies'); ?>" class="link-header text-red">For Pharmaceutical Companies</a>
                                                     <ul>
-                                                        <li><a href="<?php echo base_url('our-solutions/for-pharmaceutical-companies#drug-listing'); ?>" class="link-menu">Drug Listing</a></li>
                                                         <li><a href="<?php echo base_url('our-solutions/for-pharmaceutical-companies#medical-communications'); ?>" class="link-menu">Medical Communications</a></li>
+                                                        <li><a href="<?php echo base_url('our-solutions/for-pharmaceutical-companies#drug-listing'); ?>" class="link-menu">Drug Listing</a></li>
                                                         <li><a href="<?php echo base_url('our-solutions/for-pharmaceutical-companies#marketing-platform'); ?>" class="link-menu">Marketing Platform</a></li>
                                                     </ul>
                                                 </div>

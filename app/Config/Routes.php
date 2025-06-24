@@ -37,6 +37,8 @@ $routes->get('our-solutions', 'Solutions::index');
 $routes->get('our-solutions/for-hcp', 'Solutions::for_hcp');
 $routes->get('our-solutions/for-pharmaceutical-companies', 'Solutions::for_companies');
 $routes->get('our-solutions/for-healthcare-institutions', 'Solutions::for_institution');
+$routes->get('our-leaders', 'Leadership::index');
+$routes->get('contact-us', 'Contactus::index');
 
 
 $routes->group("api", ["namespace" => "App\Controllers\Api"], function ($routes) {
@@ -150,6 +152,35 @@ $routes->group("admin", ["namespace" => "App\Controllers\Admin"], function ($rou
         $routes->post('city/saved-city-post', 'Country::saved_city_post');
         $routes->post('city/delete-city-post', 'Country::delete_city_post');
     });
+
+    $routes->group('leaders', function ($routes) {
+        $routes->get('', 'Leaders::index');
+        $routes->get('add/', 'Leaders::add');
+        $routes->get('edit/(:num)', 'Leaders::edit/$1');
+        $routes->get('delete/(:num)', 'Leaders::delete/$1');
+        $routes->post('update/(:num)', 'Leaders::update/$1');
+        $routes->post('insert', 'Leaders::insert');
+        $routes->post('table-listing', 'Leaders::tableListing');
+    });
+
+    $routes->group('offices', function ($routes) {
+        $routes->get('', 'Offices::index');
+        $routes->get('add/', 'Offices::add');
+        $routes->get('edit/(:num)', 'Offices::edit/$1');
+        $routes->get('delete/(:num)', 'Offices::delete/$1');
+        $routes->post('update/(:num)', 'Offices::update/$1');
+        $routes->post('insert', 'Offices::insert');
+        $routes->post('table-listing', 'Offices::tableListing');
+    });
+
+    $routes->group('leader-types', function ($routes) {
+        $routes->get('', 'LeaderTypes::index');
+        $routes->get('edit/(:num)', 'LeaderTypes::edit/$1');
+        $routes->post('update/(:num)', 'LeaderTypes::update/$1');
+        $routes->post('insert', 'LeaderTypes::insert');
+        $routes->post('table-listing', 'LeaderTypes::tableListing');
+    });
+    
 });
 
 $routes->post('vr-run-internal-cron', 'Common::run_internal_cron');
@@ -169,6 +200,7 @@ $routes->post("vr-switch-mode", 'Common::switch_visual_mode');
  * You will have access to the $routes object within that file without
  * needing to reload it.
  */
+
 if (file_exists(APPPATH . 'Config/' . ENVIRONMENT . '/Routes.php')) {
     require APPPATH . 'Config/' . ENVIRONMENT . '/Routes.php';
 }

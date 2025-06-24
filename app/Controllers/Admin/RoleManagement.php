@@ -126,7 +126,7 @@ class RoleManagement extends AdminController
 
     public function delete_role_post()
     {
-        $id = $this->request->getVar('id', FILTER_SANITIZE_STRING);
+        $id = $this->request->getVar('id', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
         $userAccess = $this->RolesPermissionsModel->checkUserAccess($id);
 
         if ($this->RolesPermissionsModel->delete_role($id)) {
@@ -163,32 +163,32 @@ class RoleManagement extends AdminController
 
     public function changeMenuCategoryPermission()
     {
-        $userAccess = $this->RolesPermissionsModel->checkUserMenuCategoryAccess($this->request->getPost(null, FILTER_SANITIZE_STRING));
+        $userAccess = $this->RolesPermissionsModel->checkUserMenuCategoryAccess($this->request->getPost(null, FILTER_SANITIZE_FULL_SPECIAL_CHARS));
         if ($userAccess > 0) {
-            $this->RolesPermissionsModel->deleteMenuCategoryPermission($this->request->getPost(null, FILTER_SANITIZE_STRING));
+            $this->RolesPermissionsModel->deleteMenuCategoryPermission($this->request->getPost(null, FILTER_SANITIZE_FULL_SPECIAL_CHARS));
         } else {
-            $this->RolesPermissionsModel->insertMenuCategoryPermission($this->request->getPost(null, FILTER_SANITIZE_STRING));
+            $this->RolesPermissionsModel->insertMenuCategoryPermission($this->request->getPost(null, FILTER_SANITIZE_FULL_SPECIAL_CHARS));
         }
     }
 
     public function changeMenuPermission()
     {
-        $userAccess = $this->RolesPermissionsModel->checkUserMenuAccess($this->request->getPost(null, FILTER_SANITIZE_STRING), 3);
+        $userAccess = $this->RolesPermissionsModel->checkUserMenuAccess($this->request->getPost(null, FILTER_SANITIZE_FULL_SPECIAL_CHARS), 3);
 
         if ($userAccess > 0) {
-            $this->RolesPermissionsModel->deleteMenuPermission($this->request->getPost(null, FILTER_SANITIZE_STRING));
+            $this->RolesPermissionsModel->deleteMenuPermission($this->request->getPost(null, FILTER_SANITIZE_FULL_SPECIAL_CHARS));
         } else {
-            $this->RolesPermissionsModel->insertMenuPermission($this->request->getPost(null, FILTER_SANITIZE_STRING));
+            $this->RolesPermissionsModel->insertMenuPermission($this->request->getPost(null, FILTER_SANITIZE_FULL_SPECIAL_CHARS));
         }
     }
 
     public function changeSubMenuPermission()
     {
-        $userAccess = $this->RolesPermissionsModel->checkUserSubmenuAccess($this->request->getPost(null, FILTER_SANITIZE_STRING));
+        $userAccess = $this->RolesPermissionsModel->checkUserSubmenuAccess($this->request->getPost(null, FILTER_SANITIZE_FULL_SPECIAL_CHARS));
         if ($userAccess > 0) {
-            $this->RolesPermissionsModel->deleteSubmenuPermission($this->request->getPost(null, FILTER_SANITIZE_STRING));
+            $this->RolesPermissionsModel->deleteSubmenuPermission($this->request->getPost(null, FILTER_SANITIZE_FULL_SPECIAL_CHARS));
         } else {
-            $this->RolesPermissionsModel->insertSubmenuPermission($this->request->getPost(null, FILTER_SANITIZE_STRING));
+            $this->RolesPermissionsModel->insertSubmenuPermission($this->request->getPost(null, FILTER_SANITIZE_FULL_SPECIAL_CHARS));
         }
     }
 }

@@ -55,5 +55,7 @@
             </div>
         </div>
     </footer>
+
+    <button id="scrollToTopBtn"><i class="fa fa-angle-double-up"></i></button>
 </body>
 </html>

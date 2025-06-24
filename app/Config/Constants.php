@@ -104,4 +104,7 @@ define('COMPILED_ASSETS_PATH', '__compiled_assets__' . DIRECTORY_SEPARATOR);
 define('ASSETS_URL', $ASSETS_URL);
 define('IMG_URL', $IMG_URL);
 define('WEBFONTS_URL', $WEBFONTS_URL);
+
 define('IMG_DATA_URL', $IMG_URL);
+define('ACTIVE_STATUS', 1);
+define('INACTIVE_STATUS', 0);

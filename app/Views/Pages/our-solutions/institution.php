@@ -57,7 +57,7 @@
 
     <div id="hcp-recruitment">
         <div class="section">
-            <div class="section-bg-img bg-left" style="background: url('<?php echo IMG_URL . 'our-solutions/hcp-drug-reference-guide-bg.png'; ?>') center center no-repeat;background-size: cover;"></div>
+            <div class="section-bg-img bg-left" style="background: url('<?php echo IMG_URL . 'our-solutions/hcp-recruitment-bg.png'; ?>') center top no-repeat;background-size: cover;"></div>
             <div class="container">
                 <div class="section-two-cols">
                     <div class="col-item"></div>

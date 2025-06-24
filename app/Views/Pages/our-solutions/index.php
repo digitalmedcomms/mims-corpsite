@@ -63,6 +63,61 @@
         </div>
     </div>
 
+    <div id="companies">
+        <div class="section">
+            <div class="container">
+                <h2 class="text-blue text-center wow bounceIn">For Pharmaceutical Companies</h2>
+                <div class="companies-container section-three-cols">
+                    <div class="col-item wow fadeIn" data-wow-delay="1s">
+                        <div class="item-icon">
+                            <img src="<?php echo IMG_URL. 'our-solutions/medical-communications-icon.png'; ?>" alt="">
+                        </div>
+                        <div class="item-details">
+                            <div class="item-title text-blue">Medical Communications</div>
+                            <div class="item-desc text-grayish-blue">
+                                <p>Impactful <strong>tailor-made medical communication services</strong> including medical content creation, events, creatives & ideation, consultancy, etc.</p>
+                            </div>
+                            <div class="buttons">
+                                <a href="" class="btn btn-secondary">Read More</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-item wow fadeIn" data-wow-delay="0.5s">
+                        <div class="item-icon">
+                            <img src="<?php echo IMG_URL. 'our-solutions/drug-listing-icon.png'; ?>" alt="">
+                        </div>
+                        <div class="item-details">
+                            <div class="item-title text-blue">Drug Listing</div>
+                            <div class="item-desc text-grayish-blue">
+                                <p>Trusted repository of <strong>up-to-date drug information used by > 2 million HCPs</strong>. Available in print, online & mobile app.</p>
+                            </div>
+                            <div class="buttons">
+                                <a href="" class="btn btn-secondary">Read More</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-item wow fadeIn" data-wow-delay="1.5s">
+                        <div class="item-icon">
+                            <img src="<?php echo IMG_URL. 'our-solutions/marketing-platform-icon.png'; ?>" alt="">
+                        </div>
+                        <div class="item-details">
+                            <div class="item-title text-blue">Marketing Platform</div>
+                            <div class="item-desc text-grayish-blue">
+                                <p><strong>Omni-channel marketing</strong> platforms & solutions such as digital & print ads, publications, CME, targeted email marketing, market research & surveys, lead generation, etc.</p>
+                            </div>
+                            <div class="buttons">
+                                <a href="" class="btn btn-secondary">Read More</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
     <div id="institution">
         <div class="section">
             <div class="container">
@@ -99,55 +154,4 @@
         </div>
     </div>
 
-    <div id="companies">
-        <div class="section">
-            <div class="container">
-                <h2 class="text-blue text-center wow bounceIn">For Pharmaceutical Companies</h2>
-                <div class="companies-container section-three-cols">
-                    <div class="col-item wow fadeIn" data-wow-delay="0.5s">
-                        <div class="item-icon">
-                            <img src="<?php echo IMG_URL. 'our-solutions/drug-listing-icon.png'; ?>" alt="">
-                        </div>
-                        <div class="item-details">
-                            <div class="item-title text-blue">Drug Listing</div>
-                            <div class="item-desc text-grayish-blue">
-                                <p>Trusted repository of <strong>up-to-date drug information used by > 2 million HCPs</strong>. Available in print, online & mobile app.</p>
-                            </div>
-                            <div class="buttons">
-                                <a href="" class="btn btn-secondary">Read More</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-item wow fadeIn" data-wow-delay="1s">
-                        <div class="item-icon">
-                            <img src="<?php echo IMG_URL. 'our-solutions/medical-communications-icon.png'; ?>" alt="">
-                        </div>
-                        <div class="item-details">
-                            <div class="item-title text-blue">Medical Communications</div>
-                            <div class="item-desc text-grayish-blue">
-                                <p>Impactful <strong>tailor-made medical communication services</strong> including medical content creation, events, creatives & ideation, consultancy, etc.</p>
-                            </div>
-                            <div class="buttons">
-                                <a href="" class="btn btn-secondary">Read More</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-item wow fadeIn" data-wow-delay="1.5s">
-                        <div class="item-icon">
-                            <img src="<?php echo IMG_URL. 'our-solutions/marketing-platform-icon.png'; ?>" alt="">
-                        </div>
-                        <div class="item-details">
-                            <div class="item-title text-blue">Marketing Platform</div>
-                            <div class="item-desc text-grayish-blue">
-                                <p><strong>Omni-channel marketing</strong> platforms & solutions such as digital & print ads, publications, CME, targeted email marketing, market research & surveys, lead generation, etc.</p>
-                            </div>
-                            <div class="buttons">
-                                <a href="" class="btn btn-secondary">Read More</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 </div>

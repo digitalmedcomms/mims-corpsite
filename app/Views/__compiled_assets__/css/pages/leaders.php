@@ -1,0 +1,1 @@
+<style>#leaders-container .banner .container{z-index:2}#leaders-container .banner .bg-left{bottom:0;left:0;width:100px;height:130px}#leaders-container .banner .bg-right{right:0;width:100px;height:130px;-webkit-transform:scale(-1,1);-moz-transform:scale(-1,1);-ms-transform:scale(-1,1);transform:scale(-1,1)}</style>

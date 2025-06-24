@@ -34,7 +34,7 @@ class CountryModel extends Model
         $paginateData = $this->select('location_countries.*');
 
 
-        $search = trim($this->request->getGet('search'));
+        $search = $this->request->getGet('search');
         if (!empty($search)) {
             $this->builder()->groupStart()
                 ->like('location_countries.namr', clean_str($search))
@@ -42,7 +42,7 @@ class CountryModel extends Model
                 ->groupEnd();
         }
 
-        $status = trim($this->request->getGet('status'));
+        $status = $this->request->getGet('status');
         if ($status != null && ($status == 1 || $status == 0)) {
             $this->builder()->where('location_countries.status', clean_number($status));
         }

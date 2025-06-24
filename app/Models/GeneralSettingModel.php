@@ -89,8 +89,8 @@ class GeneralSettingModel extends Model
     public function update_social_facebook_settings()
     {
         $data = array(
-            'facebook_app_id' => trim($this->request->getVar('facebook_app_id', FILTER_SANITIZE_FULL_SPECIAL_CHARS)),
-            'facebook_app_secret' => trim($this->request->getVar('facebook_app_secret', FILTER_SANITIZE_FULL_SPECIAL_CHARS))
+            'facebook_app_id' => $this->request->getVar('facebook_app_id', FILTER_SANITIZE_FULL_SPECIAL_CHARS),
+            'facebook_app_secret' => $this->request->getVar('facebook_app_secret', FILTER_SANITIZE_FULL_SPECIAL_CHARS)
         );
 
         //update
@@ -101,8 +101,8 @@ class GeneralSettingModel extends Model
     public function update_social_google_settings()
     {
         $data = array(
-            'google_client_id' => trim($this->request->getVar('google_client_id', FILTER_SANITIZE_FULL_SPECIAL_CHARS)),
-            'google_client_secret' => trim($this->request->getVar('google_client_secret', FILTER_SANITIZE_FULL_SPECIAL_CHARS))
+            'google_client_id' => $this->request->getVar('google_client_id', FILTER_SANITIZE_FULL_SPECIAL_CHARS),
+            'google_client_secret' => $this->request->getVar('google_client_secret', FILTER_SANITIZE_FULL_SPECIAL_CHARS)
         );
 
         //update
@@ -113,8 +113,8 @@ class GeneralSettingModel extends Model
     public function update_social_github_settings()
     {
         $data = array(
-            'github_client_id' => trim($this->request->getVar('github_client_id', FILTER_SANITIZE_FULL_SPECIAL_CHARS)),
-            'github_client_secret' => trim($this->request->getVar('github_client_secret', FILTER_SANITIZE_FULL_SPECIAL_CHARS))
+            'github_client_id' => $this->request->getVar('github_client_id', FILTER_SANITIZE_FULL_SPECIAL_CHARS),
+            'github_client_secret' => $this->request->getVar('github_client_secret', FILTER_SANITIZE_FULL_SPECIAL_CHARS)
         );
 
         //update
@@ -174,25 +174,25 @@ class GeneralSettingModel extends Model
         //     $this->general_settings_model->save($general_settings, 1);
         // }
 
-        // if ($submit == "logo") {
-        //     $uploadModel = new UploadModel();
-        //     $logo_path = $uploadModel->logo_upload('logo');
-        //     $logo_footer_path = $uploadModel->logo_upload('logo_dark');
-        //     $logo_email_path = $uploadModel->logo_upload('logo_email');
-        //     $favicon_path = $uploadModel->favicon_upload('favicon');
-        //     if (!empty($logo_path)) {
-        //         $data["logo_light"] = $logo_path;
-        //     }
-        //     if (!empty($logo_footer_path)) {
-        //         $data["logo_dark"] = $logo_footer_path;
-        //     }
-        //     if (!empty($logo_email_path)) {
-        //         $data["logo_email"] = $logo_email_path;
-        //     }
-        //     if (!empty($favicon_path)) {
-        //         $data["favicon"] = $favicon_path;
-        //     }
-        // }
+        if ($submit == "logo") {
+            $uploadModel = new UploadModel();
+            $logo_path = $uploadModel->logo_upload('logo');
+            $logo_footer_path = $uploadModel->logo_upload('logo_dark');
+            $logo_email_path = $uploadModel->logo_upload('logo_email');
+            $favicon_path = $uploadModel->favicon_upload('favicon');
+            if (!empty($logo_path)) {
+                $data["logo_light"] = $logo_path;
+            }
+            if (!empty($logo_footer_path)) {
+                $data["logo_dark"] = $logo_footer_path;
+            }
+            if (!empty($logo_email_path)) {
+                $data["logo_email"] = $logo_email_path;
+            }
+            if (!empty($favicon_path)) {
+                $data["favicon"] = $favicon_path;
+            }
+        }
 
         if (!empty($data)) {
             //update
