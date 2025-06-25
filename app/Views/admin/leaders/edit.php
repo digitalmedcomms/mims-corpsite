@@ -65,9 +65,9 @@
                                             <div class="col-md-4">
                                                 <div class="form-group">
                                                     <label for="">Countries</label>
-                                                    <select name="countries" id="" class="selectpicker form-control" multiple title="Choose country">
+                                                    <select name="countries[]" id="" class="selectpicker form-control" multiple title="Choose country">
                                                         <?php foreach($countries as $country){ ?>
-                                                            <option title="<?php echo $country['code']; ?>" value="<?php echo $country['code'];?>"><?php echo $country['name']; ?></option>
+                                                            <option title="<?php echo $country['code']; ?>" value="<?php echo $country['code'];?>" <?php echo in_array( $country['code'], $leader['countries']) ? 'selected' : ''; ?>><?php echo $country['name']; ?></option>
                                                         <?php } ?>
                                                     </select>
                                                 </div>
@@ -151,6 +151,17 @@
 
 <script type="text/javascript">
     $(document).ready(function(){
+        if($("#leader_type_id").val() == 2){
+            $("#countries-field").show();
+            $("#area-of-practice-field").hide();
+        }else if($("#leader_type_id").val() == 3){
+            $("#countries-field").hide();
+            $("#area-of-practice-field").show();
+        }else{
+            $("#countries-field").hide();
+            $("#area-of-practice-field").hide();
+        }
+        
         $("#leader_type_id").change(function(){
             if($(this).val() == 2){
                 $("#countries-field").show();

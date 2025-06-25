@@ -118,7 +118,7 @@
                     </li>
                 </ul>
                 <div>
-                    <a href="" class="btn btn-blue">Contact Us</a>
+                    <a href="<?php echo base_url('contact-us'); ?>" class="btn btn-blue">Contact Us</a>
                 </div>
             </div>
         </nav>

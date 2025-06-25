@@ -65,7 +65,7 @@
                                             <div class="col-md-4">
                                                 <div class="form-group">
                                                     <label for="">Countries</label>
-                                                    <select name="countries" id="" class="selectpicker form-control" multiple title="Choose country">
+                                                    <select name="countries[]" id="" class="selectpicker form-control" multiple title="Choose country">
                                                         <?php foreach($countries as $country){ ?>
                                                             <option title="<?php echo $country['code']; ?>" value="<?php echo $country['code'];?>"><?php echo $country['name']; ?></option>
                                                         <?php } ?>

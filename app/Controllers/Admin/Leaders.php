@@ -56,7 +56,7 @@ class Leaders extends AdminController
                 $data['countries'] = $this->countries->where(['status' => 1])->findAll();
                 $data['practices'] = $this->practices->where(['status' => 1])->findAll();
                 $data['leaderTypes'] = $this->leaderTypes->where(['status' => 1])->findAll();
-
+                $leader['countries'] = explode(",", $leader['countries']);
                 $data['leader'] = $leader;
                 return view('admin/leaders/edit', $data);
             }else{
@@ -91,15 +91,28 @@ class Leaders extends AdminController
                 ],
                 'designation' => [
                     'rules' => 'required'
-                ],
+                ]
             ];
+
+            $countries = '';
+            $practice = 0;
+            if($this->request->getPost('leader_type_id') == 2){
+                $rules['countries'] = ['rules' => 'required'];
+                if($this->request->getPost('countries')){
+                    $countries = implode(",", $this->request->getPost('countries'));
+                }
+            }else if($this->request->getPost('leader_type_id') == 3){
+                $rules['practice'] = ['rules' => 'required'];
+                $practice = $this->request->getPost('practice');
+            }
 
             if ($this->validate($rules)) {
                 $item = [
                     'leader_type_id' => $this->request->getPost('leader_type_id'),
                     'image_path' => $this->request->getPost('image_path'),
                     'image_id' => $this->request->getPost('image_id'),
-                    'practice' => $this->request->getPost('practice'),
+                    'practice' => $practice,
+                    'countries' => $countries,
                     'name' => $this->request->getPost('name'),
                     'designation' => $this->request->getPost('designation'),
                     'biography' => $this->request->getPost('biography'),
@@ -146,15 +159,27 @@ class Leaders extends AdminController
                     ],
                     'designation' => [
                         'rules' => 'required'
-                    ],
+                    ]
                 ];
 
+                $countries = '';
+                $practice = 0;
+                if($this->request->getPost('leader_type_id') == 2){
+                    $rules['countries'] = ['rules' => 'required'];
+                    if($this->request->getPost('countries')){
+                        $countries = implode(",", $this->request->getPost('countries'));
+                    }
+                }else if($this->request->getPost('leader_type_id') == 3){
+                    $rules['practice'] = ['rules' => 'required'];
+                    $practice = $this->request->getPost('practice');
+                }
                 if ($this->validate($rules)) {
                     $item = [
                         'leader_type_id' => $this->request->getPost('leader_type_id'),
                         'image_path' => $this->request->getPost('image_path'),
                         'image_id' => $this->request->getPost('image_id'),
-                        'practice' => $this->request->getPost('practice'),
+                        'practice' => $practice,
+                        'countries' => $countries,
                         'name' => $this->request->getPost('name'),
                         'designation' => $this->request->getPost('designation'),
                         'biography' => $this->request->getPost('biography'),

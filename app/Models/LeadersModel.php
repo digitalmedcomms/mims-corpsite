@@ -62,7 +62,7 @@ class LeadersModel extends Model
             'leaders.id',
         ];
 
-        $orderby = $cols[6] . " ASC";
+        $orderby = $cols[1] . " ASC," . $cols[6] . " ASC";
 
         $builder->select(implode(",", $cols));
         

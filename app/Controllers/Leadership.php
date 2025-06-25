@@ -2,12 +2,38 @@
 
 namespace App\Controllers;
 
+use App\Models\LeadersModel;
+use App\Models\LeaderTypesModel;
+use App\Models\PracticeModel;
+
 class Leadership extends BaseController
 {
 
+    public function __construct()
+    {
+        $this->leaderTypes = new LeaderTypesModel();
+        $this->leaders = new LeadersModel();
+        $this->practices = new PracticeModel();
+    }
     public function index()
     {
       
+        $data = [];
+        $leader_types_arr = [];
+        $leader_types = $this->leaderTypes->where('status', 1)->findAll();
+        $data['practices'] = $this->practices->where('status', 1)->findAll();
+        foreach($leader_types as $leader_type){
+            if($leader_type['id'] == 3){
+                foreach($data['practices'] as $practice){
+                    $practice['leaders'] = $this->leaders->where('leader_type_id', $leader_type['id'])->where('status', 1)->where('practice', $practice['id'])->orderBy('`order` ASC')->findAll();
+                    $leader_type['practices'][] = $practice;
+                }
+            }else{
+                $leader_type['leaders'] = $this->leaders->where('leader_type_id', $leader_type['id'])->where('status', 1)->orderBy('`order` ASC')->findAll();
+            }
+            $leader_types_arr[] = $leader_type;
+        }
+        $data['leader_types'] = $leader_types_arr;
         // PAGE HEAD PROCESSING
         return view('components/header', array(
             'title' => 'MIMS | Asia Pacific leading multichannel provider of medical information',
@@ -34,7 +60,7 @@ class Leadership extends BaseController
                 COMPILED_ASSETS_PATH . 'css/pages/leaders'
             )
         ))
-        .view('Pages/our-leaders')
+        .view('Pages/leaders/index', $data)
         .view('components/scripts_render', array(
             'scripts' => array(
                 'https://code.jquery.com/jquery-3.5.1.min.js' => array(

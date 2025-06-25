@@ -2,12 +2,36 @@
 
 namespace App\Controllers;
 
+use App\Models\OfficesModel;
+use App\Models\Locations\CountryModel;
+use App\Models\PracticeModel;
+
 class Contactus extends BaseController
 {
 
+    public function __construct()
+    {
+        $this->offices = new OfficesModel();
+        $this->countries = new CountryModel();
+    }
+
+
     public function index()
     {
-      
+        $data = [];
+        $countries = $this->countries->where(['status' => 1])->findAll();
+        $offices = $this->offices->where(['status' => 1])->findAll();
+
+        $offices_arr = [];
+        foreach($countries as $country){
+            foreach($offices as $office){
+                if($country['id'] == $office['country_id']){
+                    $offices_arr[$country['code']][] = $office;
+                }
+            }
+        }
+        $data['offices_json'] = json_encode($offices_arr);
+        $data['countries'] = $countries;
         // PAGE HEAD PROCESSING
         return view('components/header', array(
             'title' => 'MIMS Singapore (Headquarters) | Asia Pacific leading multichannel provider of medical information',
@@ -33,10 +57,10 @@ class Contactus extends BaseController
                 COMPILED_ASSETS_PATH . 'css/components/timeline',
                 COMPILED_ASSETS_PATH . 'css/components/navigation_bar',
                 COMPILED_ASSETS_PATH . 'css/components/footer',
-                COMPILED_ASSETS_PATH . 'css/pages/about'
+                COMPILED_ASSETS_PATH . 'css/pages/contact'
             )
         ))
-        .view('Pages/about')
+        .view('Pages/contact', $data)
         .view('components/scripts_render', array(
             'scripts' => array(
                 'https://code.jquery.com/jquery-3.5.1.min.js' => array(
@@ -45,12 +69,13 @@ class Contactus extends BaseController
                 ),
                 ASSETS_URL . 'js/plugins/popper.min.js',
                 ASSETS_URL . 'js/plugins/bootstrap/bootstrap.min.js',
+                ASSETS_URL . 'js/plugins/bootstrap-select.min.js',
                 ASSETS_URL . 'js/components/global.min.js',
                 ASSETS_URL . 'js/plugins/owl.carousel.min.js',
                 ASSETS_URL . 'js/components/wow.min.js',
                 ASSETS_URL . 'js/plugins/timeline.min.js',
                 ASSETS_URL . 'js/components/navigation_bar.min.js',
-                ASSETS_URL . 'js/pages/about.min.js',
+                ASSETS_URL . 'js/pages/contact.min.js',
             )
         ))
         .view('components/footer');
