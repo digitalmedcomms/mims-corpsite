@@ -75,7 +75,7 @@ class Contactus extends BaseController
                 ASSETS_URL . 'js/components/wow.min.js',
                 ASSETS_URL . 'js/plugins/timeline.min.js',
                 ASSETS_URL . 'js/components/navigation_bar.min.js',
-                ASSETS_URL . 'js/pages/contact.min.js',
+                ASSETS_URL . 'js/pages/contact.min.js?1',
             )
         ))
         .view('components/footer');
