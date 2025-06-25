@@ -62,7 +62,7 @@
                                     }
                                     echo '<div class="leader-details"><div class="leader-name text-blue">'.$leader['name'].'</div><div class="leader-designation text">'.$leader['designation'].'</div></div>';
                                     echo '<div class="leader-bio">'.$leader['biography'].'</div>';
-                                    echo '<a href="javascript:;" class="profileLink text-blue text-dmsans">View Profile <i class="fa fa-angle-right"></i></a>';
+                                    echo '<a href="javascript:;"  class="profileLink text-blue text-dmsans">View Profile <i class="fa fa-angle-right"></i></a>';
                                 echo '</div>';
                             }
                         }
@@ -75,4 +75,19 @@
             </div>
         </div>
     </div>
+</div>
+
+<div class="modal fade" id="leaderDetailsModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div id="modalLeader">
+
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
