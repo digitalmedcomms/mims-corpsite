@@ -14,7 +14,7 @@ class Login extends AuthController
     public function index()
     {
         if ($this->session->get('vr_sess_logged_in') == TRUE) {
-            return redirect()->to(base_url('/'));
+            return redirect()->to(base_url('/admin'));
         }
 
         $data['title'] = trans('login');
