@@ -82,10 +82,10 @@ class Leaders extends AdminController
                         'required' => trans('form_validation_required'),
                     ],
                 ],
-                'image_id' => [
-                    'label'  => 'Profile Image',
-                    'rules'  => 'required',
-                ],
+                // 'image_id' => [
+                //     'label'  => 'Profile Image',
+                //     'rules'  => 'required',
+                // ],
                 'biography' => [
                     'rules' => 'required'
                 ],
@@ -110,7 +110,7 @@ class Leaders extends AdminController
                 $item = [
                     'leader_type_id' => $this->request->getPost('leader_type_id'),
                     'image_path' => $this->request->getPost('image_path'),
-                    'image_id' => $this->request->getPost('image_id'),
+                    'image_id' => $this->request->getPost('image_id') ?? 0,
                     'practice' => $practice,
                     'countries' => $countries,
                     'name' => $this->request->getPost('name'),
@@ -150,10 +150,10 @@ class Leaders extends AdminController
                             'required' => trans('form_validation_required'),
                         ],
                     ],
-                    'image_id' => [
-                        'label'  => 'Profile Image',
-                        'rules'  => 'required',
-                    ],
+                    // 'image_id' => [
+                    //     'label'  => 'Profile Image',
+                    //     'rules'  => 'required',
+                    // ],
                     'biography' => [
                         'rules' => 'required'
                     ],
@@ -177,7 +177,7 @@ class Leaders extends AdminController
                     $item = [
                         'leader_type_id' => $this->request->getPost('leader_type_id'),
                         'image_path' => $this->request->getPost('image_path'),
-                        'image_id' => $this->request->getPost('image_id'),
+                        'image_id' => $this->request->getPost('image_id') ?? 0,
                         'practice' => $practice,
                         'countries' => $countries,
                         'name' => $this->request->getPost('name'),
