@@ -39,7 +39,7 @@ class Filters extends BaseConfig
     public $globals = [
         'before' => [
             // 'honeypot',
-            'csrf' => ['except' => ['vr-run-internal-cron', 'api/*']],
+            'csrf' => ['except' => ['vr-run-internal-cron', 'api/*', 'admin/*']],
             // 'invalidchars',
             'isLoggedIn'    => ['except' => ['/', 'Auth/*', 'api/*', 'blocked', 'maintenance', 'about-us', 'our-solutions', 'our-solutions/*', 'our-leaders', 'contact-us']],
             'isGranted'     => ['except' => ['/', 'Auth/*', 'api/*', 'blocked', 'maintenance', 'about-us', 'our-solutions', 'our-solutions/*', 'our-leaders', 'contact-us']],
