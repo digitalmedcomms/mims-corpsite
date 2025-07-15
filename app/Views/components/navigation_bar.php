@@ -34,7 +34,7 @@
                                                 </div>
                                                 <div class="menu-item">
                                                     <a href="<?php echo base_url('about-us/#our-people'); ?>" class="link-header text-red">Our People</a>
-                                                    <p>Meet our leadership and see our various locations in 17 markets..</p>
+                                                    <p>Meet our <a href="<?php echo base_url('our-leaders'); ?>">leadership</a> and see our various locations in 17 markets..</p>
                                                 </div>
                                             </div>
                                         </div>
