@@ -39,6 +39,7 @@ $routes->get('our-solutions/for-pharmaceutical-companies', 'Solutions::for_compa
 $routes->get('our-solutions/for-healthcare-institutions', 'Solutions::for_institution');
 $routes->get('our-leaders', 'Leadership::index');
 $routes->get('contact-us', 'Contactus::index');
+$routes->get('join-us', 'Joinus::index');
 
 
 $routes->group("api", ["namespace" => "App\Controllers\Api"], function ($routes) {

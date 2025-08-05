@@ -11,6 +11,10 @@ class Authentication implements FilterInterface
 
 	public function before(RequestInterface $request, $arguments = null)
 	{
+		print_r(WRITEPATH);
+		exit();
+		// var_dump(session()->get('vr_sess_logged_in'));
+		// exit();
 		if (session()->get('vr_sess_logged_in') != TRUE) :
 			return redirect()->to(base_url('/auth/login'));
 		endif;

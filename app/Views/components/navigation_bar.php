@@ -102,11 +102,11 @@
                                         <div class="col-12 col-sm-8 col-md-9 border-left">
                                             <div class="solutions-mega-menu">
                                                 <div class="menu-item border-right">
-                                                    <a href="<?php echo base_url('our-solutions/for-hcp'); ?>" class="link-header text-red">Our Core Values</a>
+                                                    <a href="<?php echo base_url('join-us'); ?>" class="link-header text-red">Our Core Values</a>
                                                     <p>Read about our three core values that help shape the work culture at MIMS..</p>
                                                 </div>
                                                 <div class="menu-item">
-                                                    <a href="<?php echo base_url('our-solutions/for-pharmaceutical-companies'); ?>" class="link-header text-red">We're Hiring!</a>
+                                                    <a href="<?php echo base_url('join-us#jobs'); ?>" class="link-header text-red">We're Hiring!</a>
                                                     <p>Find opportunities at MIMS..</p>
                                                 </div>
                                             </div>
