@@ -49,27 +49,27 @@
                     }
                     ?>
             </div>
+            <?php if(count($articles) > 0) { ?>
             <div id="postLinks">
                 <div id="archiveList">
                     <div class="archive-header">
                         Archive
                     </div>
                     <div class="archive-body">
-                        <?php if(count($articles) > 0) { ?>
-                            <ul>
-                                <?php 
-                                    $ctr = 0;
-                                    foreach($articles as $year => $article_arr){ 
-                                        echo '<li><a href="javascript:;" data-target="'.$year.'" class="archive-link '.($ctr == 0 ? 'active' : '').'">'.$year.'</a></li>';
-                                        $ctr++;
-                                    } 
-                                    
-                                ?>
-                            </ul>
-                        <?php } ?>
+                        <ul>
+                            <?php 
+                                $ctr = 0;
+                                foreach($articles as $year => $article_arr){ 
+                                    echo '<li><a href="javascript:;" data-target="'.$year.'" class="archive-link '.($ctr == 0 ? 'active' : '').'">'.$year.'</a></li>';
+                                    $ctr++;
+                                } 
+                                
+                            ?>
+                        </ul>
                     </div>
                 </div>
             </div>
+            <?php } ?>
         </div>
     </div>
 </div>
