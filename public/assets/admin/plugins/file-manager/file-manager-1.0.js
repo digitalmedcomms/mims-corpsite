@@ -10,6 +10,9 @@ var data_input_id = '';
 //update images
 $('#file_manager_image').on('shown.bs.modal', function (e) {
     image_type = $(e.relatedTarget).attr('data-bs-image-type');
+    if(typeof image_type == 'undefined'){
+        image_type = 'editor';
+    }
     $('#form_image_sidebar').hide();
     if (image_type == 'input') {
         data_item_id = $(e.relatedTarget).attr('data-bs-item-id');
@@ -141,7 +144,8 @@ function select_image() {
     var img_base_url = $('#selected_img_base_url').val();
 
     if (image_type == 'editor') {
-        tinymce.activeEditor.execCommand('mceInsertContent', false, '<p><img src="' + img_base_url + img_default_file_path + '" alt=""/></p>');
+        tinymce.activeEditor.execCommand('mceInsertContent', false, '<img src="' + img_base_url + img_default_file_path + '" alt=""/>');
+        top.tinymce.activeEditor.windowManager.close();
     } else {
         console.log(data_input_field);
         if (data_input_field) {

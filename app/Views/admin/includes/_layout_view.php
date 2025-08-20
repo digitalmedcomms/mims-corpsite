@@ -31,6 +31,7 @@
     <link rel="stylesheet" href="<?php echo base_url(); ?>/assets/admin/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
     <link rel="stylesheet" href="<?php echo base_url(); ?>/assets/admin/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
     <link rel="stylesheet" href="<?php echo base_url(); ?>/assets/admin/css/bootstrap-select.min.css">
+    <link rel="stylesheet" href="<?php echo base_url(); ?>/assets/admin/css/bootstrap-datepicker.min.css">
     <!-- jQuery -->
     <script src="<?php echo base_url(); ?>/assets/admin/plugins/jquery/jquery.min.js"></script>
 
@@ -138,6 +139,14 @@
             display_c7();
         }
 
+        function slugify(str) {
+            str = str.replace(/^\s+|\s+$/g, ''); // trim leading/trailing white space
+            str = str.toLowerCase(); // convert string to lowercase
+            str = str.replace(/[^a-z0-9 -]/g, '') // remove any non-alphanumeric characters
+                    .replace(/\s+/g, '-') // replace spaces with hyphens
+                    .replace(/-+/g, '-'); // remove consecutive hyphens
+            return str;
+        }
         function display_c7() {
             var refresh = 1000; // Refresh rate in milli seconds
             mytime = setTimeout('display_ct7()', refresh)
@@ -153,6 +162,7 @@
     <script src="<?php echo base_url('assets/admin/js/datatables/datatables.min.js'); ?>" type="text/javascript"></script>
     <script src="<?php echo base_url('assets/admin/js/datatables/datatable-pipelining.js'); ?>" type="text/javascript"></script>
     <script src="<?php echo base_url('assets/admin/js/datatables/datatable-listing.js'); ?>" type="text/javascript"></script>
+    <script src="<?php echo base_url('assets/admin/js/bootstrap-datepicker.js'); ?>" type="text/javascript"></script>
 
     <script>
         $(document).ready(function() {
@@ -181,6 +191,7 @@
                 custom_alert('error', '<?php echo session()->getFlashdata('error'); ?>', false);
             <?php endif; ?>
 
+            $('.datepicker').datepicker({todayHighlight: true, autoclose: true});
         });
     </script>
 

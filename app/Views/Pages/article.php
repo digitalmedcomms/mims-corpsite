@@ -1,0 +1,60 @@
+<article id="article-container">
+    <div class="banner">
+        <div class="container">
+            <h1 class="text-blue"><?php echo $post['title']; ?></h1>
+            <div class="breadcrumbs">
+                <ul>
+                    <li><a href="" class="breadcrumb-link">Home</a></li>
+                    <li><a href="" class="breadcrumb-link"><?php echo $category['name']; ?></a></li>
+                    <li><a href="" class="breadcrumb-link"><?php echo $post['title']; ?></a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="bg-left" style="background: url('<?php echo IMG_URL . 'our-solutions/leading-bg.png'; ?>') center center no-repeat; background-size: cover;"></div>
+        <div class="bg-right" style="background: url('<?php echo IMG_URL . 'our-solutions/leading-bg.png'; ?>') center center no-repeat; background-size: cover;"></div>
+    </div>
+    
+    <div class="container">
+        <div id="articleBody">
+            <div class="articleBody">
+                <div class="articleFeatured">
+                    <img src="<?php echo base_url($post['featured_img_path']); ?>" title="<?php echo $post['title']; ?>" alt_text="<?php echo $post['title']; ?>">
+                </div>
+                <div class="articleDetails">
+                    <div class="article-date">
+                        <i class="fa fa-calendar"></i> <?php echo date("M d, Y", strtotime($post['date'])); ?>
+                    </div>
+                    <div class="article-category">
+                        <span><?php echo $category['name']; ?></span>
+                    </div>
+                </div>
+                <hr>
+                <div class="articleContent">
+                    <?php echo $post['content']; ?>
+                </div>
+            </div>
+
+            <?php if(count($latest_posts) > 0) { ?>
+            <div id="latestPosts">
+                <div class="latest-post-header">
+                    Latest Posts
+                </div>
+                <div class="latest-post-items">
+                    <?php foreach($latest_posts as $post){ ?>
+                        <a href="<?php echo base_url($post['post_url']); ?>">
+                            <div class="latest-post-item">
+                                <div class="latest-post-img" style="background: url('<?php echo base_url($post['featured_img_path']); ?>') center center no-repeat;background-size: cover;"></div>
+                                <div class="latest-post-details">
+                                    <div class="latest-post-title ellipsis"><?php echo $post['title']; ?></div>
+                                    <div class="latest-post-date"><i class="fa fa-calendar"></i> <?php echo $post['date_formatted']; ?></div>
+                                </div>
+                            </div>
+                        </a>
+                    <?php } ?>
+                </div>
+            </div>
+            <?php } ?>
+
+        </div>
+    </div>
+</article>

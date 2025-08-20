@@ -605,3 +605,7 @@ textarea.parsley-error {
         display: none !important;
     }
 }
+
+#file_manager_image{
+  z-index: 99999999;
+}

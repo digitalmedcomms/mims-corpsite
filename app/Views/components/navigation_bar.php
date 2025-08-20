@@ -87,7 +87,7 @@
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link  <?php echo (isset($nav) && $nav == 'newsupdates' ? 'active' : ''); ?>" href="#">News & Updates</a>
+                        <a class="nav-link  <?php echo (isset($nav) && $nav == 'news-updates' ? 'active' : ''); ?>" href="<?php echo base_url('news-updates'); ?>">News & Updates</a>
                     </li>
                     <li class="nav-item class-mega has-megamenu dropdown">
                         <a class="nav-link  <?php echo (isset($nav) && $nav == 'joinus' ? 'active' : ''); ?>" href="#">Join Us</a>

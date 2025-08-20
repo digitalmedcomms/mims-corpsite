@@ -40,6 +40,7 @@ $routes->get('our-solutions/for-healthcare-institutions', 'Solutions::for_instit
 $routes->get('our-leaders', 'Leadership::index');
 $routes->get('contact-us', 'Contactus::index');
 $routes->get('join-us', 'Joinus::index');
+$routes->get('news-updates', 'News::index');
 
 
 $routes->group("api", ["namespace" => "App\Controllers\Api"], function ($routes) {
@@ -182,10 +183,28 @@ $routes->group("admin", ["namespace" => "App\Controllers\Admin"], function ($rou
         $routes->post('table-listing', 'LeaderTypes::tableListing');
     });
     
+    $routes->group('news-updates', function ($routes) {
+        $routes->get('categories', 'NewsUpdates\Categories::index');
+        $routes->get('categories/edit/(:num)', 'NewsUpdates\Categories::edit/$1');
+        $routes->post('categories/update/(:num)', 'NewsUpdates\Categories::update/$1');
+        $routes->post('categories/insert', 'NewsUpdates\Categories::insert');
+        $routes->post('categories/table-listing', 'NewsUpdates\Categories::tableListing');
+        
+
+
+        $routes->get('posts', 'NewsUpdates\Posts::index');
+        $routes->get('posts/edit/(:num)', 'NewsUpdates\Posts::edit/$1');
+        $routes->get('posts/add', 'NewsUpdates\Posts::add');
+        $routes->post('posts/update/(:num)', 'NewsUpdates\Posts::update/$1');
+        $routes->post('posts/insert', 'NewsUpdates\Posts::insert');
+        $routes->post('posts/table-listing', 'NewsUpdates\Posts::tableListing');
+        
+    });
 });
 
 $routes->post('vr-run-internal-cron', 'Common::run_internal_cron');
 $routes->post("vr-switch-mode", 'Common::switch_visual_mode');
+$routes->get('(:any)/(:any)', 'News::article/$1/$2');
 
 
 /*

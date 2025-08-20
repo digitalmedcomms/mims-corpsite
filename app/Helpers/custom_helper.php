@@ -821,6 +821,14 @@ function getStatusBadge($status){
             $status_name = 'Inactive';
             $status_bg = 'bg-danger';
             break;
+        case 20:
+            $status_name = 'Draft';
+            $status_bg = 'bg-secondary';
+            break;
+        case 10:
+            $status_name = 'Published';
+            $status_bg = 'bg-success';
+            break;
         default:
             break;
     }
