@@ -129,26 +129,35 @@
         </div>
     </div>
 
+    <?php if(count($latest_posts) > 0){ ?>
     <div id="news-updates" class="section">
         <div class="container">
             <div class="news-update-container">
                 <div class="kicker text-center">News & Update</div>
                 <h2 class="text-blue text-center wow fadeIn">Stay Informed and Engaged!</h2>
                 <div class="section-three-cols news-container">
-                    <div class="col-item wow fadeIn" data-wow-duration="1s" data-wow-delay="1s">
-                        <div class="item-img" style="background: url('<?php echo IMG_URL . 'article-1.png'; ?>') center center no-repeat;background-size: cover;">
-                            <img src="<?php echo IMG_URL . 'article-1.png'; ?>" alt="Article 1">
-                        </div>
-                        <div class="item-tags">
-                            <div class="item-tag">Corporate</div>
-                        </div>
-                        <div class="item-title">MIMS MedComms expands to the Middle East</div>
-                        <div class="item-date text-grayish-blue">May 28, 2024</div>
-                        <div class="buttons">
-                            <a href="" class="btn btn-blue">READ MORE</a>
-                        </div>
-                    </div>
-                    <div class="col-item wow fadeIn" data-wow-duration="1s" data-wow-delay="1.5s">
+                    <?php 
+                    $ctr = 2;
+                    foreach($latest_posts as $post){ 
+
+                        echo '<div class="col-item wow fadeIn" data-wow-duration="1s" data-wow-delay="'.($ctr*.5).'s">';
+                            echo '<div class="item-img" style="background: url('. base_url($post['featured_img_path']).') center center no-repeat;background-size: cover;">';
+                                echo '<img src="'.base_url($post['featured_img_path']).'" alt="'.$post['title'].'">';
+                            echo '</div>';
+                            echo '<div class="item-tags">';
+                                echo '<div class="item-tag">'.$post['category_name'].'</div>';
+                            echo '</div>';
+                            echo '<div class="item-title">'.$post['title'].'</div>';
+                            echo '<div class="item-date text-grayish-blue">'.$post['date_formatted'].'</div>';
+                            echo '<div class="buttons">';
+                                echo '<a href="'.$post['post_url'].'" class="btn btn-blue">READ MORE</a>';
+                            echo '</div>';
+                        echo '</div>';
+
+                        $ctr++;
+                    } 
+                    ?>
+                    <!-- <div class="col-item wow fadeIn" data-wow-duration="1s" data-wow-delay="1.5s">
                         <div class="item-img" style="background: url('<?php echo IMG_URL . 'article-2.png'; ?>') center center no-repeat;background-size: cover;">
                             <img src="<?php echo IMG_URL . 'article-2.png'; ?>" alt="Article 1">
                         </div>
@@ -174,9 +183,10 @@
                         <div class="buttons">
                             <a href="" class="btn btn-blue">READ MORE</a>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>
     </div>
+    <?php } ?>
 </div>

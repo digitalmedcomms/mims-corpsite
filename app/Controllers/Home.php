@@ -2,12 +2,16 @@
 
 namespace App\Controllers;
 
+use App\Models\PostsModel;
+
 class Home extends BaseController
 {
 
     public function index()
     {
-      
+        $objPost = new PostsModel;
+        $data['latest_posts'] = $objPost->getLatestPosts(3);
+
         // PAGE HEAD PROCESSING
         return view('components/header', array(
             'title' => 'MIMS | Asia Pacific leading multichannel provider of medical information',
@@ -34,7 +38,7 @@ class Home extends BaseController
                 COMPILED_ASSETS_PATH . 'css/pages/home'
             )
         ))
-        .view('Pages/home')
+        .view('Pages/home', $data)
         .view('components/scripts_render', array(
             'scripts' => array(
                 'https://code.jquery.com/jquery-3.5.1.min.js' => array(
