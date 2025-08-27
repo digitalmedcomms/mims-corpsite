@@ -24,6 +24,7 @@
                     <ul>
                         <li><a href="https://www.facebook.com/MIMScom/" target="_blank"><i class="fab fa-facebook"></i></a></li>
                         <li><a href="https://ph.linkedin.com/company/mims-pte-ltd" target="_blank"><i class="fab fa-linkedin"></i></a></li>
+                        <li><a href="https://www.instagram.com/mims_pte_ltd/" target="_blank"><i class="fab fa-instagram"></i></a></li>
                     </ul>
                 </div>
                 <div class="site-map">
