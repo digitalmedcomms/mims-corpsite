@@ -298,7 +298,7 @@
                             <p>Meet the dynamic leadership who empower and inspire the people at MIMS.</p>
                         </div>
                         <div class="buttons">
-                            <a href="" class="btn btn-secondary">Read More</a>
+                            <a href="<?php echo base_url('our-leaders'); ?>" class="btn btn-secondary">Read More</a>
                         </div>
                     </div>
                     <div class="col-item wow fadeIn" data-wow-delay="1.2s">
@@ -313,7 +313,7 @@
                             <p>We generate local insights that tailor and direct our solutions to you.</p>
                         </div>
                         <div class="buttons">
-                            <a href="" class="btn btn-secondary">Read More</a>
+                            <a href="<?php echo base_url('contact-us'); ?>" class="btn btn-secondary">Read More</a>
                         </div>
                     </div>
                     <div class="col-item wow fadeIn" data-wow-delay="1.4s">
@@ -328,7 +328,7 @@
                             <p>Grow your career with MIMS.</p>
                         </div>
                         <div class="buttons">
-                            <a href="" class="btn btn-secondary">Read More</a>
+                            <a href="<?php echo base_url('join-us'); ?>" class="btn btn-secondary">Read More</a>
                         </div>
                     </div>
                 </div>

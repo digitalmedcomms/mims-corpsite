@@ -81,7 +81,7 @@
                         </div>
                         <div class="services-title text-blue"><strong>For Healthcare Professionals</strong></div>
                         <div class="services-desc text-grayish-blue">Subscribe with us for access to comprehensive drug references and independent editorials tailored to clinical specialties</div>
-                        <a href="" class="btn btn-blue"><i class="fa fa-arrow-right"></i></a>
+                        <a href="<?php echo base_url('our-solutions/for-hcp'); ?>" class="btn btn-blue"><i class="fa fa-arrow-right"></i></a>
                     </div>
                     <div class="col-item wow fadeIn" data-wow-duration="1s" data-wow-delay="1.5s">
                         <div class="services-icon">
@@ -89,7 +89,7 @@
                         </div>
                         <div class="services-title text-blue"><strong>For Pharmaceutical Companies</strong></div>
                         <div class="services-desc text-grayish-blue">Find out more how our services can enhance outreach to healthcare professional communities in digital, print and media</div>
-                        <a href="" class="btn btn-blue"><i class="fa fa-arrow-right"></i></a>
+                        <a href="<?php echo base_url('our-solutions/for-pharmaceutical-companies'); ?>" class="btn btn-blue"><i class="fa fa-arrow-right"></i></a>
                     </div>
                     <div class="col-item wow fadeIn" data-wow-duration="1s" data-wow-delay="2s">
                         <div class="services-icon">
@@ -97,7 +97,7 @@
                         </div>
                         <div class="services-title text-blue"><strong>For Healthcare Institutions</strong></div>
                         <div class="services-desc text-grayish-blue">Know the importance of clinical decision support, or contact us for local/cross-border recruitment of healthcare professionals</div>
-                        <a href="" class="btn btn-blue"><i class="fa fa-arrow-right"></i></a>
+                        <a href="<?php echo base_url('our-solutions/for-healthcare-institutions'); ?>" class="btn btn-blue"><i class="fa fa-arrow-right"></i></a>
                     </div>
                 </div>
             </div>
@@ -120,8 +120,8 @@
                             With strategic hubs in Hong Kong and Singapore, and a  business footprint across Asia Pacific, we have an intimate understanding of the regional markets. Supported by a resourceful and talented team who are familiar with the regional markets, we are able to innovate and create solutions catered to the market’s landscape and culture.
                         </div>
                         <div class="buttons">
-                            <a href="" class="btn btn-primary">Join Us</a>
-                            <a href="" class="text-blue btn btn-secondary ">Meet Our People</a>
+                            <a href="<?php echo base_url('join-us'); ?>" class="btn btn-primary">Join Us</a>
+                            <a href="<?php echo base_url('our-leaders'); ?>" class="text-blue btn btn-secondary ">Meet Our People</a>
                         </div>
                     </div>
                 </div>

@@ -6,7 +6,7 @@
             <div class="contact-us-section" style="background: url('<?php echo IMG_URL . 'contact-us-bg-pages.png'; ?>') center center no-repeat;background-size: cover;">
                 <div class="contact-us-kicker">Get in touch with a MIMS office near you</div>
                 <div class="contact-text">Let’s discuss how we can help make your business better</div>
-                <a href="javascript:;" class="btn btn-blue">Contact Us</a>
+                <a href="<?php echo base_url('contact-us'); ?>" class="btn btn-blue">Contact Us</a>
             </div>
         </div>
     </div>
@@ -22,20 +22,20 @@
                 <div class="follow-us">
                     <h3>Follow Us</h3>
                     <ul>
-                        <li><a href=""><i class="fab fa-facebook"></i></a></li>
-                        <li><a href=""><i class="fab fa-linkedin"></i></a></li>
+                        <li><a href="https://www.facebook.com/MIMScom/" target="_blank"><i class="fab fa-facebook"></i></a></li>
+                        <li><a href="https://ph.linkedin.com/company/mims-pte-ltd" target="_blank"><i class="fab fa-linkedin"></i></a></li>
                     </ul>
                 </div>
                 <div class="site-map">
                     <h3>Site Map</h3>
                     <ul>
-                        <li><a href="">Home</a></li>
-                        <li><a href="">About Us</a></li>
-                        <li><a href="">Our Solutions</a></li>
-                        <li><a href="">News & Updates</a></li>
-                        <li><a href="">Join Us</a></li>
-                        <li><a href="">Contact Us</a></li>
-                        <li><a href="">Privacy Policy</a></li>
+                        <li><a href="<?php echo base_url(); ?>">Home</a></li>
+                        <li><a href="<?php echo base_url('about-us'); ?>">About Us</a></li>
+                        <li><a href="<?php echo base_url('our-solutions'); ?>">Our Solutions</a></li>
+                        <li><a href="<?php echo base_url('news'); ?>">News & Updates</a></li>
+                        <li><a href="<?php echo base_url('join-us'); ?>">Join Us</a></li>
+                        <li><a href="<?php echo base_url('contact-us'); ?>">Contact Us</a></li>
+                        <li><a href="<?php echo base_url('privacy-policy'); ?>">Privacy Policy</a></li>
                     </ul>
                 </div>
                 <div class="latest-news">
