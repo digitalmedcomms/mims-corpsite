@@ -42,7 +42,7 @@
                                     <a href="<?php echo base_url('about-us'); ?>" class="btn btn-blue">Learn More</a>
                                     <a href="<?php echo base_url('contact-us'); ?>" class="btn btn-blue-invert">Contact Us</a>
                                 </div>
-                            </div>n
+                            </div>
                             <div class="right-side">
                                 <div class="img-featured wow fadeInRight" data-wow-duration="1s" data-wow-delay="2s">
                                     <img src="<?php echo IMG_URL . 'doctor-banner-1.png'; ?>" alt="">
