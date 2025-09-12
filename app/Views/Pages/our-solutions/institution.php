@@ -46,7 +46,7 @@
                             <p>MIMS offers a comprehensive knowledge base of locally approved medicines Information powered by internationally referenced clinical decision support modules developed by our expert team of clinicians.</p>
                         </div>
                         <div class="buttons">
-                            <a href="#" class="btn btn-secondary">Find out more at CDS.mims.com</a>
+                            <a href="https://cds.mims.com" target="_blank" class="btn btn-secondary">Find out more at CDS.mims.com</a>
                         </div>
                     </div>
                     <div class="col-item"></div>
