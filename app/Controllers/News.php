@@ -95,7 +95,7 @@ class News extends BaseController
                 'description' => $post['short_description'],
                 'image' => base_url($post['featured_img_path'])
             ),
-            'nav' => 'newsupdates',
+            'nav' => 'news-updates',
             'styles' => array(
                 'plugins/font_awesome',
                 COMPILED_ASSETS_PATH . 'css/components/bootstrap',
