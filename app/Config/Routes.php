@@ -41,6 +41,7 @@ $routes->get('our-leaders', 'Leadership::index');
 $routes->get('contact-us', 'Contactus::index');
 $routes->get('join-us', 'Joinus::index');
 $routes->get('news-updates', 'News::index');
+$routes->get('mims-privacy-policy', 'Privacy::index');
 
 
 $routes->group("api", ["namespace" => "App\Controllers\Api"], function ($routes) {

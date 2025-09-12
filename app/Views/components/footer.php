@@ -36,7 +36,7 @@
                         <li><a href="<?php echo base_url('news'); ?>">News & Updates</a></li>
                         <li><a href="<?php echo base_url('join-us'); ?>">Join Us</a></li>
                         <li><a href="<?php echo base_url('contact-us'); ?>">Contact Us</a></li>
-                        <li><a href="<?php echo base_url('privacy-policy'); ?>">Privacy Policy</a></li>
+                        <li><a href="<?php echo base_url('mims-privacy-policy'); ?>">Privacy Policy</a></li>
                     </ul>
                 </div>
                 <div class="latest-news">

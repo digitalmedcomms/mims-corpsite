@@ -60,7 +60,7 @@
                             </div>
                         </div>
                         <div class="buttons">
-                            <a href="#" class="btn btn-red">Access now at mims.com <i class="fa fa-arrow-right"></i></a>
+                            <a href="https://www.mims.com/" target="_blank" class="btn btn-red">Access now at mims.com <i class="fa fa-arrow-right"></i></a>
                         </div>
                     </div>
                 </div>
@@ -81,7 +81,7 @@
                             <p>The clinical decision support tools can be embedded into clinical applications to assist healthcare professionals in making Informed decisions at the point-of-care, promote safe and appropriate medication practice.</p>
                         </div>
                         <div class="buttons">
-                            <a href="#" class="btn btn-secondary">Find out more at CDS.mims.com</a>
+                            <a href="https://cds.mims.com/" target="_blank" class="btn btn-secondary">Find out more at CDS.mims.com</a>
                         </div>
                     </div>
                     <div class="col-item"></div>
@@ -125,7 +125,7 @@
                                 </div>
                             </div>
                             <div class="buttons">
-                                <a href="#" class="btn btn-red">Learn more about MIMS Education <i class="fa fa-arrow-right"></i></a>
+                                <a href="https://education.mims.com/" target="_blank" class="btn btn-red">Learn more about MIMS Education <i class="fa fa-arrow-right"></i></a>
                             </div>
                         </div>
                     </div>

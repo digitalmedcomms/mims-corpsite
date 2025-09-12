@@ -90,7 +90,7 @@
                         <a class="nav-link  <?php echo (isset($nav) && $nav == 'news-updates' ? 'active' : ''); ?>" href="<?php echo base_url('news-updates'); ?>">News & Updates</a>
                     </li>
                     <li class="nav-item class-mega has-megamenu dropdown">
-                        <a class="nav-link  <?php echo (isset($nav) && $nav == 'joinus' ? 'active' : ''); ?>" href="#">Join Us</a>
+                        <a class="nav-link  <?php echo (isset($nav) && $nav == 'joinus' ? 'active' : ''); ?>" href="<?php echo base_url('join-us'); ?>">Join Us</a>
                         <a class="mega-menu-dropdown dropdown-toggle" href="#" data-bs-toggle="dropdown"><i class="fa fa-angle-down"></i></a>
                         <div class="dropdown-menu collapse megamenu navMegaMenu" id="navMegaMenuJoinUs" data-bs-popper="none">
                             <div class="mega-content px-4">
