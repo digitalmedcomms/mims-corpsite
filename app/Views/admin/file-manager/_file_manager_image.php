@@ -94,6 +94,7 @@
                                             <span>PNG</span>
                                             <span>GIF</span>
                                             <span>SVG</span>
+                                            <span>PDF</span>
                                         </p>
                                         <p class="dm-upload-icon">
                                             <i class="fa fa-images"></i>

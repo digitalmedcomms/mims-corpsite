@@ -30,7 +30,7 @@
                                 </h2>
                                 <div id="collapseOneForHCP" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionForHCP">
                                 <div class="accordion-body">
-                                    <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                                    MIMS Drug Reference provides healthcare professionals with today’s drug prescribing information customised to each country’s healthcare setting  (available in print, digital and mobile)
                                 </div>
                                 </div>
                             </div>
@@ -42,7 +42,7 @@
                                 </h2>
                                 <div id="collapseTwoForHCP" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionForHCP">
                                 <div class="accordion-body">
-                                    <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                                    A compilation of the latest local and international disease management guidelines for quick reference by healthcare professionals, available
                                 </div>
                                 </div>
                             </div>
@@ -54,7 +54,7 @@
                                 </h2>
                                 <div id="collapseThreeForHCP" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionForHCP">
                                 <div class="accordion-body">
-                                    <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                                    Comprehensive coverage of local and regional industry updates, expert opinions, case studies, medical symposium highlight and more.<br>Published in our award-winning magazines such as  MIMS Doctor, 
                                 </div>
                                 </div>
                             </div>
@@ -108,7 +108,7 @@
                                 </h2>
                                 <div id="collapseOneForProfDev" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionForProfDev">
                                 <div class="accordion-body">
-                                    <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                                    MIMS provides a platform between healthcare professionals and potential employers, and career guidance sessions for medical institutions based locally and overseas.
                                 </div>
                                 </div>
                             </div>
@@ -120,7 +120,7 @@
                                 </h2>
                                 <div id="collapseTwoForProfDev" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionForProfDev">
                                 <div class="accordion-body">
-                                    <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                                    Access clinical e-learning activities and earn CME points. With over 20 specialty topics and new modules added each month, learn from our expansive catalogue designed for medical providers in Asia.
                                 </div>
                                 </div>
                             </div>

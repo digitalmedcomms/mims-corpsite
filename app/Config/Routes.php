@@ -176,6 +176,21 @@ $routes->group("admin", ["namespace" => "App\Controllers\Admin"], function ($rou
         $routes->post('table-listing', 'Offices::tableListing');
     });
 
+    $routes->group('carousel', function ($routes) {
+        $routes->get('', 'Carousel::index');
+        $routes->get('view/(:num)', 'Carousel::view/$1');
+        $routes->get('add_slide/(:num)', 'Carousel::add_slide/$1');
+        $routes->get('edit_slide/(:num)', 'Carousel::edit_slide/$1');
+        
+        $routes->post('insert_slide/(:num)', 'Carousel::insert_slide/$1');
+        $routes->post('update_slide/(:num)', 'Carousel::update_slide/$1');
+        $routes->get('delete_slide/(:num)', 'Carousel::delete_slide/$1');
+
+        $routes->post('table-listing', 'Carousel::tableListing');
+        $routes->post('table-listing-details/(:num)', 'Carousel::tableListingDetails/$1');
+    });
+
+
     $routes->group('leader-types', function ($routes) {
         $routes->get('', 'LeaderTypes::index');
         $routes->get('edit/(:num)', 'LeaderTypes::edit/$1');

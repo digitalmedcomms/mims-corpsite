@@ -147,6 +147,17 @@ class UploadModel extends Model
         return $new_path;
     }
 
+    //post default file upload
+    public function post_default_file_upload($path)
+    {
+        $new_name = $this->create_directory_by_date('files') . '' . uniqid() . '.pdf';
+        $new_path = '/uploads/files/' . $new_name;
+        $img = ImageManagerStatic::make($path)->orientate();
+
+        $img->save(FCPATH . $new_path, $this->img_quality);
+        return $new_path;
+    }
+
     //post slider image upload
     public function post_slider_image_upload($path)
     {

@@ -26,48 +26,29 @@
             </div>
 
             <div id="medcomms-images-carousel" class="owl-carousel owl-theme wow fadeIn">
-                <div class="item">
-                    <div class="img-carousel" style="background: url('<?php echo IMG_URL . 'our-solutions/companies/carousel-1-img.png'; ?>') center center no-repeat;background-size: cover;"></div>
-                </div>
-                <div class="item">
-                    <div class="img-carousel" style="background: url('<?php echo IMG_URL . 'our-solutions/companies/carousel-2-img.png'; ?>') center center no-repeat;background-size: cover;"></div>
-                </div>
-                <div class="item">
-                    <div class="img-carousel" style="background: url('<?php echo IMG_URL . 'our-solutions/companies/carousel-3-img.png'; ?>') center center no-repeat;background-size: cover;"></div>
-                </div>
-                <div class="item">
-                    <div class="img-carousel" style="background: url('<?php echo IMG_URL . 'our-solutions/companies/carousel-1-img.png'; ?>') center center no-repeat;background-size: cover;"></div>
-                </div>
+                <?php foreach($medcomms_carousel['slides'] as $slide){ ?>
+                    <div class="item">
+                        <div class="img-carousel"  style="background: url('<?php echo base_url($slide['image_filepath']); ?>') center center no-repeat;background-size: cover;">
+
+                        </div>
+                    </div>
+                <?php } ?>
             </div>
 
             <div id="medcomms-title-carousel" class="owl-carousel owl-theme wow fadeIn">
-                <div class="item">
-                    <a href="javascript:;" class="carousel-link">Impactful Scientific Content</a>
-                </div>
-                <div class="item">
-                    <a href="javascript:;" class="carousel-link">Precision Medical Marketing</a>
-                </div>
-                <div class="item">
-                    <a href="javascript:;" class="carousel-link">Impactful Scientific Content</a>
-                </div>
-                <div class="item">
-                    <a href="javascript:;" class="carousel-link">Precision Medical Marketing</a>
-                </div>
+                <?php foreach($medcomms_carousel['slides'] as $slide){ ?>
+                    <div class="item">
+                        <a href="javascript:;" class="carousel-link"><?php echo $slide['title']; ?></a>
+                    </div>
+                <?php } ?>
             </div>
 
             <div id="medcomms-desc-carousel" class="owl-carousel owl-theme wow fadeIn">
-                <div class="item">
-                    Expert strategy, writing, gap analysis, planning and advisory board for impactful healthcare communications
-                </div>
-                <div class="item">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                </div>
-                <div class="item">
-                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                </div>
-                <div class="item">
-                    Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                </div>
+                <?php foreach($medcomms_carousel['slides'] as $slide){ ?>
+                    <div class="item">
+                       <?php echo $slide['description']; ?>
+                    </div>
+                <?php } ?>
             </div>
         </div>
     </div>

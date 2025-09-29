@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Controllers;
+use App\Models\CarouselModel;
+use App\Models\CarouselDataModel;
 
 class Solutions extends BaseController
 {
@@ -109,6 +111,14 @@ class Solutions extends BaseController
     public function for_companies()
     {
       
+        $data = [];
+        $carouselObj = new CarouselModel();
+        $carouselSlidesObj = new CarouselDataModel();
+
+        $carousel = $carouselObj->find(1);
+        $carousel['slides'] = $carouselSlidesObj->where('carousel_id', 1)->orderBy('slide_order ASC')->findAll();
+
+        $data['medcomms_carousel'] = $carousel;
         // PAGE HEAD PROCESSING
         return view('components/header', array(
             'title' => 'MIMS Singapore (Headquarters) | Asia Pacific leading multichannel provider of medical information',
@@ -136,7 +146,7 @@ class Solutions extends BaseController
                 COMPILED_ASSETS_PATH . 'css/pages/solutions-companies'
             )
         ))
-        .view('Pages/our-solutions/companies')
+        .view('Pages/our-solutions/companies', $data)
         .view('components/scripts_render', array(
             'scripts' => array(
                 'https://code.jquery.com/jquery-3.5.1.min.js' => array(
