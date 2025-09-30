@@ -117,8 +117,13 @@ class Solutions extends BaseController
 
         $carousel = $carouselObj->find(1);
         $carousel['slides'] = $carouselSlidesObj->where('carousel_id', 1)->orderBy('slide_order ASC')->findAll();
-
         $data['medcomms_carousel'] = $carousel;
+
+
+        $carousel = $carouselObj->find(2);
+        $carousel['slides'] = $carouselSlidesObj->where('carousel_id', 2)->orderBy('slide_order ASC')->findAll();
+        $data['mpf_carousel'] = $carousel;
+
         // PAGE HEAD PROCESSING
         return view('components/header', array(
             'title' => 'MIMS Singapore (Headquarters) | Asia Pacific leading multichannel provider of medical information',
