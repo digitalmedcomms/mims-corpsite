@@ -13,7 +13,7 @@
                 </select>
             </div>
             <div class="notice mt-3">
-                <p class="text-gray">Fill up the form and our Team will get back to you within 24 hours.</p>
+                <p class="text-gray">Complete the form and send. The team will get back to you shortly.</p>
             </div>
             <div id="offices">
             </div>
