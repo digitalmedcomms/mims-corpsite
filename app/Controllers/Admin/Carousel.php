@@ -187,6 +187,67 @@ class Carousel extends AdminController
         }
     }
 
+    public function update_slide($slide_id){
+        if($this->request->getMethod() === 'post' && !empty($slide_id)){
+            $carouselSlide = $this->carouselSlides->find($slide_id);
+            $validation =  \Config\Services::validation();
+            $rules = [
+                'title' => [
+                    'rules'  => 'required',
+                ],
+                'image_id' => [
+                    'label'  => 'Slide Image',
+                    'rules'  => 'required',
+                ],
+                'description' => [
+                    'rules' => 'required'
+                ],
+                'order' => [
+                    'label' => 'Slide Order',
+                    'rules' => 'required'
+                ]
+            ];
+
+            $with_button = 0;
+            $button_label = '';
+            $button_link = '';
+            if($this->request->getPost('with_button') == 1){
+                $with_button = 1;
+                $rules['button_label'] = ['rules'=>'required'];
+                $rules['button_link'] = ['rules'=>'required'];
+
+                $button_label =  $this->request->getPost('button_label');
+                $button_link =  $this->request->getPost('button_link');
+            }
+
+            if ($this->validate($rules)) {
+                $item = [
+                    'title' => $this->request->getPost('title'),
+                    'description' => $this->request->getPost('description'),
+                    'image_id' => $this->request->getPost('image_id'),
+                    'image_filepath' => $this->request->getPost('image_path'),
+                    'slide_order' => $this->request->getPost('order'),
+                    'with_button' => $with_button,
+                    'button_label' => $button_label,
+                    'button_link' => $button_link,
+                    'status' => $this->request->getPost('status'),
+                ];
+                $this->carouselSlides->set($item)->where('id', $slide_id)->update();
+            }else{
+                $this->session->setFlashData('errors_form', $validation->listErrors());
+                return redirect()->back()->withInput()->with('error', 'Unable to process your request.');
+            }
+
+            $this->session->setFlashData('success', trans("carousel") . " Slide " . trans("msg_suc_updated"));
+            $this->session->setFlashData("mes_settings", 1);
+
+            return redirect()->to('admin/carousel/view/'.$carouselSlide['carousel_id']);
+        }else{
+            return redirect()->to('admin/carousel/view/'.$carouselSlide['carousel_id']);
+        }
+        
+    }
+
     public function tableListing(){
         $data = [];
         $input = $_POST;
