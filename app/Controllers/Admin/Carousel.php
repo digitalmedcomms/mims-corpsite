@@ -84,6 +84,25 @@ class Carousel extends AdminController
         }
     }
 
+    public function edit_slide($slide_id){
+        if(!empty($slide_id)){
+            $carouselSlide = $this->carouselSlides->find($slide_id);
+            if(!empty($carouselSlide)){
+                $data = array_merge($this->data, [
+                    'title'     => trans('carousel'),
+                    'active_tab'     => 'carousel',
+                ]);
+                $data['carouselSlide'] = $carouselSlide;
+                return view('admin/carousel/edit_slide', $data);
+            }else{
+                return redirect()->to('admin/carousel');
+            }
+
+        }else{
+            return redirect()->to('admin/carousel');
+        }
+    }
+
     public function insert_slide($carousel_id){
         if($this->request->getMethod() === 'post' && !empty($carousel_id)){
             $validation =  \Config\Services::validation();
