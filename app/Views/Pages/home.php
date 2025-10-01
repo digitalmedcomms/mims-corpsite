@@ -17,7 +17,7 @@
                                     <img src="<?php echo IMG_URL . 'banner-1-mims-empower.png'; ?>" alt="">
 
                                     <div class="bubble-text">
-                                        <div class="bubble-kicker">Commnuity</div>
+                                        <div class="bubble-kicker">Community</div>
                                         <div class="bubble-message text-red">Trusted by over 2 Million HCPs</div>
                                     </div>
                                     <div class="bubble-text">
