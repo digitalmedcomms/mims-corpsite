@@ -1,6 +1,6 @@
 <!-- Full width modal -->
 <div id="file_manager_image" class="modal fade modal-file-manager" tabindex="-1" role="dialog" aria-labelledby="file_manager_image_label" aria-hidden="true">
-    <div class="modal-dialog modal-xl">
+    <div class="modal-dialog modal-xl modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header " style="padding-bottom: 0px;">
                 <!-- <h4 class="modal-title" id="file_manager_image_label"><?php echo trans('images'); ?></h4> -->
@@ -158,8 +158,8 @@
         $('#drag-and-drop-zone-image').dmUploader({
             url: '<?php echo base_url(); ?>/admin/file/upload_image_file',
             queue: true,
-            allowedTypes: 'image/*',
-            extFilter: ["jpg", "jpeg", "png", "gif", "svg"],
+            allowedTypes: 'image/*|application/pdf',
+            extFilter: ["jpg", "jpeg", "png", "gif", "svg", "pdf"],
             extraData: function(id) {
                 return {
                     "file_id": id,
@@ -201,6 +201,11 @@
                 ui_multi_update_file_status(id, 'success', 'Upload Complete');
                 ui_multi_update_file_progress(id, 100, 'success', false);
                 $("#btn_reset_upload_image").hide();
+                swal.fire({
+                    text: "File upload successful",
+                    icon: "success",
+                    button: sweetalert_ok
+                });
             },
             onUploadError: function(id, xhr, status, message) {
                 if (message == "Not Acceptable") {

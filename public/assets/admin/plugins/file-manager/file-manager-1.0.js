@@ -45,7 +45,12 @@ $(document).on('click', '#file_manager_image .file-box', function () {
     $('#form_image_sidebar').show();
 });
 
+$("#file_manager_image").modal({
+    'backdrop': 'static',
+    'keyboard': false,
+    'show': false
 
+});
 document.querySelectorAll('[data-toggle="images_form"]').forEach(function (el) {
     el.addEventListener("change", function () {
         var file_id = $('#selected_img_file_id').val();
@@ -120,6 +125,11 @@ $(document).on('click', '#file_manager_image #btn_img_delete', function () {
         success: function (response) {
             $('#btn_img_delete').hide();
             $('#btn_img_select').hide();
+            swal.fire({
+                text: "File delete successful",
+                icon: "success",
+                button: sweetalert_ok
+            });
         }
     });
 });

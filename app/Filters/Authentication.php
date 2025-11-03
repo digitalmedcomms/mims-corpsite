@@ -11,11 +11,10 @@ class Authentication implements FilterInterface
 
 	public function before(RequestInterface $request, $arguments = null)
 	{
-		// var_dump(session()->get('vr_sess_logged_in'));
-		// exit();
-		// if (session()->get('vr_sess_logged_in') != TRUE) :
-		// 	return redirect()->to(base_url('/auth/login'));
-		// endif;
+		$uri = service('uri');
+		if ($uri->getSegment(1) == 'admin' && session()->get('vr_sess_logged_in') != TRUE) :
+			return redirect()->to(base_url('/auth/login'));
+		endif;
 	}
 
 	public function after(RequestInterface $request, ResponseInterface $response, $arguments = null)
