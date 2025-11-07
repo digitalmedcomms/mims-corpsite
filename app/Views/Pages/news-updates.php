@@ -23,7 +23,7 @@
                         foreach($articles as $year => $article_arr){
                             echo '<div class="post-list-container">';
                                 echo '<div class="post-list-header"><h2 id="'.$year.'" class="text-blue">'.$year.'</h2></div>';
-                                echo '<div class="post-list-items">';
+                                echo '<div class="post-list-items '.( $year == date("Y") || $year == (date("Y") - 1) ? 'current-year' : '' ).'">';
 
                                 foreach($article_arr as $article){
                                     echo '<div class="post-item">';
