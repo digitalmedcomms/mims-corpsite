@@ -14,7 +14,7 @@
                             </div>
                             <div class="right-side">
                                 <div class="img-featured wow fadeInRight" data-wow-duration="1s" data-wow-delay="2s">
-                                    <img src="<?php echo IMG_URL . 'banner-1-mims-empower.png'; ?>" alt="">
+                                    <img src="<?php echo IMG_URL . 'doctor-banner-2.png'; ?>" alt="">
 
                                     <div class="bubble-text">
                                         <div class="bubble-kicker">Community</div>
