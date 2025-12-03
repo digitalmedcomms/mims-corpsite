@@ -16,10 +16,10 @@
                         <a class="nav-link <?php echo (isset($nav) && $nav == 'aboutus' ? 'active' : ''); ?>" href="<?php echo base_url('about-us'); ?>">About Us</a>
                         <a class="mega-menu-dropdown dropdown-toggle" type="button" href="#" data-bs-toggle="dropdown"><i class="fa fa-angle-down"></i></a>
                         <div class="dropdown-menu collapse navMegaMenu" id="navMegaMenuAboutUs" data-bs-popper="none">
-                            <div class="mega-content px-4">
+                            <div class="mega-content px-sm-4">
                                 <div class="container-fluid">
                                     <div class="row align-items-center">
-                                        <div class="col-12 col-sm-4 col-md-3 py-4  border-right">
+                                        <div class="col-12 col-sm-4 col-md-3 py-sm-4  border-right">
                                             <h5 class="text-red">Get to know how MIMS can make the difference for your business</h5>
                                         </div>
                                         <div class="col-12 col-sm-8 col-md-9">
@@ -47,10 +47,10 @@
                         <a class="nav-link <?php echo (isset($nav) && $nav == 'solutions' ? 'active' : ''); ?>" href="<?php echo base_url('our-solutions'); ?>" style="display: inline-block;">Our Solutions</a>
                         <a class="mega-menu-dropdown dropdown-toggle" href="#" data-bs-toggle="dropdown"><i class="fa fa-angle-down"></i></a>
                         <div class="dropdown-menu collapse megamenu navMegaMenu" id="navMegaMenuSolutions" data-bs-popper="none">
-                            <div class="mega-content px-4">
+                            <div class="mega-content px-sm-4">
                                 <div class="container-fluid">
                                     <div class="row align-items-center">
-                                        <div class="col-12 col-sm-4 col-md-3 py-4 border-right">
+                                        <div class="col-12 col-sm-4 col-md-3 py-sm-4 border-right">
                                             <h5 class="text-red">Trust MIMS to be your strategic partner for healthcare knowledge solutions and services</h5>
                                         </div>
                                         <div class="col-12 col-sm-8 col-md-9 border-left">
@@ -93,10 +93,10 @@
                         <a class="nav-link  <?php echo (isset($nav) && $nav == 'joinus' ? 'active' : ''); ?>" href="<?php echo base_url('join-us'); ?>">Join Us</a>
                         <a class="mega-menu-dropdown dropdown-toggle" href="#" data-bs-toggle="dropdown"><i class="fa fa-angle-down"></i></a>
                         <div class="dropdown-menu collapse megamenu navMegaMenu" id="navMegaMenuJoinUs" data-bs-popper="none">
-                            <div class="mega-content px-4">
+                            <div class="mega-content px-sm-4">
                                 <div class="container-fluid">
                                     <div class="row align-items-center">
-                                        <div class="col-12 col-sm-4 col-md-3 py-4 border-right">
+                                        <div class="col-12 col-sm-4 col-md-3 py-sm-4 border-right">
                                             <h5 class="text-red">Join over 1,000 talented individuals across 35 offices in 17 markets</h5>
                                         </div>
                                         <div class="col-12 col-sm-8 col-md-9 border-left">
@@ -117,7 +117,7 @@
                         </div>
                     </li>
                 </ul>
-                <div>
+                <div class="navBtn">
                     <a href="<?php echo base_url('contact-us'); ?>" class="btn btn-blue">Contact Us</a>
                 </div>
             </div>

@@ -31,6 +31,7 @@ class Aboutus extends BaseController
                 COMPILED_ASSETS_PATH . 'css/components/global',
                 COMPILED_ASSETS_PATH . 'css/components/animations',
                 COMPILED_ASSETS_PATH . 'css/components/timeline',
+                COMPILED_ASSETS_PATH . 'css/components/timeline-v2',
                 COMPILED_ASSETS_PATH . 'css/components/navigation_bar',
                 COMPILED_ASSETS_PATH . 'css/components/footer',
                 COMPILED_ASSETS_PATH . 'css/pages/about'
@@ -48,6 +49,7 @@ class Aboutus extends BaseController
                 ASSETS_URL . 'js/components/global.min.js',
                 ASSETS_URL . 'js/plugins/owl.carousel.min.js',
                 ASSETS_URL . 'js/components/wow.min.js',
+                ASSETS_URL . 'js/plugins/horizontal_timeline.min.js',
                 ASSETS_URL . 'js/plugins/timeline.min.js',
                 ASSETS_URL . 'js/components/navigation_bar.min.js',
                 ASSETS_URL . 'js/pages/about.min.js',

@@ -70,7 +70,7 @@
                         </div>
                         <div class="buttons">
                             <a href="https://mims.com" target="_blank" class="btn btn-red">Access now at mims.com <i class="fa fa-arrow-right"></i></a>
-                            <a href="#" class="btn btn-secondary">Download brochure <i class="fa fa-arrow-right"></i></a>
+                            <!-- <a href="#" class="btn btn-secondary">Download brochure <i class="fa fa-arrow-right"></i></a> -->
                         </div>
                     </div>
                 </div>
