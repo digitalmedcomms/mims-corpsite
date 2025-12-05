@@ -42,6 +42,7 @@ $routes->get('contact-us', 'Contactus::index');
 $routes->get('join-us', 'Joinus::index');
 $routes->get('news-updates', 'News::index');
 $routes->get('mims-privacy-policy', 'Privacy::index');
+$routes->post('contact-us/send_message', 'Contactus::send_message');
 
 
 $routes->group("api", ["namespace" => "App\Controllers\Api"], function ($routes) {

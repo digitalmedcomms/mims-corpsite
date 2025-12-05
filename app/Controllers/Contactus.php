@@ -4,7 +4,10 @@ namespace App\Controllers;
 
 use App\Models\OfficesModel;
 use App\Models\Locations\CountryModel;
+use App\Models\GeneralSettingModel;
 use App\Models\PracticeModel;
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception as MAILER_Exception;
 
 class Contactus extends BaseController
 {
@@ -32,6 +35,11 @@ class Contactus extends BaseController
         }
         $data['offices_json'] = json_encode($offices_arr);
         $data['countries'] = $countries;
+
+        $genSettingsModel = new GeneralSettingModel();
+        $genSettings = $genSettingsModel->find(1);
+        $data['captch_sitekey'] = $genSettings['recaptcha_site_key'];
+
         // PAGE HEAD PROCESSING
         return view('components/header', array(
             'title' => 'MIMS Singapore (Headquarters) | Asia Pacific leading multichannel provider of medical information',
@@ -68,6 +76,9 @@ class Contactus extends BaseController
                     'crossorigin' => 'anonymous'
                 ),
                 ASSETS_URL . 'js/plugins/popper.min.js',
+                'https://code.highcharts.com/maps/highmaps.js',
+                'https://code.highcharts.com/maps/modules/exporting.js',
+                'https://www.google.com/recaptcha/api.js?render='.$genSettings['recaptcha_site_key'],
                 ASSETS_URL . 'js/plugins/bootstrap/bootstrap.min.js',
                 ASSETS_URL . 'js/plugins/bootstrap-select.min.js',
                 ASSETS_URL . 'js/components/global.min.js',
@@ -75,6 +86,7 @@ class Contactus extends BaseController
                 ASSETS_URL . 'js/components/wow.min.js',
                 ASSETS_URL . 'js/plugins/timeline.min.js',
                 ASSETS_URL . 'js/components/navigation_bar.min.js',
+                ASSETS_URL . '../admin/plugins/jquery-validation/jquery.validate.min.js',
                 ASSETS_URL . 'js/pages/contact.min.js?1341',
             )
         ))
@@ -85,5 +97,110 @@ class Contactus extends BaseController
     public function maintenance()
     {
         return view('maintenance');
+    }
+
+
+    public function send_message(){
+        $data = [
+            'message' => 'Invalid request.',
+            'success' => 0
+        ];
+
+        if($this->request->isAJAX() && $this->request->getMethod() === 'post'){
+            $postData = $this->request->getPost();
+            $validation =  \Config\Services::validation();
+            $rules = [
+                'name' => [
+                    'label' => 'Name',
+                    'rules'  => 'required',
+                ],
+                'emailRecipient' => [
+                    'label' => 'Email Recipient',
+                    'rules'  => 'required',
+                ],
+                'organisation' => [
+                    'label' => 'Organisation',
+                    'rules' => 'required'
+                ],
+                'email' => [
+                    'label' => 'Email Address',
+                    'rules' => 'required'
+                ],
+                'message' => [
+                    'label' => 'Message',
+                    'rules' => 'required'
+                ],
+            ];
+
+
+            if($this->validate($rules)) {
+                $genSettingsModel = new GeneralSettingModel();
+                $genSettings = $genSettingsModel->find(1);
+
+                
+                $secret_key = $genSettings['recaptcha_secret_key']; // Replace with your secret key from reCAPTCHA admin console
+                $verify_url = 'https://www.google.com/recaptcha/api/siteverify';
+
+                $c_data = array(
+                    'secret' => $secret_key,
+                    'response' => $this->request->getPost('g-recaptcha-response'),
+                    'remoteip' => $_SERVER['REMOTE_ADDR'] // Optional: User's IP address
+                );
+
+                $options = array(
+                    'http' => array(
+                        'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
+                        'method'  => 'POST',
+                        'content' => http_build_query($c_data)
+                    )
+                );
+
+                $context  = stream_context_create($options);
+                $result = file_get_contents($verify_url, false, $context);
+                $captcha_response_data = json_decode($result, true);
+                if($captcha_response_data['success'] == 1){
+
+                    $mail = new PHPMailer(true);
+                    try{
+
+                        $mail->isSMTP();
+                        $mail->Host = $genSettings['mail_host'];
+                        $mail->SMTPAuth = true;
+                        $mail->Username = $genSettings['mail_username'];
+                        $mail->Password = $genSettings['mail_password'];
+                        $mail->SMTPSecure = 'tls';
+                        $mail->CharSet = 'UTF-8';
+                        $mail->Port = $genSettings['mail_port'];
+                        $mail->setFrom($genSettings['mail_reply_to'], $genSettings['mail_title']);
+                        $mail->isHTML(true);
+                        $mail->Subject = 'MIMS Corporate::Inquiry';
+
+
+
+                    }catch (MAILER_Exception $e) {
+                        if ($e) {
+                            $data['message'] = 'Unable to send message. Please try again later.';
+                        }
+                    }
+
+
+                }else{
+                    $data['message'] = 'Invalid recaptcha response. Please refresh the page.';
+                }
+            }else{
+                $errors = $this->validator->getErrors();
+                $errorsArr = [];
+                foreach($errors as $error){
+                    $errorsArr[] = $error;
+                }
+                $data['message'] = 'Please check the following errors below:';
+                $data['errors'] = $errorsArr;
+            }
+
+
+        }
+
+        return $this->response->setJSON($data);
+
     }
 }

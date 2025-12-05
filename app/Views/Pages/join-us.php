@@ -1,6 +1,6 @@
 
 <div id="joinus-container">
-    <div class="banner">
+    <div class="banner" style="background: url('<?php echo IMG_URL . 'join-us-bg.png'; ?>') center center no-repeat; background-size: cover;">
         <div class="container">
             <h1 class="text-blue">Join Us</h1>
             <div class="breadcrumbs">
