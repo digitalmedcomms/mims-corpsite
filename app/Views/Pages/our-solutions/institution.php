@@ -17,8 +17,8 @@
         <div class="section">
             <div class="section-bg-img bg-right">
                 <div id="partners">
-                    <div class="partner-item wow fadeIn"><img src="<?php echo IMG_URL. 'our-solutions/institutions/nu-hospitals-logo.png'; ?>" alt="NU Hospitals"></div>
-                    <div class="partner-item wow fadeIn" data-wow-delay="0.2s"><img src="<?php echo IMG_URL. 'our-solutions/institutions/carespan-logo.png'; ?>" alt="NU Hospitals"></div>
+                    <div class="partner-item wow fadeIn"><img src="<?php echo IMG_URL. 'new-cds-logo-2025.jpg'; ?>" alt="CDS Logo" style="width: 100%;"></div>
+                    <!-- <div class="partner-item wow fadeIn" data-wow-delay="0.2s"><img src="<?php echo IMG_URL. 'our-solutions/institutions/carespan-logo.png'; ?>" alt="NU Hospitals"></div>
                     <div class="partner-item wow fadeIn" data-wow-delay="0.3s"><img src="<?php echo IMG_URL. 'our-solutions/institutions/strateq-health-logo.png'; ?>" alt="NU Hospitals"></div>
                     <div class="partner-item wow fadeIn" data-wow-delay="0.4s"><img src="<?php echo IMG_URL. 'our-solutions/institutions/iqvia-logo.png'; ?>" alt="NU Hospitals"></div>
                     <div class="partner-item wow fadeIn" data-wow-delay="0.5s"><img src="<?php echo IMG_URL. 'our-solutions/institutions/sunway-medical-centre-logo.png'; ?>" alt="NU Hospitals"></div>
@@ -34,7 +34,7 @@
                     <div class="partner-item wow fadeIn" data-wow-delay="1.5s"><img src="<?php echo IMG_URL. 'our-solutions/institutions/parkway-pantai-logo.png'; ?>" alt="NU Hospitals"></div>
                     <div class="partner-item wow fadeIn" data-wow-delay="1.6s"><img src="<?php echo IMG_URL. 'our-solutions/institutions/assurance-technology-logo.png'; ?>" alt="NU Hospitals"></div>
                     <div class="partner-item wow fadeIn" data-wow-delay="1.7s"><img src="<?php echo IMG_URL. 'our-solutions/institutions/intersystems-trakcare-logo.png'; ?>" alt="NU Hospitals"></div>
-                    <div class="partner-item wow fadeIn" data-wow-delay="1.8s"><img src="<?php echo IMG_URL. 'our-solutions/institutions/kpg-healthcare-logo.png'; ?>" alt="NU Hospitals"></div>
+                    <div class="partner-item wow fadeIn" data-wow-delay="1.8s"><img src="<?php echo IMG_URL. 'our-solutions/institutions/kpg-healthcare-logo.png'; ?>" alt="NU Hospitals"></div> -->
                 </div>
             </div>
             <div class="container">
