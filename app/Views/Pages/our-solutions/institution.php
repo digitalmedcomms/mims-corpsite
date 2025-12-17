@@ -17,7 +17,7 @@
         <div class="section">
             <div class="section-bg-img bg-right">
                 <div id="partners">
-                    <div class="partner-item wow fadeIn"><img src="<?php echo IMG_URL. 'new-cds-logo-2025.jpg'; ?>" alt="CDS Logo" style="width: 100%;"></div>
+                    <div class="partner-item wow fadeIn" style="width: 100%;"><img src="<?php echo IMG_URL. 'new-cds-logo-2025.jpg'; ?>" alt="CDS Logo"></div>
                     <!-- <div class="partner-item wow fadeIn" data-wow-delay="0.2s"><img src="<?php echo IMG_URL. 'our-solutions/institutions/carespan-logo.png'; ?>" alt="NU Hospitals"></div>
                     <div class="partner-item wow fadeIn" data-wow-delay="0.3s"><img src="<?php echo IMG_URL. 'our-solutions/institutions/strateq-health-logo.png'; ?>" alt="NU Hospitals"></div>
                     <div class="partner-item wow fadeIn" data-wow-delay="0.4s"><img src="<?php echo IMG_URL. 'our-solutions/institutions/iqvia-logo.png'; ?>" alt="NU Hospitals"></div>
