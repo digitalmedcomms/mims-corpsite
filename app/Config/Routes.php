@@ -200,6 +200,23 @@ $routes->group("admin", ["namespace" => "App\Controllers\Admin"], function ($rou
         $routes->post('table-listing', 'LeaderTypes::tableListing');
     });
     
+
+    $routes->group('forms', function ($routes) {
+        $routes->get('', 'Forms::index');
+        $routes->get('edit/(:num)', 'Forms::edit/$1');
+        $routes->get('add', 'Forms::add');
+        $routes->post('update/(:num)', 'Forms::update/$1');
+        $routes->post('insert', 'Forms::insert');
+        $routes->post('table-listing', 'Forms::tableListing');
+    });
+    
+    $routes->group('careers', function ($routes) {
+        $routes->get('', 'Careers::index');
+        $routes->get('edit/(:num)', 'Careers::edit/$1');
+        $routes->post('update/(:num)', 'Careers::update/$1');
+        $routes->post('insert', 'Careers::insert');
+        $routes->post('table-listing', 'Careers::tableListing');
+    });
     $routes->group('news-updates', function ($routes) {
         $routes->get('categories', 'NewsUpdates\Categories::index');
         $routes->get('categories/edit/(:num)', 'NewsUpdates\Categories::edit/$1');
