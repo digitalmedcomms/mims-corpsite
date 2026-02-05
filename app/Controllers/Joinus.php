@@ -16,13 +16,9 @@ class Joinus extends BaseController
     public function index()
     {
         $careersModel = new CareersModel();
-        $careers = $careersModel->select('careers.*, offices.name as office_name')
-            ->join('offices', 'offices.id = careers.office_id', 'INNER')
-            ->where('careers.status', 1)
-            ->findAll();
-
+        
         $data = [
-            'careers' => $careers,
+            'careers' => [],
             'job_types' => $careersModel->job_types,
             'job_locations' => $careersModel->job_locations
         ];
@@ -89,35 +85,48 @@ class Joinus extends BaseController
             $location = $this->request->getPost('location');
             $job_type = $this->request->getPost('job_type');
             $job_location = $this->request->getPost('job_location');
+            $page = $this->request->getPost('page') ?: 1;
+            $per_page = 10;
+            $offset = ($page - 1) * $per_page;
 
             $careersModel = new CareersModel();
-            $builder = $careersModel->select('careers.*, offices.name as office_name, offices.address as office_address')
-                ->join('offices', 'offices.id = careers.office_id', 'INNER')
-                ->where('careers.status', 1);
+            
+            $applyFilters = function($m) use ($search, $location, $job_type, $job_location) {
+                $m->join('offices', 'offices.id = careers.office_id', 'INNER');
+                $m->where('careers.status', 1);
 
-            if (!empty($search)) {
-                $builder->groupStart()
-                    ->like('careers.job_title', $search)
-                    ->orLike('careers.job_description', $search)
-                    ->groupEnd();
-            }
+                if (!empty($search)) {
+                    $m->groupStart()
+                        ->like('careers.job_title', $search)
+                        ->orLike('careers.job_description', $search)
+                        ->groupEnd();
+                }
 
-            if (!empty($location)) {
-                $builder->groupStart()
-                    ->like('offices.name', $location)
-                    ->orLike('offices.address', $location)
-                    ->groupEnd();
-            }
+                if (!empty($location)) {
+                    $m->groupStart()
+                        ->like('offices.name', $location)
+                        ->orLike('offices.address', $location)
+                        ->groupEnd();
+                }
 
-            if (!empty($job_type)) {
-                $builder->where('careers.job_type', $job_type);
-            }
+                if (!empty($job_type)) {
+                    $m->where('careers.job_type', $job_type);
+                }
 
-            if (!empty($job_location)) {
-                $builder->where('careers.job_location', $job_location);
-            }
+                if (!empty($job_location)) {
+                    $m->where('careers.job_location', $job_location);
+                }
+            };
 
-            $careers = $builder->findAll();
+            // Count query
+            $applyFilters($careersModel);
+            $total_records = $careersModel->countAllResults();
+            $total_pages = ceil($total_records / $per_page);
+
+            // Fetch query
+            $applyFilters($careersModel);
+            $careersModel->select('careers.*, offices.name as office_name, offices.address as office_address');
+            $careers = $careersModel->findAll($per_page, $offset);
 
             $viewData = [
                 'careers' => $careers,
@@ -163,6 +172,9 @@ class Joinus extends BaseController
 
             $data['success'] = 1;
             $data['html'] = $html;
+            $data['total_pages'] = $total_pages;
+            $data['current_page'] = (int)$page;
+            $data['total_records'] = $total_records;
             $data['message'] = 'Success';
         }
         

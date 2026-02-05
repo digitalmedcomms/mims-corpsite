@@ -105,43 +105,16 @@
 
     <div class="container">
         <div id="jobs">
-            <?php if(!empty($careers)): ?>
-                <?php foreach($careers as $career): ?>
-                    <div class="job-item">
-                        <div class="tags">
-                            <div class="tag-item green"><?php echo strtoupper($job_types[$career['job_type']] ?? ''); ?></div>
-                            <div class="tag-item blue"><?php echo strtoupper($job_locations[$career['job_location']] ?? ''); ?></div>
-                        </div>
-                        <div class="title">
-                            <h3><?php echo $career['job_title']; ?></h3>
-                        </div>
-                        <div class="company-info">
-                            <div class="logo"></div>
-                            <div class="details">
-                                <div class="logo-name">MIMS Pte Ltd</div>
-                                <div class="company-address"><i class="fa fa-map-pin"></i> <?php echo $career['office_name']; ?></div>
-                            </div>
-                        </div>
-                        <div class="job-detail">
-                            <?php echo $career['job_description']; ?>
-                        </div>
-                        <div class="buttons">
-                            <a href="<?php echo $career['link']; ?>" target="_blank" class="btn btn-red">Read more <i class="fa fa-arrow-right"></i></a>
-                        </div>
-                    </div>
-                <?php endforeach; ?>
-            <?php else: ?>
-                <div class="text-center" style="padding: 100px 0;">
-                    <h3 class="text-blue">No career opportunities at the moment.</h3>
-                    <p class="text-grayish-blue">Please check back later or contact us for more information.</p>
-                </div>
-            <?php endif; ?>
+            <div class="text-center" style="padding: 100px 0;">
+                <i class="fa fa-spinner fa-spin fa-3x text-blue"></i>
+            </div>
         </div>
+        <div id="pagination" class="mt-4 pb-5"></div>
     </div>
 </div>
 
 <script>
     var GLOBAL_BASE_URL = '<?= base_url() ?>/';
-    var csrfName = '<?= csrf_header() ?>'; // X-CSRF-Token
-    var csrfHash = document.querySelector('meta[name="<?= csrf_header() ?>"]').content; // The actual token hash
+    var csrfName = '<?= csrf_token() ?>'; 
+    var csrfHash = '<?= csrf_hash() ?>'; 
 </script>
