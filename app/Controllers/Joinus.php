@@ -66,7 +66,7 @@ class Joinus extends BaseController
                 ASSETS_URL . 'js/components/wow.min.js',
                 ASSETS_URL . 'js/plugins/timeline.min.js',
                 ASSETS_URL . 'js/components/navigation_bar.min.js',
-                ASSETS_URL . 'js/pages/joinus.min.js?12',
+                ASSETS_URL . 'js/pages/joinus.min.js?123',
             )
         ))
         .view('components/footer');
