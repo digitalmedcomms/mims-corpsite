@@ -109,7 +109,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row">
+                                 <div class="row">
                                     <div class="col-md-7">
                                         <div class="form-group">
                                             <label for="">Category</label>
@@ -117,6 +117,21 @@
                                                 <?php 
                                                 foreach($categories as $category){
                                                     echo '<option value="' . $category['id'] . '" '. (set_value('category_id', $post['category_id']) == $category['id'] ? 'selected' : '').'>' . $category['name'] . '</option>';
+                                                }
+                                                ?>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-7">
+                                        <div class="form-group">
+                                            <label for="">Forms</label>
+                                            <select name="form_id" id="form_id" class="form-control selectpicker" data-title="Select a form">
+                                                <option value="0">None</option>
+                                                <?php 
+                                                foreach($forms as $f){
+                                                    echo '<option value="' . $f['id'] . '" '. (set_value('form_id', $post['form_id']) == $f['id'] ? 'selected' : '').'>' . $f['name'] . '</option>';
                                                 }
                                                 ?>
                                             </select>

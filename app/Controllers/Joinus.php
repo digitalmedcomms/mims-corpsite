@@ -2,6 +2,8 @@
 
 namespace App\Controllers;
 
+use App\Models\CareersModel;
+use App\Models\OfficesModel;
 
 class Joinus extends BaseController
 {
@@ -13,7 +15,18 @@ class Joinus extends BaseController
 
     public function index()
     {
-        $data = [];
+        $careersModel = new CareersModel();
+        $careers = $careersModel->select('careers.*, offices.name as office_name')
+            ->join('offices', 'offices.id = careers.office_id', 'INNER')
+            ->where('careers.status', 1)
+            ->findAll();
+
+        $data = [
+            'careers' => $careers,
+            'job_types' => $careersModel->job_types,
+            'job_locations' => $careersModel->job_locations
+        ];
+        
         // PAGE HEAD PROCESSING
         return view('components/header', array(
             'title' => 'MIMS Singapore (Headquarters) | Asia Pacific leading multichannel provider of medical information',
@@ -61,6 +74,99 @@ class Joinus extends BaseController
             )
         ))
         .view('components/footer');
+    }
+
+    public function careers(){
+        $data = [
+            'message' => 'Invalid request.',
+            'success' => 0,
+            'csrfName' => csrf_token(),
+            'csrfHash' => csrf_hash()
+        ];
+
+        if($this->request->isAJAX() && $this->request->getMethod() === 'post'){
+            $search = $this->request->getPost('search');
+            $location = $this->request->getPost('location');
+            $job_type = $this->request->getPost('job_type');
+            $job_location = $this->request->getPost('job_location');
+
+            $careersModel = new CareersModel();
+            $builder = $careersModel->select('careers.*, offices.name as office_name, offices.address as office_address')
+                ->join('offices', 'offices.id = careers.office_id', 'INNER')
+                ->where('careers.status', 1);
+
+            if (!empty($search)) {
+                $builder->groupStart()
+                    ->like('careers.job_title', $search)
+                    ->orLike('careers.job_description', $search)
+                    ->groupEnd();
+            }
+
+            if (!empty($location)) {
+                $builder->groupStart()
+                    ->like('offices.name', $location)
+                    ->orLike('offices.address', $location)
+                    ->groupEnd();
+            }
+
+            if (!empty($job_type)) {
+                $builder->where('careers.job_type', $job_type);
+            }
+
+            if (!empty($job_location)) {
+                $builder->where('careers.job_location', $job_location);
+            }
+
+            $careers = $builder->findAll();
+
+            $viewData = [
+                'careers' => $careers,
+                'job_types' => $careersModel->job_types,
+                'job_locations' => $careersModel->job_locations
+            ];
+
+            $html = '';
+            if (!empty($careers)) {
+                foreach ($careers as $career) {
+                    $job_type_label = strtoupper($viewData['job_types'][$career['job_type']] ?? '');
+                    $job_location_label = strtoupper($viewData['job_locations'][$career['job_location']] ?? '');
+                    
+                    $html .= '<div class="job-item">
+                        <div class="tags">
+                            <div class="tag-item green">' . $job_type_label . '</div>
+                            <div class="tag-item blue">' . $job_location_label . '</div>
+                        </div>
+                        <div class="title">
+                            <h3>' . $career['job_title'] . '</h3>
+                        </div>
+                        <div class="company-info">
+                            <div class="logo"></div>
+                            <div class="details">
+                                <div class="logo-name">' . $career['office_name'] . '</div>
+                                <div class="company-address"><i class="fa fa-map-pin"></i> ' . $career['office_address'] . '</div>
+                            </div>
+                        </div>
+                        <div class="job-detail">
+                            ' . $career['job_description'] . '
+                        </div>
+                        <div class="buttons">
+                            <a href="' . $career['link'] . '" target="_blank" class="btn btn-red">Read more <i class="fa fa-arrow-right"></i></a>
+                        </div>
+                    </div>';
+                }
+            } else {
+                $html = '<div class="text-center" style="padding: 100px 0;width:100%;">
+                    <h3 class="text-blue">No career opportunities found.</h3>
+                    <p class="text-grayish-blue">Try adjusting your search filters.</p>
+                </div>';
+            }
+
+            $data['success'] = 1;
+            $data['html'] = $html;
+            $data['message'] = 'Success';
+        }
+        
+        return $this->response->setJSON($data);
     }
 
     //maintenance mode

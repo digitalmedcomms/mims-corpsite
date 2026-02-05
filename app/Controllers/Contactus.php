@@ -176,7 +176,6 @@ class Contactus extends BaseController
                         $mail->Subject = 'MIMS Corporate::Inquiry';
 
 
-
                     }catch (MAILER_Exception $e) {
                         if ($e) {
                             $data['message'] = 'Unable to send message. Please try again later.';

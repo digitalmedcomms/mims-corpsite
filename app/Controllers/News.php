@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Models\PostsModel;
 use App\Models\PostCategoriesModel;
+use App\Models\FormsModel;
 use CodeIgniter\Exceptions\PageNotFoundException;
 
 class News extends BaseController
@@ -82,6 +83,12 @@ class News extends BaseController
         $data['post'] = $post;
         $data['category'] = $category;
 
+        $objForms = new FormsModel();
+        $data['form'] = null;
+        if (!empty($post['form_id'])) {
+            $data['form'] = $objForms->where('id', $post['form_id'])->where('status', 1)->first();
+        }
+
         $data['latest_posts'] = $objPost->getLatestPosts(4, $post['id']);
 
         // PAGE HEAD PROCESSING
@@ -119,6 +126,7 @@ class News extends BaseController
                     'integrity' => 'sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=',
                     'crossorigin' => 'anonymous'
                 ),
+                'https://formbuilder.online/assets/js/form-render.min.js',
                 ASSETS_URL . 'js/plugins/popper.min.js',
                 ASSETS_URL . 'js/plugins/bootstrap/bootstrap.min.js',
                 ASSETS_URL . 'js/plugins/bootstrap-select.min.js',

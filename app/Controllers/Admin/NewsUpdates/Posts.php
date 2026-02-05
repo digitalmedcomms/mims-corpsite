@@ -7,6 +7,7 @@ use App\Controllers\Admin\AdminController;
 use App\Models\LeaderTypesModel;
 use App\Models\PostCategoriesModel;
 use App\Models\PostsModel;
+use App\Models\FormsModel;
 
 
 class Posts extends AdminController
@@ -16,6 +17,7 @@ class Posts extends AdminController
     {
         $this->postCategories = new PostCategoriesModel();
         $this->posts = new PostsModel();
+        $this->forms = new FormsModel();
     }
 
     public function index(){
@@ -35,6 +37,7 @@ class Posts extends AdminController
             'active_tab'     => 'posts',
         ]);
         $data['categories'] = $this->postCategories->where('status', 1)->findAll();
+        $data['forms'] = $this->forms->where('status', 1)->findAll();
         return view('admin/news-updates/posts/add', $data);
 }
 
@@ -49,6 +52,7 @@ class Posts extends AdminController
                 ]);
                 $data['post'] = $post;
                 $data['categories'] = $this->postCategories->where('status', 1)->findAll();
+                $data['forms'] = $this->forms->where('status', 1)->findAll();
                 
                 return view('admin/news-updates/posts/edit', $data);
             }else{
@@ -113,6 +117,7 @@ class Posts extends AdminController
                     'category_id' => $this->request->getPost('category_id'),
                     'featured_img_path' => $this->request->getPost('image_path'),
                     'featured_img_id' => $this->request->getPost('image_id'),
+                    'form_id' => $this->request->getPost('form_id'),
                     'user_id' => $this->data['user']->id
                 ];
                 $this->posts->save($item);
@@ -193,6 +198,7 @@ class Posts extends AdminController
                         'short_description' => $this->request->getPost('short_description'),
                         'featured_img_path' => $this->request->getPost('image_path'),
                         'featured_img_id' => $this->request->getPost('image_id'),
+                        'form_id' => $this->request->getPost('form_id'),
                         'user_id' => $this->data['user']->id
                     ];
                     $this->posts->set($item)->where('id', $id)->update();

@@ -9,7 +9,7 @@ class PostsModel extends Model
     protected $DBGroup          = 'default';
     protected $table            = 'posts';
     protected $primaryKey       = 'id';
-    protected $allowedFields = ['title', 'category_id', 'content', 'date', 'short_description', 'user_id', 'slug', 'featured_img_path', 'featured_img_id', 'status'];
+    protected $allowedFields = ['title', 'category_id', 'content', 'date', 'short_description', 'user_id', 'slug', 'featured_img_path', 'featured_img_id', 'form_id', 'status'];
 
     // Dates
     protected $useTimestamps = true;

@@ -63,17 +63,41 @@
         <div id="job-filter">
             <div class="filter-input">
                 <i class="fa fa-search"></i>
-                <input type="text" class="form-control" placeholder="Search by: Job title, Position, Keyword...">
+                <input type="text" id="job-search" class="form-control" placeholder="Search by: Job title, Position, Keyword...">
             </div>
 
             <div class="filter-input">
                 <i class="fa fa-map"></i>
-                <input type="text" class="form-control" placeholder="City, state or zip code">
+                <input type="text" id="job-location" class="form-control" placeholder="City or state">
             </div>
 
             <div class="buttons">
-                <a href="javascript:;" class="btn btn-gray"><i class="fa fa-sliders-v"></i> Filters</a>
-                <a href="javascript:;" class="btn btn-primary">Find Job</a>
+                <a href="javascript:;" id="btn-toggle-filters" class="btn btn-gray"><i class="fa fa-sliders-v"></i> Filters</a>
+                <a href="javascript:;" id="btn-find-job" class="btn btn-primary">Find Job</a>
+            </div>
+        </div>
+
+        <div id="extra-filters" style="display: none; margin-top: 20px;">
+            <div id="job-filter" style="border-top: none; padding-top: 0;">
+                <div class="filter-input">
+                    <label for="job-type" class="d-block mb-1">Job Type</label>
+                    <select id="job-type" class="form-control">
+                        <option value="">All Job Types</option>
+                        <?php foreach($job_types as $key => $value): ?>
+                            <option value="<?php echo $key; ?>"><?php echo $value; ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
+
+                <div class="filter-input" style="margin-left: 20px;">
+                    <label for="job-remote-hybrid" class="d-block mb-1">Work Type</label>
+                    <select id="job-remote-hybrid" class="form-control">
+                        <option value="">All Work Types</option>
+                        <?php foreach($job_locations as $key => $value): ?>
+                            <option value="<?php echo $key; ?>"><?php echo $value; ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
             </div>
         </div>
     </div>
@@ -81,190 +105,43 @@
 
     <div class="container">
         <div id="jobs">
-            <div class="job-item">
-                <div class="tags">
-                    <div class="tag-item green">FULL-TIME</div>
-                    <div class="tag-item blue">HYBRID</div>
-                </div>
-                <div class="title">
-                    <h3>Lorem Ipsum</h3>
-                </div>
-                <div class="company-info">
-                    <div class="logo"></div>
-                    <div class="details">
-                        <div class="logo-name">MIMS Pte Ltd</div>
-                        <div class="company-address"><i class="fa fa-map-pin"></i> Dhaka, Bangladesh</div>
+            <?php if(!empty($careers)): ?>
+                <?php foreach($careers as $career): ?>
+                    <div class="job-item">
+                        <div class="tags">
+                            <div class="tag-item green"><?php echo strtoupper($job_types[$career['job_type']] ?? ''); ?></div>
+                            <div class="tag-item blue"><?php echo strtoupper($job_locations[$career['job_location']] ?? ''); ?></div>
+                        </div>
+                        <div class="title">
+                            <h3><?php echo $career['job_title']; ?></h3>
+                        </div>
+                        <div class="company-info">
+                            <div class="logo"></div>
+                            <div class="details">
+                                <div class="logo-name">MIMS Pte Ltd</div>
+                                <div class="company-address"><i class="fa fa-map-pin"></i> <?php echo $career['office_name']; ?></div>
+                            </div>
+                        </div>
+                        <div class="job-detail">
+                            <?php echo $career['job_description']; ?>
+                        </div>
+                        <div class="buttons">
+                            <a href="<?php echo $career['link']; ?>" target="_blank" class="btn btn-red">Read more <i class="fa fa-arrow-right"></i></a>
+                        </div>
                     </div>
+                <?php endforeach; ?>
+            <?php else: ?>
+                <div class="text-center" style="padding: 100px 0;">
+                    <h3 class="text-blue">No career opportunities at the moment.</h3>
+                    <p class="text-grayish-blue">Please check back later or contact us for more information.</p>
                 </div>
-                <div class="job-detail">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent tincidunt cursus ultrices. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Donec ac ligula purus. Morbi eu purus velit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ac elit ac tortor pretium pellentesque. Etiam luctus auctor libero eget consectetur.
-                </div>
-                <div class="buttons">
-                    <a href="#" class="btn btn-red">Read more <i class="fa fa-arrow-right"></i></a>
-                </div>
-            </div>
-
-            <div class="job-item">
-                <div class="tags">
-                    <div class="tag-item green">FULL-TIME</div>
-                    <div class="tag-item blue">HYBRID</div>
-                </div>
-                <div class="title">
-                    <h3>Lorem Ipsum</h3>
-                </div>
-                <div class="company-info">
-                    <div class="logo"></div>
-                    <div class="details">
-                        <div class="logo-name">MIMS Pte Ltd</div>
-                        <div class="company-address"><i class="fa fa-map-pin"></i> Dhaka, Bangladesh</div>
-                    </div>
-                </div>
-                <div class="job-detail">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent tincidunt cursus ultrices. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Donec ac ligula purus. Morbi eu purus velit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ac elit ac tortor pretium pellentesque. Etiam luctus auctor libero eget consectetur.
-                </div>
-                <div class="buttons">
-                    <a href="#" class="btn btn-red">Read more <i class="fa fa-arrow-right"></i></a>
-                </div>
-            </div>
-
-            <div class="job-item">
-                <div class="tags">
-                    <div class="tag-item green">FULL-TIME</div>
-                    <div class="tag-item blue">HYBRID</div>
-                </div>
-                <div class="title">
-                    <h3>Lorem Ipsum</h3>
-                </div>
-                <div class="company-info">
-                    <div class="logo"></div>
-                    <div class="details">
-                        <div class="logo-name">MIMS Pte Ltd</div>
-                        <div class="company-address"><i class="fa fa-map-pin"></i> Dhaka, Bangladesh</div>
-                    </div>
-                </div>
-                <div class="job-detail">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent tincidunt cursus ultrices. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Donec ac ligula purus. Morbi eu purus velit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ac elit ac tortor pretium pellentesque. Etiam luctus auctor libero eget consectetur.
-                </div>
-                <div class="buttons">
-                    <a href="#" class="btn btn-red">Read more <i class="fa fa-arrow-right"></i></a>
-                </div>
-            </div>
-
-            <div class="job-item">
-                <div class="tags">
-                    <div class="tag-item green">FULL-TIME</div>
-                    <div class="tag-item blue">HYBRID</div>
-                </div>
-                <div class="title">
-                    <h3>Lorem Ipsum</h3>
-                </div>
-                <div class="company-info">
-                    <div class="logo"></div>
-                    <div class="details">
-                        <div class="logo-name">MIMS Pte Ltd</div>
-                        <div class="company-address"><i class="fa fa-map-pin"></i> Dhaka, Bangladesh</div>
-                    </div>
-                </div>
-                <div class="job-detail">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent tincidunt cursus ultrices. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Donec ac ligula purus. Morbi eu purus velit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ac elit ac tortor pretium pellentesque. Etiam luctus auctor libero eget consectetur.
-                </div>
-                <div class="buttons">
-                    <a href="#" class="btn btn-red">Read more <i class="fa fa-arrow-right"></i></a>
-                </div>
-            </div>
-
-            <div class="job-item">
-                <div class="tags">
-                    <div class="tag-item green">FULL-TIME</div>
-                    <div class="tag-item blue">HYBRID</div>
-                </div>
-                <div class="title">
-                    <h3>Lorem Ipsum</h3>
-                </div>
-                <div class="company-info">
-                    <div class="logo"></div>
-                    <div class="details">
-                        <div class="logo-name">MIMS Pte Ltd</div>
-                        <div class="company-address"><i class="fa fa-map-pin"></i> Dhaka, Bangladesh</div>
-                    </div>
-                </div>
-                <div class="job-detail">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent tincidunt cursus ultrices. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Donec ac ligula purus. Morbi eu purus velit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ac elit ac tortor pretium pellentesque. Etiam luctus auctor libero eget consectetur.
-                </div>
-                <div class="buttons">
-                    <a href="#" class="btn btn-red">Read more <i class="fa fa-arrow-right"></i></a>
-                </div>
-            </div>
-
-            <div class="job-item">
-                <div class="tags">
-                    <div class="tag-item green">FULL-TIME</div>
-                    <div class="tag-item blue">HYBRID</div>
-                </div>
-                <div class="title">
-                    <h3>Lorem Ipsum</h3>
-                </div>
-                <div class="company-info">
-                    <div class="logo"></div>
-                    <div class="details">
-                        <div class="logo-name">MIMS Pte Ltd</div>
-                        <div class="company-address"><i class="fa fa-map-pin"></i> Dhaka, Bangladesh</div>
-                    </div>
-                </div>
-                <div class="job-detail">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent tincidunt cursus ultrices. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Donec ac ligula purus. Morbi eu purus velit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ac elit ac tortor pretium pellentesque. Etiam luctus auctor libero eget consectetur.
-                </div>
-                <div class="buttons">
-                    <a href="#" class="btn btn-red">Read more <i class="fa fa-arrow-right"></i></a>
-                </div>
-            </div>
-
-            <div class="job-item">
-                <div class="tags">
-                    <div class="tag-item green">FULL-TIME</div>
-                    <div class="tag-item blue">HYBRID</div>
-                </div>
-                <div class="title">
-                    <h3>Lorem Ipsum</h3>
-                </div>
-                <div class="company-info">
-                    <div class="logo"></div>
-                    <div class="details">
-                        <div class="logo-name">MIMS Pte Ltd</div>
-                        <div class="company-address"><i class="fa fa-map-pin"></i> Dhaka, Bangladesh</div>
-                    </div>
-                </div>
-                <div class="job-detail">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent tincidunt cursus ultrices. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Donec ac ligula purus. Morbi eu purus velit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ac elit ac tortor pretium pellentesque. Etiam luctus auctor libero eget consectetur.
-                </div>
-                <div class="buttons">
-                    <a href="#" class="btn btn-red">Read more <i class="fa fa-arrow-right"></i></a>
-                </div>
-            </div>
-
-            <div class="job-item">
-                <div class="tags">
-                    <div class="tag-item green">FULL-TIME</div>
-                    <div class="tag-item blue">HYBRID</div>
-                </div>
-                <div class="title">
-                    <h3>Lorem Ipsum</h3>
-                </div>
-                <div class="company-info">
-                    <div class="logo"></div>
-                    <div class="details">
-                        <div class="logo-name">MIMS Pte Ltd</div>
-                        <div class="company-address"><i class="fa fa-map-pin"></i> Dhaka, Bangladesh</div>
-                    </div>
-                </div>
-                <div class="job-detail">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent tincidunt cursus ultrices. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Donec ac ligula purus. Morbi eu purus velit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ac elit ac tortor pretium pellentesque. Etiam luctus auctor libero eget consectetur.
-                </div>
-                <div class="buttons">
-                    <a href="#" class="btn btn-red">Read more <i class="fa fa-arrow-right"></i></a>
-                </div>
-            </div>
-
+            <?php endif; ?>
         </div>
     </div>
 </div>
+
+<script>
+    var GLOBAL_BASE_URL = '<?= base_url() ?>/';
+    var csrfName = '<?= csrf_header() ?>'; // X-CSRF-Token
+    var csrfHash = document.querySelector('meta[name="<?= csrf_header() ?>"]').content; // The actual token hash
+</script>

@@ -34,26 +34,54 @@
                 </div>
             </div>
 
-            <?php if(count($latest_posts) > 0) { ?>
-            <div id="latestPosts">
-                <div class="latest-post-header">
-                    Latest Posts
-                </div>
-                <div class="latest-post-items">
-                    <?php foreach($latest_posts as $post){ ?>
-                        <a href="<?php echo base_url($post['post_url']); ?>">
-                            <div class="latest-post-item">
-                                <div class="latest-post-img" style="background: url('<?php echo base_url($post['featured_img_path']); ?>') center center no-repeat;background-size: cover;"></div>
-                                <div class="latest-post-details">
-                                    <div class="latest-post-title ellipsis"><?php echo $post['title']; ?></div>
-                                    <div class="latest-post-date"><i class="fa fa-calendar"></i> <?php echo $post['date_formatted']; ?></div>
+            <div id="articleSidebar">
+                <?php if(count($latest_posts) > 0) { ?>
+                <div id="latestPosts">
+                    <div class="latest-post-header">
+                        Latest Posts
+                    </div>
+                    <div class="latest-post-items">
+                        <?php foreach($latest_posts as $post){ ?>
+                            <a href="<?php echo base_url($post['post_url']); ?>">
+                                <div class="latest-post-item">
+                                    <div class="latest-post-img" style="background: url('<?php echo base_url($post['featured_img_path']); ?>') center center no-repeat;background-size: cover;"></div>
+                                    <div class="latest-post-details">
+                                        <div class="latest-post-title ellipsis"><?php echo $post['title']; ?></div>
+                                        <div class="latest-post-date"><i class="fa fa-calendar"></i> <?php echo $post['date_formatted']; ?></div>
+                                    </div>
                                 </div>
-                            </div>
-                        </a>
-                    <?php } ?>
+                            </a>
+                        <?php } ?>
+                    </div>
                 </div>
+                <?php } ?>
+
+                <?php if(!empty($form)) { ?>
+                <div id="articleForm" class="sidebar-form">
+                    <div class="form-header">
+                        <?php echo $form['name']; ?>
+                    </div>
+                    <?php if(!empty($form['description'])) { ?>
+                        <div class="form-description">
+                            <?php echo $form['description']; ?>
+                        </div>
+                    <?php } ?>
+                    <form id="dynamicForm" data-form-id="<?php echo $form['id']; ?>">
+                        <div id="fb-render"></div>
+                        <div class="form-group text-right">
+                            <button type="submit" class="btn btn-red">Submit</button>
+                        </div>
+                        <div id="form-message" class="mt-2"></div>
+                    </form>
+                </div>
+                <script>
+                    var GLOBAL_BASE_URL = '<?= base_url() ?>/';
+                    var csrfName = '<?= csrf_token() ?>'; 
+                    var csrfHash = '<?= csrf_hash() ?>';
+                    var formFields = <?php echo $form['fields']; ?>;
+                </script>
+                <?php } ?>
             </div>
-            <?php } ?>
 
         </div>
     </div>

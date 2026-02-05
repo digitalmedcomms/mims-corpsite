@@ -31,7 +31,8 @@
     <meta name="description" content="<?php echo $description; ?>" />
     <meta name="keywords" content="<?php echo $keywords; ?>" />
     <link rel="canonical" href="<?php echo $url; ?>" />
-
+    <?= csrf_meta() ?>
+    
     <!-- STANDARD HTML PAGE CONFIGURATION -->
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="shortcut icon" href="<?php echo isset($favicon) ? $favicon : IMG_URL . 'favicon.ico'; ?>" />

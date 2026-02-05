@@ -2,22 +2,14 @@
 
 namespace App\Controllers\Admin;
 
-
-use App\Models\LeadersModel;
-use App\Models\LeaderTypesModel;
-use App\Models\Locations\CountryModel;
-use App\Models\PracticeModel;
-
+use App\Models\FormsModel;
 
 class Forms extends AdminController
 {
 
     public function __construct()
     {
-        $this->leaderTypes = new LeaderTypesModel();
-        $this->leaders = new LeadersModel();
-        $this->countries = new CountryModel();
-        $this->practices = new PracticeModel();
+        $this->forms = new FormsModel();
     }
 
     public function index(){
@@ -36,34 +28,24 @@ class Forms extends AdminController
             'title'     => trans('forms'),
             'active_tab'     => 'forms',
         ]);
-        $leaderTypes = $this->leaderTypes->where(['status' => 1])->findAll();
-        $data['countries'] = $this->countries->where(['status' => 1])->findAll();
-        $data['practices'] = $this->practices->where(['status' => 1])->findAll();
-        $data['leaderTypes'] = $leaderTypes;
-
         return view('admin/forms/add', $data);
     }
 
     public function edit($id = ''){
         if(!empty($id)){
-
-            $leader = $this->leaders->find($id);
-            if(!empty($leader)){
+            $form = $this->forms->find($id);
+            if(!empty($form)){
                 $data = array_merge($this->data, [
-                    'title'     => trans('leader_types'),
-                    'active_tab'     => 'leader_types',
+                    'title'     => trans('forms'),
+                    'active_tab'     => 'forms',
+                    'form'      => $form
                 ]);
-                $data['countries'] = $this->countries->where(['status' => 1])->findAll();
-                $data['practices'] = $this->practices->where(['status' => 1])->findAll();
-                $data['leaderTypes'] = $this->leaderTypes->where(['status' => 1])->findAll();
-                $leader['countries'] = explode(",", $leader['countries']);
-                $data['leader'] = $leader;
-                return view('admin/leaders/edit', $data);
+                return view('admin/forms/edit', $data);
             }else{
-                return redirect()->to('admin/leaders');
+                return redirect()->to('admin/forms');
             }
         }else{
-            return redirect()->to('admin/leaders');
+            return redirect()->to('admin/forms');
         }
     }
 
@@ -72,65 +54,69 @@ class Forms extends AdminController
         if($this->request->getMethod() === 'post'){
             $validation =  \Config\Services::validation();
             $rules = [
-                'name' => [
-                    'rules'  => 'required',
-                ],
-                'leader_type_id' => [
-                    'label' => 'Leader Type',
-                    'rules'  => 'required',
-                    'errors' => [
-                        'required' => trans('form_validation_required'),
-                    ],
-                ],
-                // 'image_id' => [
-                //     'label'  => 'Profile Image',
-                //     'rules'  => 'required',
-                // ],
-                'biography' => [
-                    'rules' => 'required'
-                ],
-                'designation' => [
-                    'rules' => 'required'
+                'form_name' => [
+                    'rules'  => 'required|is_unique[forms.name]',
                 ]
             ];
 
-            $countries = '';
-            $practice = 0;
-            if($this->request->getPost('leader_type_id') == 2){
-                $rules['countries'] = ['rules' => 'required'];
-                if($this->request->getPost('countries')){
-                    $countries = implode(",", $this->request->getPost('countries'));
-                }
-            }else if($this->request->getPost('leader_type_id') == 3){
-                $rules['practice'] = ['rules' => 'required'];
-                $practice = $this->request->getPost('practice');
+            if ($this->request->getPost('enable_confirmation')) {
+                $rules['confirmation_message'] = [
+                    'rules' => 'required',
+                    'label' => 'Confirmation Message'
+                ];
+            }
+
+            if ($this->request->getPost('enable_notification')) {
+                $rules['notification_email'] = [
+                    'rules' => 'required|valid_email',
+                    'label' => 'Notification Email'
+                ];
+                $rules['notification_from_name'] = [
+                    'rules' => 'required',
+                    'label' => 'Notification From Name'
+                ];
+                $rules['notification_from_email'] = [
+                    'rules' => 'required|valid_email',
+                    'label' => 'Notification From Email'
+                ];
+                $rules['notification_subject'] = [
+                    'rules' => 'required',
+                    'label' => 'Notification Subject'
+                ];
+                $rules['notification_message'] = [
+                    'rules' => 'required',
+                    'label' => 'Notification Message'
+                ];
             }
 
             if ($this->validate($rules)) {
                 $item = [
-                    'leader_type_id' => $this->request->getPost('leader_type_id'),
-                    'image_path' => $this->request->getPost('image_path'),
-                    'image_id' => $this->request->getPost('image_id') ?? 0,
-                    'practice' => $practice,
-                    'countries' => $countries,
-                    'name' => $this->request->getPost('name'),
-                    'designation' => $this->request->getPost('designation'),
-                    'biography' => $this->request->getPost('biography'),
-                    'order' => $this->request->getPost('order'),
-                    'status' => $this->request->getPost('status'),
+                    'name' => $this->request->getPost('form_name'),
+                    'description' => $this->request->getPost('form_description'),
+                    'fields' => $this->request->getPost('fields'),
+                    'confirmation_message' => $this->request->getPost('confirmation_message'),
+                    'notification_email' => $this->request->getPost('notification_email'),
+                    'notification_cc' => $this->request->getPost('notification_cc'),
+                    'notification_from_name' => $this->request->getPost('notification_from_name'),
+                    'notification_from_email' => $this->request->getPost('notification_from_email'),
+                    'notification_subject' => $this->request->getPost('notification_subject'),
+                    'notification_message' => $this->request->getPost('notification_message'),
+                    'enable_confirmation' => $this->request->getPost('enable_confirmation') ? 1 : 0,
+                    'enable_notification' => $this->request->getPost('enable_notification') ? 1 : 0,
+                    'status' => $this->request->getPost('form_status'),
                 ];
-                $this->leaders->save($item);
+                $this->forms->insert($item);
 
-                $this->session->setFlashData('success', trans("leaders") . " " . trans("msg_suc_updated"));
+                $this->session->setFlashData('success', trans("forms") . " " . trans("msg_suc_updated"));
                 $this->session->setFlashData("mes_settings", 1);
 
-                return redirect()->to('admin/leaders');
+                return redirect()->to('admin/forms');
             }else{
                 $this->session->setFlashData('errors_form', $validation->listErrors());
                 return redirect()->back()->withInput()->with('error', 'Unable to process your request.');
             }
         }else{
-            return redirect()->to('admin/leaders');
+            return redirect()->to('admin/forms');
         }
     }
 
@@ -138,107 +124,127 @@ class Forms extends AdminController
     public function update($id = ''){
         if(!empty($id)){
             if($this->request->getMethod() === 'post'){
+
                 $validation =  \Config\Services::validation();
                 $rules = [
-                    'name' => [
-                        'rules'  => 'required',
-                    ],
-                    'leader_type_id' => [
-                        'label' => 'Leader Type',
-                        'rules'  => 'required',
-                        'errors' => [
-                            'required' => trans('form_validation_required'),
-                        ],
-                    ],
-                    // 'image_id' => [
-                    //     'label'  => 'Profile Image',
-                    //     'rules'  => 'required',
-                    // ],
-                    'biography' => [
-                        'rules' => 'required'
-                    ],
-                    'designation' => [
-                        'rules' => 'required'
+                    'form_name' => [
+                        'rules'  => 'required|is_unique[forms.name,id,'.$id.']',
                     ]
                 ];
 
-                $countries = '';
-                $practice = 0;
-                if($this->request->getPost('leader_type_id') == 2){
-                    $rules['countries'] = ['rules' => 'required'];
-                    if($this->request->getPost('countries')){
-                        $countries = implode(",", $this->request->getPost('countries'));
-                    }
-                }else if($this->request->getPost('leader_type_id') == 3){
-                    $rules['practice'] = ['rules' => 'required'];
-                    $practice = $this->request->getPost('practice');
+                if ($this->request->getPost('enable_confirmation')) {
+                    $rules['confirmation_message'] = [
+                        'rules' => 'required',
+                        'label' => 'Confirmation Message'
+                    ];
                 }
+
+                if ($this->request->getPost('enable_notification')) {
+                    $rules['notification_email'] = [
+                        'rules' => 'required|valid_email',
+                        'label' => 'Notification Email'
+                    ];
+                    $rules['notification_from_name'] = [
+                        'rules' => 'required',
+                        'label' => 'Notification From Name'
+                    ];
+                    $rules['notification_from_email'] = [
+                        'rules' => 'required|valid_email',
+                        'label' => 'Notification From Email'
+                    ];
+                    $rules['notification_subject'] = [
+                        'rules' => 'required',
+                        'label' => 'Notification Subject'
+                    ];
+                    $rules['notification_message'] = [
+                        'rules' => 'required',
+                        'label' => 'Notification Message'
+                    ];
+                }
+
                 if ($this->validate($rules)) {
                     $item = [
-                        'leader_type_id' => $this->request->getPost('leader_type_id'),
-                        'image_path' => $this->request->getPost('image_path'),
-                        'image_id' => $this->request->getPost('image_id') ?? 0,
-                        'practice' => $practice,
-                        'countries' => $countries,
-                        'name' => $this->request->getPost('name'),
-                        'designation' => $this->request->getPost('designation'),
-                        'biography' => $this->request->getPost('biography'),
-                        'order' => $this->request->getPost('order'),
-                        'status' => $this->request->getPost('status'),
+                        'name' => $this->request->getPost('form_name'),
+                        'description' => $this->request->getPost('form_description'),
+                        'fields' => $this->request->getPost('fields'),
+                        'confirmation_message' => $this->request->getPost('confirmation_message'),
+                        'notification_email' => $this->request->getPost('notification_email'),
+                        'notification_cc' => $this->request->getPost('notification_cc'),
+                        'notification_from_name' => $this->request->getPost('notification_from_name'),
+                        'notification_from_email' => $this->request->getPost('notification_from_email'),
+                        'notification_subject' => $this->request->getPost('notification_subject'),
+                        'notification_message' => $this->request->getPost('notification_message'),
+                        'enable_confirmation' => $this->request->getPost('enable_confirmation') ? 1 : 0,
+                        'enable_notification' => $this->request->getPost('enable_notification') ? 1 : 0,
+                        'status' => $this->request->getPost('form_status'),
                     ];
-                    $this->leaders->set($item)->where('id', $id)->update();
+                    $this->forms->update($id, $item);
 
-                    $this->session->setFlashData('success', trans("leaders") . " " . trans("msg_suc_updated"));
+                    $this->session->setFlashData('success', trans("forms") . " " . trans("msg_suc_updated"));
                     $this->session->setFlashData("mes_settings", 1);
 
-                    return redirect()->to('admin/leaders');
+                    return redirect()->to('admin/forms');
                 }else{
                     $this->session->setFlashData('errors_form', $validation->listErrors());
                     return redirect()->back()->withInput()->with('error', 'Unable to process your request.');
                 }
             }else{
-                return redirect()->to('admin/leaders');
+                return redirect()->to('admin/forms');
             }
         }else{
-            return redirect()->to('admin/leaders');
+            return redirect()->to('admin/forms');
         }
     }
 
     public function delete($id = ''){
         if(!empty($id)){
-            $this->leaders->where('id', $id)->delete();
-            $this->session->setFlashData('success', 'Leader was successfully deleted.');
+            $this->forms->delete($id);
+            $this->session->setFlashData('success', 'Form was successfully deleted.');
             $this->session->setFlashData("mes_settings", 1);
-            return redirect()->to('admin/leaders');
+            return redirect()->to('admin/forms');
         }else{
-            return redirect()->to('admin/leaders');
+            return redirect()->to('admin/forms');
         }
         
     }
 
     public function tableListing(){
-        $data = [];
         $input = $_POST;
+        $limit = $input['length'] ?? 10;
+        $start = $input['start'] ?? 0;
+        $search = $input['search']['value'] ?? '';
 
-        if (isset($input['length']) && !empty($input['length'])){
-            $input['limit'] = $input['length'];
+        $query = $this->forms;
+        if (!empty($search)) {
+            $query = $query->like('name', $search)->orLike('description', $search);
         }
 
-        if (isset($module_id) && !empty($module_id)){
-            $input['module_id'] = $module_id;
-        }
+        $totalRecords = $query->countAllResults(false);
+        $records = $query->orderBy('id', 'DESC')->findAll($limit, $start);
+
         $data = [];
-        // $data = $this->leaders->listing($input);
+        foreach ($records as $row) {
+            $status = '<span class="badge badge-'. ($row['status'] == 1 ? 'success' : 'danger') .'">'. ($row['status'] == 1 ? 'Active' : 'Inactive') .'</span>';
+            
+            $action = '<a href="'. base_url('admin/forms/edit/'.$row['id']) .'" class="btn btn-sm btn-primary"><i class="fa fa-edit"></i> Edit</a> ';
+            $action .= '<a href="'. base_url('admin/forms/delete/'.$row['id']) .'" class="btn btn-sm btn-danger btn-delete-item" onclick="return confirm(\'Are you sure you want to delete this form?\')"><i class="fa fa-trash"></i> Delete</a>';
 
-        if(empty($data)){
-            $data['data'] = [];
-            $data['recordsTotal'] = 0;
-            $data['recordsFiltered'] = 0;
+            $data[] = [
+                'id' => $row['id'],
+                'name' => $row['name'],
+                'description' => $row['description'],
+                'status' => $status,
+                'action' => $action
+            ];
         }
 
-        $data['draw'] = $input['draw'];
+        $output = [
+            'draw' => intval($input['draw']),
+            'recordsTotal' => $totalRecords,
+            'recordsFiltered' => $totalRecords,
+            'data' => $data
+        ];
 
-        echo  json_encode($data);
-        exit;
+        return $this->response->setJSON($output);
     }
 }

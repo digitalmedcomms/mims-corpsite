@@ -38,8 +38,8 @@
                                 <table class="cs_datatable table table-bordered table-striped cell-border" >
                                     <thead>
                                         <tr>
-                                            <th class="text-center" style="width: 120px;"></th>
-                                            <th style="width: 150px;">Form Name</th>
+                                            <th class="text-center" style="width: 50px;">ID</th>
+                                            <th style="width: 250px;">Form Name</th>
                                             <th>Description</th>
                                             <th class="text-center" style="width: 120px;">Status</th>
                                             <th class="text-center" style="width: 200px;">Actions</th>
@@ -64,18 +64,18 @@ $uri = $request->uri;
 <script type="text/javascript">
     jQuery(document).ready(function(){
         DataTableListing.ajaxURL = '<?php echo base_url($uri->getSegment(1) . '/' . $uri->getSegment(2) . '/table-listing'); ?>';
-        DataTableListing.options.pageLength = 7;
+        DataTableListing.options.pageLength = 10;
         DataTableListing.options.columns = [
-            { "data": "image" },
-            { "data": "leader_type_name" },
+            { "data": "id" },
             { "data": "name" },
+            { "data": "description" },
             { "data": "status" },
             { "data": "action" },
         ];
         DataTableListing.options.aoColumnDefs = [
-            { "aTargets": [ 0 ], "bSortable": false },
-            { "aTargets": [ 1 ], "bSortable": false },
-            { "aTargets": [ 2 ], "bSortable": false },
+            { "aTargets": [ 0 ], "bSortable": true },
+            { "aTargets": [ 1 ], "bSortable": true },
+            { "aTargets": [ 2 ], "bSortable": true },
             { "aTargets": [ 3 ], "bSortable": false },
             { "aTargets": [ 4 ], "bSortable": false },
         ];
