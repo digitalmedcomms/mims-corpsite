@@ -126,6 +126,7 @@ class Joinus extends BaseController
             // Fetch query
             $applyFilters($careersModel);
             $careersModel->select('careers.*, offices.name as office_name, offices.address as office_address');
+            $careersModel->orderBy('careers.id', 'DESC');
             $careers = $careersModel->findAll($per_page, $offset);
 
             $viewData = [
