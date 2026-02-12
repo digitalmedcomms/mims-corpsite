@@ -5,8 +5,8 @@
             <h1 class="text-blue">Join Us</h1>
             <div class="breadcrumbs">
                 <ul>
-                    <li><a href="" class="breadcrumb-link">Home</a></li>
-                    <li><a href="" class="breadcrumb-link">Join Us</a></li>
+                    <li><a href="<?php echo base_url(); ?>" class="breadcrumb-link">Home</a></li>
+                    <li><a href="javascript:;" class="breadcrumb-link">Join Us</a></li>
                 </ul>
             </div>
         </div>

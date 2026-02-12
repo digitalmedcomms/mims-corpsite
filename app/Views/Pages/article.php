@@ -4,9 +4,9 @@
             <h1 class="text-blue"><?php echo $post['title']; ?></h1>
             <div class="breadcrumbs">
                 <ul>
-                    <li><a href="" class="breadcrumb-link">Home</a></li>
-                    <li><a href="" class="breadcrumb-link"><?php echo $category['name']; ?></a></li>
-                    <li><a href="" class="breadcrumb-link"><?php echo $post['title']; ?></a></li>
+                    <li><a href="<?php echo base_url(); ?>" class="breadcrumb-link">Home</a></li>
+                    <li><a href="<?php echo base_url('news-updates'); ?>" class="breadcrumb-link">News & Update</a></li>
+                    <li><a href="javascript:;" class="breadcrumb-link"><?php echo $post['title']; ?></a></li>
                 </ul>
             </div>
         </div>

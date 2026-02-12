@@ -4,8 +4,8 @@
             <h1 class="text-blue">For Healthcare Professionals</h1>
             <div class="breadcrumbs">
                 <ul>
-                    <li><a href="" class="breadcrumb-link">Home</a></li>
-                    <li><a href="" class="breadcrumb-link">Our Solutions</a></li>
+                    <li><a href="<?php echo base_url(); ?>" class="breadcrumb-link">Home</a></li>
+                    <li><a href="<?php echo base_url('our-solutions'); ?>" class="breadcrumb-link">Our Solutions</a></li>
                 </ul>
             </div>
         </div>

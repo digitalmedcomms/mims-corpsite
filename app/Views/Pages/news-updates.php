@@ -6,8 +6,8 @@
             <h1 class="text-blue">News & Updates</h1>
             <div class="breadcrumbs">
                 <ul>
-                    <li><a href="" class="breadcrumb-link">Home</a></li>
-                    <li><a href="" class="breadcrumb-link">News & Updates</a></li>
+                    <li><a href="<?php echo base_url(); ?>" class="breadcrumb-link">Home</a></li>
+                    <li><a href="<?php echo base_url('news-updates'); ?>" class="breadcrumb-link">News & Update</a></li>
                 </ul>
             </div>
         </div>
