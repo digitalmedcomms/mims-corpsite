@@ -86,7 +86,7 @@ class Joinus extends BaseController
             $job_type = $this->request->getPost('job_type');
             $job_location = $this->request->getPost('job_location');
             $page = $this->request->getPost('page') ?: 1;
-            $per_page = 10;
+            $per_page = 9;
             $offset = ($page - 1) * $per_page;
 
             $careersModel = new CareersModel();
