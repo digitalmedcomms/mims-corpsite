@@ -16,62 +16,55 @@
     <div id="leaders">
         <div class="container">
             <ul class="nav nav-tabs" id="myTab" role="tablist">
-                <?php 
-                $ctr = 0;
-                foreach($leader_types as $leader_type){ ?>
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link <?php echo $ctr == 0 ? 'active' : ''; ?>" id="<?php echo str_replace(" ", "", strtolower($leader_type['name'])); ?>-tab" data-bs-toggle="tab" data-bs-target="#<?php echo str_replace(" ", "", strtolower($leader_type['name'])); ?>-tab-pane" type="button" role="tab" aria-controls="<?php echo str_replace(" ", "", strtolower($leader_type['name'])); ?>-tab-pane" aria-selected="true"><?php echo $leader_type['name']; ?></button>
-                    </li>
-                <?php 
-                $ctr++;
-                } ?>
+                <li class="nav-item active" role="presentation">
+                    <button class="nav-link active" id="executive-committee-tab" data-bs-toggle="tab" data-bs-target="#executive-committee-tab-pane" type="button" role="tab" aria-controls="executive-committee-tab-pane" aria-selected="true">Regional Leaders</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="country-leaders-tab" data-bs-toggle="tab" data-bs-target="#country-leaders-tab-pane" type="button" role="tab" aria-controls="country-leaders-tab-pane" aria-selected="true">Country Leaders</button>
+                </li>
             </ul>
             <div class="tab-content" id="myTabContent">
-
-                <?php 
-                $ctr = 0;
-                foreach($leader_types as $leader_type){ ?>
-                <div class="tab-pane fade <?php echo $ctr == 0 ? 'show active' : ''; ?>" id="<?php echo str_replace(" ", "", strtolower($leader_type['name'])); ?>-tab-pane" role="tabpanel" aria-labelledby="<?php echo str_replace(" ", "", strtolower($leader_type['name'])); ?>-tab" tabindex="0">
+                <div class="tab-pane fade active show" id="executive-committee-tab-pane" role="tabpanel" aria-labelledby="executive-committee-tab" tabindex="0">
                     <div class="leaders-container">
+                        <h3 class="text-blue">Executive Leads</h3>
                         <?php
-                        if($leader_type['id'] == 3){
-                            foreach($leader_type['practices'] as $practice){
-                                echo '<h3 class="text-blue">' . $practice['name'] . '</h3>';
-                                foreach($practice['leaders'] as $leader){
-                                    echo '<div class="leader-item">';
-                                        echo '<div class="leader-img"><img src="'.base_url($leader['image_path']).'" alt="'.$leader['name'].'"></div>';
-                                        echo '<div class="leader-details"><div class="leader-name text-blue">'.$leader['name'].'</div><div class="leader-designation text">'.$leader['designation'].'</div></div>';
-                                        echo '<div class="leader-bio">'.$leader['biography'].'</div>';
-                                        echo '<a href="javascript:;" class="profileLink text-blue text-dmsans">View Profile <i class="fa fa-angle-right"></i></a>';
-                                    echo '</div>';
-                                }
-                            }
-                        }else{
-                            foreach($leader_type['leaders'] as $leader){
+                            foreach($leader_types[0]['leaders'] as $leader){
                                 echo '<div class="leader-item">';
                                     echo '<div class="leader-img"><img src="'.base_url($leader['image_path']).'" alt="'.$leader['name'].'"></div>';
-                                    if($leader_type['id'] == 2){
-                                        $countries = explode(",", $leader['countries']);
-                                        echo '<div class="leader-countries">';
-                                        if(!empty($countries)){
-                                            foreach($countries as $country){
-                                                echo '<img src="'.IMG_URL . 'flag-circle/'.$country.'.png" alt="'.$country.'">';
-                                            }
-                                        }
-                                        echo '</div>';
-                                    }
                                     echo '<div class="leader-details"><div class="leader-name text-blue">'.$leader['name'].'</div><div class="leader-designation text">'.$leader['designation'].'</div></div>';
                                     echo '<div class="leader-bio">'.$leader['biography'].'</div>';
-                                    echo '<a href="javascript:;"  class="profileLink text-blue text-dmsans">View Profile <i class="fa fa-angle-right"></i></a>';
+                                    echo '<a href="javascript:;" data-leader="'.$leader['id'].'" class="profileLink text-blue text-dmsans">View Profile <i class="fa fa-angle-right"></i></a>';
                                 echo '</div>';
                             }
-                        }
+                        ?>
+                        <h3 class="text-blue">Regional Leads</h3>
+                        <?php
+                            foreach($leader_types[2]['leaders'] as $leader){
+                                echo '<div class="leader-item">';
+                                    echo '<div class="leader-img"><img src="'.base_url($leader['image_path']).'" alt="'.$leader['name'].'"></div>';
+                                    echo '<div class="leader-details"><div class="leader-name text-blue">'.$leader['name'].'</div><div class="leader-designation text">'.$leader['designation'].'</div></div>';
+                                    echo '<div class="leader-bio">'.$leader['biography'].'</div>';
+                                    echo '<a href="javascript:;" data-leader="'.$leader['id'].'" class="profileLink text-blue text-dmsans">View Profile <i class="fa fa-angle-right"></i></a>';
+                                echo '</div>';
+                            }
+                        ?>
+                        
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="country-leaders-tab-pane" role="tabpanel" aria-labelledby="country-leaders-tab" tabindex="0">
+                    <div class="leaders-container">
+                        <?php
+                            foreach($leader_types[1]['leaders'] as $leader){
+                                echo '<div class="leader-item">';
+                                    echo '<div class="leader-img"><img src="'.base_url($leader['image_path']).'" alt="'.$leader['name'].'"></div>';
+                                    echo '<div class="leader-details"><div class="leader-name text-blue">'.$leader['name'].'</div><div class="leader-designation text">'.$leader['designation'].'</div></div>';
+                                    echo '<div class="leader-bio">'.$leader['biography'].'</div>';
+                                    echo '<a href="javascript:;" data-leader="'.$leader['id'].'" class="profileLink text-blue text-dmsans">View Profile <i class="fa fa-angle-right"></i></a>';
+                                echo '</div>';
+                            }
                         ?>
                     </div>
                 </div>
-                <?php 
-                $ctr++;
-                } ?>
             </div>
         </div>
     </div>
