@@ -26,15 +26,15 @@
                                             <div class="solutions-mega-menu">
                                                 <div class="menu-item border-right">
                                                     <a href="<?php echo base_url('about-us/#our-advantage'); ?>" class="link-header text-red">Our Advantage</a>
-                                                    <p>Read the business values that ground our commitment to your success..</p>
+                                                    <p>Read the business values that ground our commitment to your success</p>
                                                 </div>
                                                 <div class="menu-item border-right">
                                                     <a href="<?php echo base_url('about-us/#timeline'); ?>" class="link-header text-red">Our Story</a>
-                                                    <p>Founded in 1963, learn more about our pioneering journey to date..</p>
+                                                    <p>Founded in 1963, learn more about our pioneering journey to date</p>
                                                 </div>
                                                 <div class="menu-item">
                                                     <a href="<?php echo base_url('about-us/#our-people'); ?>" class="link-header text-red">Our People</a>
-                                                    <p>Meet <a href="<?php echo base_url('our-leaders'); ?>">our leadership</a> and see our various locations in 17 markets..</p>
+                                                    <p>Meet <a href="<?php echo base_url('our-leaders'); ?>">our leadership</a> and see our various locations in 17 markets</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -103,11 +103,11 @@
                                             <div class="solutions-mega-menu">
                                                 <div class="menu-item border-right">
                                                     <a href="<?php echo base_url('join-us'); ?>" class="link-header text-red">Our Core Values</a>
-                                                    <p>Read about our three core values that help shape the work culture at MIMS..</p>
+                                                    <p>Read about our three core values that help shape the work culture at MIMS</p>
                                                 </div>
                                                 <div class="menu-item">
                                                     <a href="<?php echo base_url('join-us#jobs'); ?>" class="link-header text-red">We're Hiring!</a>
-                                                    <p>Find opportunities at MIMS..</p>
+                                                    <p>Find opportunities at MIMS</p>
                                                 </div>
                                             </div>
                                         </div>

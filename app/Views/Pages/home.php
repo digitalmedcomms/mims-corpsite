@@ -35,7 +35,7 @@
                         <div class="banner-item">
                             <div class="left-side">
                                 <h1 class="wow fadeIn" data-wow-duration="2s" data-wow-delay="1s">Leaders in Healthcare</h1>
-                                <div class="banner-description wow fadeInUp" data-wow-delay="1.5s">Asia Pacific leading multi-channel provider of trusted, 
+                                <div class="banner-description wow fadeInUp" data-wow-delay="1.5s">Asia Pacific's leading multi-channel provider of trusted, 
     quality medical information, medical education and knowledge
     services connecting healthcare communities. </div>
                                 <div class="buttons wow fadeIn" data-wow-duration="1s" data-wow-delay="3s">
@@ -109,7 +109,7 @@
                     <div class="left-side">
                         <div class="fancy-imgs">
                             <div class="fancy-img-left wow fadeInDown" data-wow-delay="1s" style="background: url('<?php echo IMG_URL . 'regional-expertise-demo.png'; ?>') center center no-repeat;background-size: cover;"></div>
-                            <div class="fancy-center wow fadeIn"  data-wow-delay="2s">60 years<br>of service</div>
+                            <div class="fancy-center wow fadeIn"  data-wow-delay="2s">Over 60 years<br>of service</div>
                             <div class="fancy-img-right wow fadeInUp" data-wow-delay="1s" style="background: url('<?php echo IMG_URL . 'regional-expertise-collab.png'; ?>') center center no-repeat;background-size: cover;"></div>
                         </div>
                     </div>
@@ -133,7 +133,7 @@
     <div id="news-updates" class="section">
         <div class="container">
             <div class="news-update-container">
-                <div class="kicker text-center">News & Update</div>
+                <div class="kicker text-center">News & Updates</div>
                 <h2 class="text-blue text-center wow fadeIn">Stay Informed and Engaged!</h2>
                 <div class="section-three-cols news-container">
                     <?php 

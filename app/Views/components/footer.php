@@ -40,12 +40,12 @@
                     </ul>
                 </div>
                 <div class="latest-news">
-                    <!-- <h3>Latest News & Blog</h3> -->
+                    <!-- <h3>Latest News & Blog</h3>
                     Sign-up for our latest news & articles<br>
                     <div class="newsletter">
                         <input type="text" placeholder="Email Address" class="form-control" id="email-newsletter">
                         <a href="javascript:;"><i class="fa fa-paper-plane"></i></a>
-                    </div>
+                    </div> -->
                 </div>
             </div>
             <div class="copyright">
