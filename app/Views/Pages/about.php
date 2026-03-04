@@ -467,7 +467,7 @@
                                         <div class="section-two-cols">
                                             <div class="col-item">
                                                 <h2 class="text-red text-dmsans">2021</h2>
-                                                <h3 class="text-blue text-dmsans">Launch of MIMS Education mobile app</h3>
+                                                <h3 class="text-blue text-dmsans">Launch of MIMS Education and mobile app</h3>
                                                 <div class="desc text-grayish-blue">
                                                     <p>MIMS Education provides a bespoke curation of topics for healthcare professionals across varying fields and specialties, all carefully crafted by our dedicated team of medical writers. The platform’s expanding catalogue, ease, and accessibility are built on the promise to deliver the latest medical knowledge sought by users across Asia.</p>
                                                     <p>The MEDU mobile app was launched in 2023.</p>
