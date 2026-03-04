@@ -42,7 +42,7 @@
                                 </h2>
                                 <div id="collapseTwoForHCP" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionForHCP">
                                 <div class="accordion-body">
-                                    A compilation of the latest local and international disease management guidelines for quick reference by healthcare professionals, available
+                                    A compilation of the latest local and international disease management guidelines for quick reference by healthcare professionals, available across 17 medical specialties.
                                 </div>
                                 </div>
                             </div>
@@ -54,7 +54,7 @@
                                 </h2>
                                 <div id="collapseThreeForHCP" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionForHCP">
                                 <div class="accordion-body">
-                                    Comprehensive coverage of local and regional industry updates, expert opinions, case studies, medical symposium highlight and more.<br>Published in our award-winning magazines such as  MIMS Doctor, 
+                                    Comprehensive coverage of local and regional industry updates, expert opinions, case studies, medical symposium highlight and more.<br>Published in our award-winning magazines such as  MIMS Doctor, MIMS JPOG and MIMS Oncology.
                                 </div>
                                 </div>
                             </div>

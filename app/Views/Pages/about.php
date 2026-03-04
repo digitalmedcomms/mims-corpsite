@@ -7,8 +7,8 @@
             <div class="left-side">
                 <h1 class="wow fadeIn" data-wow-duration="2s" data-wow-delay="1s">About Us</h1>
                 <div class="banner-description wow fadeInUp" data-wow-delay="1.5s">
-                    <p>The MIMS symbol represents people interacting with one another, forming a healthcare community and sharing knowledge.</p>
-                    <p>With teams spanning 17 countries & regions, we offer best in class services and innovation to drive insightful learningamong doctors, healthcare companies, and the entire medical community.</p>
+                    <p>The MIMS symbol <img src="<?php echo base_url('assets/img/mims-logo-icon.png'); ?>" style="width: 20px;"/> represents people interacting with one another, forming a healthcare community and sharing knowledge.</p>
+                    <p>With teams spanning 17 countries & regions, we offer best in class services and innovation to drive insightful learning among doctors, healthcare companies, and the entire medical community.</p>
                 </div>
             </div>
         </div>
@@ -325,7 +325,7 @@
                             </li>
                             <li data-horizontal-timeline='{"date": "23/05/1985"}'>
                                 <div class="section">
-                                    <div class="section-bg-img bg-right" style="background: url('<?php echo IMG_URL . 'timeline/mims-marketing-solution-bg.png'; ?>') center left no-repeat;background-size: cover;"></div>
+                                    <div class="section-bg-img bg-right" style="background: url('<?php echo IMG_URL . 'timeline/mims-marketing-solution-bg.png'; ?>') center center no-repeat;background-size: cover;"></div>
                                     <div class="container">
                                         <div class="section-two-cols">
                                             <div class="col-item">
@@ -393,7 +393,7 @@
                                                     <p>MIMS.com was enhanced and relaunched to allow registrations of HCPs onto our platform for easy access to drug information, medical news and updates.</p>
                                                 </div>
                                                 <div class="buttons">
-                                                    <a href="#" class="btn btn-red">Access now at mims.com <i class="fa fa-arrow-right"></i></a>
+                                                    <a href="https://mims.com" target="_blank" class="btn btn-red">Access now at mims.com <i class="fa fa-arrow-right"></i></a>
                                                 </div>
                                             </div>
                                             <div class="col-item"></div>
@@ -449,7 +449,8 @@
                                                 <h2 class="text-red text-dmsans">2015</h2>
                                                 <h3 class="text-blue text-dmsans">Launch of HCP Recruitment Services</h3>
                                                 <div class="desc text-grayish-blue">
-                                                    <p>With the HCPs Recruitment Services, we provide career opportunities to HCPs by connecting them with healthcare institutions. Our career services professionals can tailor match the institutions’ needs to a diverse group of professionals engaged on our platform.</p>
+                                                    <p>We provide career opportunities to HCPs by connecting them with healthcare insitutions. </p>
+                                                    <p>Our career service professionals can tailor match the institutions' needs to a diverse group of professionals engaged in our platform.</p>
                                                 </div>
                                             </div>
                                             <div class="col-item"></div>
@@ -466,7 +467,7 @@
                                         <div class="section-two-cols">
                                             <div class="col-item">
                                                 <h2 class="text-red text-dmsans">2021</h2>
-                                                <h3 class="text-blue text-dmsans">Launch of MIMS mobile app</h3>
+                                                <h3 class="text-blue text-dmsans">Launch of MIMS Education mobile app</h3>
                                                 <div class="desc text-grayish-blue">
                                                     <p>MIMS Education provides a bespoke curation of topics for healthcare professionals across varying fields and specialties, all carefully crafted by our dedicated team of medical writers. The platform’s expanding catalogue, ease, and accessibility are built on the promise to deliver the latest medical knowledge sought by users across Asia.</p>
                                                     <p>The MEDU mobile app was launched in 2023.</p>
@@ -486,13 +487,13 @@
                                         <div class="section-two-cols">
                                             <div class="col-item">
                                                 <h2 class="text-red text-dmsans">2023</h2>
-                                                <h3 class="text-blue text-dmsans">MIMS 60th anniversary, Launch of eMIMS Plus</h3>
+                                                <h3 class="text-blue text-dmsans">MIMS 60th anniversary,<br>Launch of eMIMS Plus</h3>
                                                 <div class="desc text-grayish-blue">
                                                     <p>60 years on, we continue to offer best in class services and innovation to drive insightful learning among doctors, healthcare companies, and the entire medical community.</p>
                                                     <p><strong>eMIMS Plus</strong> was launched, a completely refreshed drug reference platform offering a single cross-device subscription. With a lighter, faster, and smarter UX when searching for essential medicine information, eMIMS Plus also comes with a host of new features such as Medicines in Pregnancy, Incompatibility quick guide, Medicine Allergy Checker, Dental Medicine Information, and more.</p>
                                                 </div>
                                                 <div class="buttons">
-                                                    <a href="#" class="btn btn-red">Access now at mims.com <i class="fa fa-arrow-right"></i></a>
+                                                    <a href="https://emims.plus" target="_blank" class="btn btn-red">Access now at emims.plus <i class="fa fa-arrow-right"></i></a>
                                                 </div>
                                             </div>
                                             <div class="col-item"></div>
@@ -509,8 +510,17 @@
                                         <div class="section-two-cols">
                                             <div class="col-item">
                                                 <h2 class="text-red text-dmsans">Present</h2>
+                                                <div class="desc text-grayish-blue">
+                                                    <i>
+                                                        <p>"MIMS has built a remarkable legacy over many decades and today stands as a market leader across healthcare communities in Australia, Hong Kong, Singapore, Malaysia, Korea and other prominent markets. The scale of what we do, the breadth of our reach, and the depth of our relationships across healthcare systems is truly unique.</p>
+                                                        <p>At the heart of everything we do is a clear purpose — empowering healthcare communities to improve patient outcomes. That purpose continues to guide our decisions and priorities."</p>
+                                                    </i>
+                                                    <p><strong>Sohil Goswami</strong><br>CEO, MIMS Group</p>
+                                                </div>
                                             </div>
-                                            <div class="col-item"></div>
+                                            <div class="col-item">
+
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

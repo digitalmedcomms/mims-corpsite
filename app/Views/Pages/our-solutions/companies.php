@@ -65,8 +65,7 @@
                             <p>Leverage this time-tested repository of up-to-date drug information to extend your brand reach to a network of <strong>over 2 million healthcare professionals and key decision makers in the healthcare space</strong></p>
                             <p>Backed by a credible team made up of medically trained writers and editors, our listing provide comprehensive and accurate drug information to healthcare professionals who use it in their dally medical practice.</p>
                             <p><span class="text-blue"><strong>98%</strong></span> of CPs regard MIMS Is a trusted source of information<br>
-                            <span class="text-blue"><strong>50%</strong></span> of HGPs USe MIMS dally<br>
-                            (Source: xxx)</p>
+                            <span class="text-blue"><strong>50%</strong></span> of HGPs USe MIMS dally</p>
                         </div>
                         <div class="buttons">
                             <a href="https://mims.com" target="_blank" class="btn btn-red">Access now at mims.com <i class="fa fa-arrow-right"></i></a>
