@@ -1,6 +1,6 @@
 <div id="about">
     <div class="page-banner">
-        <video autoplay muted loop id="myVideo">
+        <video autoplay muted loop playsinline id="myVideo" poster="<?php echo base_url('assets/img/map.png'); ?>">
             <source src="<?php echo ASSETS_URL . '../videos/MIMS Map Animation.mp4'; ?>" type="video/mp4">
         </video>
         <div class="container">
@@ -154,7 +154,7 @@
                                             <p>MIMS.com was enhanced and relaunched to allow registrations of HCPs onto our platform for easy access to drug information, medical news and updates.</p>
                                         </div>
                                         <div class="buttons">
-                                            <a href="#" class="btn btn-red">Access now at mims.com <i class="fa fa-arrow-right"></i></a>
+                                            <a href="#" class="btn btn-secondary">Access now at mims.com <i class="fa fa-arrow-right"></i></a>
                                         </div>
                                     </div>
                                     <div class="col-item"></div>
@@ -193,7 +193,7 @@
                                             <p>Drug search is more accurate, fast and easy with MIMS. MIMS Mobile provides the most comprehensive set of tools to support clinicians with all their professional needs.</p>
                                         </div>
                                         <div class="buttons">
-                                            <a href="https://www.mims.com/mobile-app" target="_blank" class="btn btn-red">Access now at https://www.mims.com/mobile-app <i class="fa fa-arrow-right"></i></a>
+                                            <a href="https://www.mims.com/mobile-app" target="_blank" class="btn btn-secondary">Access now at https://www.mims.com/mobile-app <i class="fa fa-arrow-right"></i></a>
                                         </div>
                                     </div>
                                     <div class="col-item"></div>
@@ -253,7 +253,7 @@
                                             <p><strong>eMIMS Plus</strong> was launched, a completely refreshed drug reference platform offering a single cross-device subscription. With a lighter, faster, and smarter UX when searching for essential medicine information, eMIMS Plus also comes with a host of new features such as Medicines in Pregnancy, Incompatibility quick guide, Medicine Allergy Checker, Dental Medicine Information, and more.</p>
                                         </div>
                                         <div class="buttons">
-                                            <a href="#" class="btn btn-red">Access now at mims.com <i class="fa fa-arrow-right"></i></a>
+                                            <a href="#" class="btn btn-secondary">Access now at mims.com <i class="fa fa-arrow-right"></i></a>
                                         </div>
                                     </div>
                                     <div class="col-item"></div>
@@ -393,7 +393,7 @@
                                                     <p>MIMS.com was enhanced and relaunched to allow registrations of HCPs onto our platform for easy access to drug information, medical news and updates.</p>
                                                 </div>
                                                 <div class="buttons">
-                                                    <a href="https://mims.com" target="_blank" class="btn btn-red">Access now at mims.com <i class="fa fa-arrow-right"></i></a>
+                                                    <a href="https://mims.com" target="_blank" class="btn btn-secondary">Access now at mims.com <i class="fa fa-arrow-right"></i></a>
                                                 </div>
                                             </div>
                                             <div class="col-item"></div>
@@ -432,7 +432,7 @@
                                                     <p>Drug search is more accurate, fast and easy with MIMS. MIMS Mobile provides the most comprehensive set of tools to support clinicians with all their professional needs.</p>
                                                 </div>
                                                 <div class="buttons">
-                                                    <a href="https://www.mims.com/mobile-app" target="_blank" class="btn btn-red">Access now at https://www.mims.com/mobile-app <i class="fa fa-arrow-right"></i></a>
+                                                    <a href="https://www.mims.com/mobile-app" target="_blank" class="btn btn-secondary">Access now at https://www.mims.com/mobile-app <i class="fa fa-arrow-right"></i></a>
                                                 </div>
                                             </div>
                                             <div class="col-item"></div>
@@ -493,7 +493,7 @@
                                                     <p><strong>eMIMS Plus</strong> was launched, a completely refreshed drug reference platform offering a single cross-device subscription. With a lighter, faster, and smarter UX when searching for essential medicine information, eMIMS Plus also comes with a host of new features such as Medicines in Pregnancy, Incompatibility quick guide, Medicine Allergy Checker, Dental Medicine Information, and more.</p>
                                                 </div>
                                                 <div class="buttons">
-                                                    <a href="https://emims.plus" target="_blank" class="btn btn-red">Access now at emims.plus <i class="fa fa-arrow-right"></i></a>
+                                                    <a href="https://emims.plus" target="_blank" class="btn btn-secondary">Access now at emims.plus <i class="fa fa-arrow-right"></i></a>
                                                 </div>
                                             </div>
                                             <div class="col-item"></div>

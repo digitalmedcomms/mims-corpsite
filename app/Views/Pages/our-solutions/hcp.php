@@ -60,7 +60,7 @@
                             </div>
                         </div>
                         <div class="buttons">
-                            <a href="https://www.mims.com/" target="_blank" class="btn btn-red">Access now at mims.com <i class="fa fa-arrow-right"></i></a>
+                            <a href="https://www.mims.com/" target="_blank" class="btn btn-secondary">Access now at mims.com <i class="fa fa-arrow-right"></i></a>
                         </div>
                     </div>
                 </div>
@@ -125,7 +125,7 @@
                                 </div>
                             </div>
                             <div class="buttons">
-                                <a href="https://education.mims.com/" target="_blank" class="btn btn-red">Learn more about MIMS Education <i class="fa fa-arrow-right"></i></a>
+                                <a href="https://education.mims.com/" target="_blank" class="btn btn-secondary">Learn more about MIMS Education <i class="fa fa-arrow-right"></i></a>
                             </div>
                         </div>
                     </div>
