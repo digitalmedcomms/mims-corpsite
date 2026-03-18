@@ -150,10 +150,8 @@ class Joinus extends BaseController
                             <h3>' . $career['job_title'] . '</h3>
                         </div>
                         <div class="company-info">
-                            <div class="logo"></div>
                             <div class="details">
                                 <div class="logo-name">' . $career['office_name'] . '</div>
-                                <div class="company-address"><i class="fa fa-map-pin"></i> ' . $career['office_address'] . '</div>
                             </div>
                         </div>
                         <div class="job-detail">

@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Models\OfficesModel;
 use App\Models\Locations\CountryModel;
 use App\Models\GeneralSettingModel;
+use App\Models\EmailModel;
 use App\Models\PracticeModel;
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception as MAILER_Exception;
@@ -103,7 +104,9 @@ class Contactus extends BaseController
     public function send_message(){
         $data = [
             'message' => 'Invalid request.',
-            'success' => 0
+            'success' => 0,
+            'csrfName' => csrf_token(),
+            'csrfHash' => csrf_hash()
         ];
 
         if($this->request->isAJAX() && $this->request->getMethod() === 'post'){
@@ -159,22 +162,43 @@ class Contactus extends BaseController
                 $result = file_get_contents($verify_url, false, $context);
                 $captcha_response_data = json_decode($result, true);
                 if($captcha_response_data['success'] == 1){
-
-                    $mail = new PHPMailer(true);
+                    // $mail = new PHPMailer(true);
                     try{
 
-                        $mail->isSMTP();
-                        $mail->Host = $genSettings['mail_host'];
-                        $mail->SMTPAuth = true;
-                        $mail->Username = $genSettings['mail_username'];
-                        $mail->Password = $genSettings['mail_password'];
-                        $mail->SMTPSecure = 'tls';
-                        $mail->CharSet = 'UTF-8';
-                        $mail->Port = $genSettings['mail_port'];
-                        $mail->setFrom($genSettings['mail_reply_to'], $genSettings['mail_title']);
-                        $mail->isHTML(true);
-                        $mail->Subject = 'MIMS Corporate::Inquiry';
+                        $emailModel = new EmailModel();
+                        $email = 'pauljohn.angat@mims.com';
+                        $subject = 'General Enquiry to MIMS';
+                        $message = '
+                            <strong>Name:</strong><br>
+                            '.$postData['name'].'<br><br>
+                            <strong>Organisation:</strong><br>
+                            '.$postData['organisation'].'<br><br>
+                            <strong>Email:</strong><br>
+                            '.$postData['email'].'<br><br>
+                            <strong>Message:</strong><br>
+                            '.$postData['message'].'<br><br><br>
 
+                            --<br>
+                            This e-mail was sent from an enquiry form on MIMS Corporate Website.
+                        ';
+                        if ($emailModel->send_test_email($email, $subject, $message)) {
+                        
+                            $data['message'] = 'Message sent';
+                            $data['success'] = 1;
+                        }
+                    //     $mail->isSMTP();
+                    //     $mail->Host = $genSettings['mail_host'];
+                    //     $mail->SMTPAuth = true;
+                    //     $mail->Username = $genSettings['mail_username'];
+                    //     $mail->Password = $genSettings['mail_password'];
+                    //     $mail->SMTPSecure = 'tls';
+                    //     $mail->CharSet = 'UTF-8';
+                    //     $mail->Port = $genSettings['mail_port'];
+                    //     $mail->setFrom($genSettings['mail_reply_to'], $genSettings['mail_title']);
+                    //     $mail->isHTML(true);
+                    //     $mail->Subject = 'MIMS Corporate::Inquiry';
+                    //     $mail->Body    = 'This is the HTML message body <b>in bold!</b>';
+                    //     $mail->addAddress('pauljohn.angat@mims.com');
 
                     }catch (MAILER_Exception $e) {
                         if ($e) {

@@ -85,9 +85,30 @@ class News extends BaseController
 
         $objForms = new FormsModel();
         $data['form'] = null;
+        $js_scripts = array(
+            'scripts' => array(
+                'https://code.jquery.com/jquery-3.5.1.min.js' => array(
+                    'integrity' => 'sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=',
+                    'crossorigin' => 'anonymous'
+                ),
+                ASSETS_URL . 'js/plugins/popper.min.js',
+                ASSETS_URL . 'js/plugins/bootstrap/bootstrap.min.js',
+                ASSETS_URL . 'js/plugins/bootstrap-select.min.js',
+                ASSETS_URL . 'js/plugins/jquery.dotdotdot.min.js',
+                ASSETS_URL . 'js/components/global.min.js',
+                ASSETS_URL . 'js/plugins/owl.carousel.min.js',
+                ASSETS_URL . 'js/components/wow.min.js',
+                ASSETS_URL . 'js/plugins/timeline.min.js',
+                ASSETS_URL . 'js/components/navigation_bar.min.js',
+                
+            )
+        );
+
         if (!empty($post['form_id'])) {
+            $js_scripts['scripts'][] = 'https://formbuilder.online/assets/js/form-render.min.js';
             $data['form'] = $objForms->where('id', $post['form_id'])->where('status', 1)->first();
         }
+        $js_scripts['scripts'][] = ASSETS_URL . 'js/pages/blog.min.js?1';
 
         $data['latest_posts'] = $objPost->getLatestPosts(4, $post['id']);
 
@@ -120,25 +141,7 @@ class News extends BaseController
             )
         ))
         .view('Pages/article', $data)
-        .view('components/scripts_render', array(
-            'scripts' => array(
-                'https://code.jquery.com/jquery-3.5.1.min.js' => array(
-                    'integrity' => 'sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=',
-                    'crossorigin' => 'anonymous'
-                ),
-                'https://formbuilder.online/assets/js/form-render.min.js',
-                ASSETS_URL . 'js/plugins/popper.min.js',
-                ASSETS_URL . 'js/plugins/bootstrap/bootstrap.min.js',
-                ASSETS_URL . 'js/plugins/bootstrap-select.min.js',
-                ASSETS_URL . 'js/plugins/jquery.dotdotdot.min.js',
-                ASSETS_URL . 'js/components/global.min.js',
-                ASSETS_URL . 'js/plugins/owl.carousel.min.js',
-                ASSETS_URL . 'js/components/wow.min.js',
-                ASSETS_URL . 'js/plugins/timeline.min.js',
-                ASSETS_URL . 'js/components/navigation_bar.min.js',
-                ASSETS_URL . 'js/pages/blog.min.js?1',
-            )
-        ))
+        .view('components/scripts_render', $js_scripts)
         .view('components/footer');
     }
 

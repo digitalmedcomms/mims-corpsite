@@ -71,4 +71,6 @@
 <script type="text/javascript">
     var OFFICES_JSON = <?php echo $offices_json; ?>;
     var RECAPTCHA_SK = '<?php echo $captch_sitekey; ?>';
+    var csrfName = '<?= csrf_token() ?>'; 
+    var csrfHash = '<?= csrf_hash() ?>'; 
 </script>
