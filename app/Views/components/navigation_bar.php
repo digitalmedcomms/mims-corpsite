@@ -59,7 +59,7 @@
                                                     <a href="<?php echo base_url('our-solutions/for-hcp'); ?>" class="link-header text-red">For Healthcare Professionals</a>
                                                     <ul>
                                                         <li><a href="<?php echo base_url('our-solutions/for-hcp#drug-references-and-guidelines'); ?>" class="link-menu">Drug References & Guidelines</a></li>
-                                                        <li><a href="<?php echo base_url('our-solutions/for-hcp#clinical-decision-support-tools'); ?>" class="link-menu">Clinical Decision Support Tools</a></li>
+                                                        <li><a href="<?php echo base_url('our-solutions/for-hcp#clinical-decision-solutions'); ?>" class="link-menu">Clinical Decision Solutions</a></li>
                                                         <li><a href="<?php echo base_url('our-solutions/for-hcp#professional-development'); ?>" class="link-menu">Professional Development</a></li>
                                                     </ul>
                                                 </div>
@@ -74,7 +74,7 @@
                                                 <div class="menu-item">
                                                     <a href="<?php echo base_url('our-solutions/for-healthcare-institutions'); ?>" class="link-header text-red">For Healthcare Institutions</a>
                                                     <ul>
-                                                        <li><a href="<?php echo base_url('our-solutions/for-healthcare-institutions#reference-clinical-decision'); ?>" class="link-menu">Reference & Clinical Decision Support</a></li>
+                                                        <li><a href="<?php echo base_url('our-solutions/for-healthcare-institutions#clinical-decision-support-tools'); ?>" class="link-menu">Reference & Clinical Decision Support</a></li>
                                                         <li><a href="<?php echo base_url('our-solutions/for-healthcare-institutions#hcp-recruitment'); ?>" class="link-menu">HCP Recruitment Services</a></li>
                                                     </ul>
 

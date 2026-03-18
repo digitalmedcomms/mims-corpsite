@@ -36,13 +36,13 @@
                             <img src="<?php echo IMG_URL . 'our-solutions/clinical-decision-icon.png'; ?>" alt="">
                         </div>
                         <div class="item-title text-blue">
-                        Clinical Decision Support Tools
+                        Clinical Decision Solutions
                         </div>
                         <div class="item-desc text-grayish-blue">
-                            <p>Leveraging <strong>comprehensive medication database</strong> to drive superior decision-making for safer, efficient, high-quality patient care</p>
+                            <p>Leveraging <strong>integrated and standalone clinical decision solutions</strong> to drive superior decision-making for safer, efficient, high-quality patient care</p>
                         </div>
                         <div class="buttons">
-                            <a href="<?php echo base_url('our-solutions/for-hcp#clinical-decision-support-tools'); ?>" class="btn btn-secondary">Read More <i class="fa fa-arrow-right"></i></a>
+                            <a href="<?php echo base_url('our-solutions/for-hcp#clinical-decision-solutions'); ?>" class="btn btn-secondary">Read More <i class="fa fa-arrow-right"></i></a>
                         </div>
                     </div>
                     <div class="col-item wow fadeIn" data-wow-delay="1.1s">

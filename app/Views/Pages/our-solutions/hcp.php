@@ -69,13 +69,13 @@
     </div>
 
 
-    <div id="clinical-decision-support-tools">
+    <div id="clinical-decision-solutions">
         <div class="section">
             <div class="section-bg-img bg-right" style="background: url('<?php echo IMG_URL . 'timeline/mims-cds-module-bg.png'; ?>') center center no-repeat;background-size: cover;"></div>
             <div class="container">
                 <div class="section-two-cols">
                     <div class="col-item">
-                        <h2 class="text-blue">Clinical Decision Support Tools</h2>
+                        <h2 class="text-blue">Clinical Decision Solutions</h2>
                         <div class="desc text-grayish-blue">
                             <p>While human error is unavoidable, it can be prevented. MIMS provides comprehensive prescription screening tools for automatic detection of possible medication errors.</p>
                             <p>The clinical decision support tools can be embedded into clinical applications to assist healthcare professionals in making Informed decisions at the point-of-care, promote safe and appropriate medication practice.</p>
