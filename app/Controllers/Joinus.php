@@ -158,7 +158,7 @@ class Joinus extends BaseController
                             ' . $career['job_description'] . '
                         </div>
                         <div class="buttons">
-                            <a href="' . $career['link'] . '" target="_blank" class="btn btn-secondary">Learn more <i class="fa fa-arrow-right"></i></a>
+                            <a href="' . $career['link'] . '" target="_blank" class="btn btn-blue">Learn more <i class="fa fa-arrow-right"></i></a>
                         </div>
                     </div>';
                 }
