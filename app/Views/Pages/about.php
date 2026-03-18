@@ -349,7 +349,7 @@
                                         <div class="section-two-cols">
                                             <div class="col-item">
                                                 <h2 class="text-red text-dmsans">1997</h2>
-                                                <h3 class="text-blue text-dmsans">Launch of MIMS.com</h3>
+                                                <h3 class="text-blue text-dmsans">Launch of MIMS Online</h3>
                                                 <div class="desc text-grayish-blue">
                                                     <p>First launched in Australia as the online version of MIMS drug reference guide. When you need instant access to medicines information at your desk or across a network, MIMS Online provides a solution that’s always current.</p>
                                                     <p>MIMS Online provides a wide range of Australian medicines information – full product information, abbreviated product information, drug/drug interaction module and pill identification module, to name a few.</p>
@@ -388,7 +388,7 @@
                                         <div class="section-two-cols">
                                             <div class="col-item">
                                                 <h2 class="text-red text-dmsans">2008</h2>
-                                                <h3 class="text-blue text-dmsans">Launch of MIMS Online</h3>
+                                                <h3 class="text-blue text-dmsans">Launch of MIMS.com</h3>
                                                 <div class="desc text-grayish-blue">
                                                     <p>MIMS.com was enhanced and relaunched to allow registrations of HCPs onto our platform for easy access to drug information, medical news and updates.</p>
                                                 </div>
