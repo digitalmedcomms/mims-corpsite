@@ -77,8 +77,8 @@
                     <div class="col-item">
                         <h2 class="text-blue">Clinical Decision Solutions</h2>
                         <div class="desc text-grayish-blue">
-                            <p>While human error is unavoidable, it can be prevented. MIMS provides comprehensive prescription screening tools for automatic detection of possible medication errors.</p>
-                            <p>The clinical decision support tools can be embedded into clinical applications to assist healthcare professionals in making Informed decisions at the point-of-care, promote safe and appropriate medication practice.</p>
+                            <p>MIMS offers comprehensive drug data and advanced screening tools to ensure patient safety.</p>
+                            <p>Available via standalone web and mobile apps or through direct system integration, our clinical decision support empowers healthcare professionals with evidence-based insights at every point-of-care.</p>
                         </div>
                         <div class="buttons">
                             <a href="https://cds.mims.com/" target="_blank" class="btn btn-secondary">Find out more at CDS.mims.com</a>
