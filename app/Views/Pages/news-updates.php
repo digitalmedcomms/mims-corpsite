@@ -7,7 +7,7 @@
             <div class="breadcrumbs">
                 <ul>
                     <li><a href="<?php echo base_url(); ?>" class="breadcrumb-link">Home</a></li>
-                    <li><a href="<?php echo base_url('news-updates'); ?>" class="breadcrumb-link">News & Update</a></li>
+                    <li><a href="<?php echo base_url('news-updates'); ?>" class="breadcrumb-link">News & Updates</a></li>
                 </ul>
             </div>
         </div>
