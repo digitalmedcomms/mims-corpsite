@@ -40,7 +40,7 @@
             <div class="container">
                 <div class="section-two-cols">
                     <div class="col-item">
-                        <h2 class="text-blue">Clinical Decision Support Tools</h2>
+                        <h2 class="text-blue">Clinical Decision Support Solutions</h2>
                         <div class="desc text-grayish-blue">
                             <p>Knowledge solutions that empower healthcare professionals to make critical treatment decisions with confidence at every step of the way.</p>
                             <p>MIMS offers a comprehensive knowledge base of locally approved medicines Information powered by internationally referenced clinical decision support modules developed by our expert team of clinicians.</p>

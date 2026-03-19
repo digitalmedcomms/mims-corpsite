@@ -128,7 +128,7 @@
                         <div class="col-item wow fadeIn" data-wow-delay="0.5s">
                             <div class="item-img" style="background: url(<?php echo IMG_URL. 'our-solutions/ref-clin-decision-support-img.png'; ?>) center center no-repeat; background-size: cover;"></div>
                             <div class="item-details">
-                                <div class="item-title text-blue">Reference & Clinical Decision Support</div>
+                                <div class="item-title text-blue">Reference & Clinical Decision Solutions</div>
                                 <div class="item-desc text-grayish-blue">
                                     <p>Providing solutions for integrating evidence-based knowledge into care delivery to significantly enhance quality, safety, efficiency and effectiveness of healthcare</p>
                                 </div>
