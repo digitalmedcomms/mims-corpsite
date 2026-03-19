@@ -166,8 +166,9 @@ class Contactus extends BaseController
                     try{
 
                         $emailModel = new EmailModel();
-                        $email = 'pauljohn.angat@mims.com';
+                        $email = $postData['emailRecipient'];
                         $subject = 'General Enquiry to MIMS';
+                        
                         $message = '
                             <strong>Name:</strong><br>
                             '.$postData['name'].'<br><br>

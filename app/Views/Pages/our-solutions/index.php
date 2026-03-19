@@ -133,7 +133,7 @@
                                     <p>Providing solutions for integrating evidence-based knowledge into care delivery to significantly enhance quality, safety, efficiency and effectiveness of healthcare</p>
                                 </div>
                                 <div class="buttons">
-                                    <a href="<?php echo base_url('our-solutions/for-healthcare-institutions#reference-clinical-decision'); ?>" class="btn btn-secondary">Read More</a>
+                                    <a href="<?php echo base_url('our-solutions/for-healthcare-institutions#clinical-decision-support-tools'); ?>" class="btn btn-secondary">Read More</a>
                                 </div>
                             </div>
                         </div>
