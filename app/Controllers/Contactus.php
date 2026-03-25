@@ -88,7 +88,7 @@ class Contactus extends BaseController
                 ASSETS_URL . 'js/plugins/timeline.min.js',
                 ASSETS_URL . 'js/components/navigation_bar.min.js',
                 ASSETS_URL . '../admin/plugins/jquery-validation/jquery.validate.min.js',
-                ASSETS_URL . 'js/pages/contact.min.js?1341',
+                ASSETS_URL . 'js/pages/contact.min.js?13541',
             )
         ))
         .view('components/footer');
