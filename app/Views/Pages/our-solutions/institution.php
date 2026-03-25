@@ -13,7 +13,7 @@
         <div class="bg-right" style="background: url('<?php echo IMG_URL . 'plus-bg.png'; ?>') center center no-repeat; background-size: cover;"></div>
     </div>
 
-    <div id="clinical-decision-support-tools">
+    <div id="clinical-decision-solutions">
         <div class="section">
             <div class="section-bg-img bg-right">
                 <div id="partners">
@@ -40,7 +40,7 @@
             <div class="container">
                 <div class="section-two-cols">
                     <div class="col-item">
-                        <h2 class="text-blue">Clinical Decision Support Solutions</h2>
+                        <h2 class="text-blue">Clinical Decision Solutions</h2>
                         <div class="desc text-grayish-blue">
                             <p>Knowledge solutions that empower healthcare professionals to make critical treatment decisions with confidence at every step of the way.</p>
                             <p>MIMS offers a comprehensive knowledge base of locally approved medicines Information powered by internationally referenced clinical decision support modules developed by our expert team of clinicians.</p>
