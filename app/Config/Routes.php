@@ -83,6 +83,7 @@ $routes->group("admin", ["namespace" => "App\Controllers\Admin"], function ($rou
         $routes->get('administrators', 'UserManagement::administrators', ["filter" => 'check-admin']);
         $routes->get('list-users', 'UserManagement::users');
         $routes->get('add-user', 'UserManagement::add_user');
+        $routes->post('add_user_post', 'UserManagement::add_user_post');
         $routes->get('edit-user/(:num)', 'UserManagement::edit_user/$1');
     });
 
