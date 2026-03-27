@@ -75,7 +75,7 @@
                                                     <a href="<?php echo base_url('our-solutions/for-healthcare-institutions'); ?>" class="link-header text-red">For Healthcare Institutions</a>
                                                     <ul>
                                                         <li><a href="<?php echo base_url('our-solutions/for-healthcare-institutions#clinical-decision-solutions'); ?>" class="link-menu">Clinical Decision Solutions</a></li>
-                                                        <li><a href="<?php echo base_url('our-solutions/for-healthcare-institutions#hcp-recruitment'); ?>" class="link-menu">HCP Recruitment Services</a></li>
+                                                        <li><a href="<?php echo base_url('our-solutions/for-healthcare-institutions#hcp-recruitment'); ?>" class="link-menu">Global HCP Recruitment</a></li>
                                                     </ul>
 
                                                 </div>

@@ -52,7 +52,7 @@ class Contactus extends BaseController
                 'description' => 'MIMS is headquartered in Singapore. We have a strong presence in Asia Pacific supported by over 1,000 employees across 36 local offices.',
                 'image' => IMG_URL . ''
             ),
-            'nav' => 'aboutus',
+            'nav' => '',
             'styles' => array(
                 'plugins/font_awesome',
                 COMPILED_ASSETS_PATH . 'css/components/bootstrap',

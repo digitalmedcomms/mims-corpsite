@@ -140,7 +140,7 @@
                         <div class="col-item wow fadeIn" data-wow-delay="1s">
                             <div class="item-img" style="background: url(<?php echo IMG_URL. 'our-solutions/hcp-recruitment-img.png'; ?>) center center no-repeat; background-size: cover;"></div>
                             <div class="item-details">
-                                <div class="item-title text-blue">HCP Recruitment</div>
+                                <div class="item-title text-blue">Global HCP Recruitment</div>
                                 <div class="item-desc text-grayish-blue">
                                     <p>Facilitating long-term placement of nurses, pharmacists and doctors across the globe to match the demands of healthcare institutions looking for high calibre practitioners.</p>
                                 </div>

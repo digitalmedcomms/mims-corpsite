@@ -62,10 +62,19 @@
                 <div class="section-two-cols">
                     <div class="col-item"></div>
                     <div class="col-item">
-                        <h2 class="text-blue">HCP Recruitment</h2>
+                        <h2 class="text-blue">Global HCP Recruitment</h2>
                         <div class="desc text-grayish-blue">
-                            <p>With over 2 million registered healthcare professionals on our platform, MIMS can reach out to a community of healthcare professionals with every conceivable skill and tailor-match to the demands of healthcare Institutions that are on a look out for high calibre practitioners.</p>
-                            <p>We provide services for long-term placement of nurses, pharmacists and doctors.</p>
+                            <p>We are a team of highly experienced healthcare recruiters with a unique global reach. Our extensive network allows us to access cost- effective and compliant staffing solutions, offering unparalleled opportunities for you and your clients’ staffing needs.</p>
+                            <p>Our HCP database is built on quality, not just quantity. Our agencies and representatives on the ground allow us to directly manage the recruitment and screening process, efficiently and effectively. Our integrated services are customized to your individual needs, from identifying these needs, to managing bureaucratic processes and supporting candidate integration.</p>
+                            <p>We specialise in International and Domestic Healthcare Recruitment across many healthcare sectors. We are experts in recruiting Nurses, Doctors and Allied Health Professionals.</p>
+                            <p><strong>Our Global Healthcare Recruitment Companies:</strong></p>
+
+                            <div id="hcp-rec-logos" class="d-flex align-items-center" style="gap: 20px;">
+                                <div class="item"><a href="https://www.ccmrecruitment.com/" target="_blank"><img src="<?php echo base_url('assets/img/ccm-logo.svg'); ?>" alt="" style="max-width: 100%;"></a></div>
+                                <div class="item text-center"><a href="https://www.msr.ph/" target="_blank"><img src="<?php echo base_url('assets/img/msr-logo.png'); ?>" alt="" style="max-width: 100px;"></a></div>
+                                <div class="item"><a href="https://cims-recruit.in/" target="_blank"><img src="<?php echo base_url('assets/img/cims-logo.png'); ?>" alt="" style="max-width: 100%;"></a></div>
+                                <div class="item"><a href="https://www.medilabs.co.kr/index.html?lang=en" target="_blank"><img src="<?php echo base_url('assets/img/medilabs.png'); ?>" alt="" style="max-width: 100%;"></a></div>
+                            </div>
                         </div>
                     </div>
                 </div>
