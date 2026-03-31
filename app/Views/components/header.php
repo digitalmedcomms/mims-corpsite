@@ -26,7 +26,6 @@
     <head>
     <!-- PAGE MAIN DETAILS -->
     <title><?php echo $title; ?></title>
-    <meta name="robots" content="noindex"> 
     
     <meta name="description" content="<?php echo $description; ?>" />
     <meta name="keywords" content="<?php echo $keywords; ?>" />
