@@ -103,6 +103,13 @@ class ImagesModel extends Model
                 $data["image_small"] = $gif_path;
                 $data["image_mime"] = 'gif';
                 $data["file_name"] = @$temp_data->getClientName();
+            } elseif ($temp_data->getClientExtension() == 'pdf') {
+                $pdf_path = $uploadModel->post_default_file_upload($temp_path, 'pdf');
+                $data["image_default"] = $pdf_path;
+                $data["image_mid"] = $pdf_path;
+                $data["image_small"] = $pdf_path;
+                $data["image_mime"] = 'pdf';
+                $data["file_name"] = @$temp_data->getClientName();
             } else {
                 // $data["image_big"] = $uploadModel->post_big_image_upload($temp_path);
                 $data["image_default"] = $uploadModel->post_default_image_upload($temp_path);

@@ -78,7 +78,13 @@ class File extends AdminController
                 $data['content'] .= '<div class="col-file-manager" id="img_col_id_' . $image->id . '">';
                 $data['content'] .= '<div class="file-box" data-file-id="' . $image->id . '" data-file-alt="' . $image->alt . '" data-file-name="' . $image->file_name . '" data-file-captions="' . $image->captions . '" data-file-desc="' . $image->descriptions . '" data-mid-file-path="' . $image->image_mid . '" data-default-file-path="' . $image->image_default . '" data-slider-file-path="' . $image->image_slider . '" data-big-file-path="' . $image->image_big . '" data-file-storage="' . $image->storage . '" data-file-base-url="' . $img_base_url . '">';
                 $data['content'] .= '<div class="image-container">';
-                $data['content'] .= '<img src="' . $img_base_url . $image->image_small . '" alt="" class="img-responsive">';
+                
+                $img_src = $image->image_small;
+                if ($image->image_mime == 'pdf' || strtolower(pathinfo($img_src, PATHINFO_EXTENSION)) == 'pdf') {
+                    $img_src = 'assets/admin/plugins/file-manager/pdf.svg';
+                }
+
+                $data['content'] .= '<img src="' . base_url(ltrim($img_src, '/')) . '" alt="" class="img-responsive">';
                 $data['content'] .= '</div>';
                 if (!empty($image->file_name)) :
                 // $data['content'] .= '<span class="file-name">' . html_escape($image->file_name) . '</span>';
