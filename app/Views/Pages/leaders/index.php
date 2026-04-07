@@ -28,7 +28,7 @@
                     <div class="leaders-container exec">
                         <h3 class="text-blue">Executive Leads</h3>
                         <?php
-                            foreach($leader_types[0]['leaders'] as $leader){
+                            foreach($leader_types[1]['leaders'] as $leader){
                                 echo '<div class="leader-item">';
                                     echo '<div class="leader-img"><img src="'.base_url($leader['image_path']).'" alt="'.$leader['name'].'"></div>';
                                     echo '<div class="leader-details"><div class="leader-name text-blue">'.$leader['name'].'</div><div class="leader-designation text">'.$leader['designation'].'</div></div>';
@@ -41,7 +41,7 @@
                     <div class="leaders-container">
                         <h3 class="text-blue">Regional Leads</h3>
                         <?php
-                            foreach($leader_types[2]['leaders'] as $leader){
+                            foreach($leader_types[4]['leaders'] as $leader){
                                 echo '<div class="leader-item">';
                                     echo '<div class="leader-img"><img src="'.base_url($leader['image_path']).'" alt="'.$leader['name'].'"></div>';
                                     echo '<div class="leader-details"><div class="leader-name text-blue">'.$leader['name'].'</div><div class="leader-designation text">'.$leader['designation'].'</div></div>';
@@ -53,28 +53,22 @@
                     </div>
                 </div>
                 <div class="tab-pane fade" id="country-leaders-tab-pane" role="tabpanel" aria-labelledby="country-leaders-tab" tabindex="0">
-                    <div class="leaders-container">
-                        <?php
-                            foreach($leader_types[1]['leaders'] as $leader){
-                                $countries = explode(",", $leader['countries']);    
+                    <?php
+                        foreach($leader_types[2]['practices'] as $practice){
+                            echo '<h3 class="text-blue">' . $practice['name'] . '</h3>';
+                            echo '<div class="leaders-container">';
+
+                            foreach($practice['leaders'] as $leader){
                                 echo '<div class="leader-item">';
                                     echo '<div class="leader-img"><img src="'.base_url($leader['image_path']).'" alt="'.$leader['name'].'"></div>';
-
-                                    echo '<div class="leader-countries">';
-                                    if(!empty($countries)){
-                                        foreach($countries as $country){
-                                            echo '<img src="'.IMG_URL . 'flag-circle/'.$country.'.png" alt="'.$country.'">';
-                                        }
-                                    }
-                                    echo '</div>';
-                                
                                     echo '<div class="leader-details"><div class="leader-name text-blue">'.$leader['name'].'</div><div class="leader-designation text">'.$leader['designation'].'</div></div>';
                                     echo '<div class="leader-bio">'.$leader['biography'].'</div>';
-                                    echo '<a href="javascript:;" data-leader="'.$leader['id'].'" class="profileLink text-blue text-dmsans">View Profile <i class="fa fa-angle-right"></i></a>';
+                                    echo '<a href="javascript:;" class="profileLink text-blue text-dmsans">View Profile <i class="fa fa-angle-right"></i></a>';
                                 echo '</div>';
                             }
-                        ?>
-                    </div>
+                            echo '</div>';
+                        }
+                    ?>
                 </div>
             </div>
         </div>

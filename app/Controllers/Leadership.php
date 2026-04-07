@@ -24,7 +24,7 @@ class Leadership extends BaseController
         $data['practices'] = $this->practices->where('status', 1)->findAll();
         
         foreach($leader_types as $leader_type){
-            if($leader_type['id'] == 3){
+            if($leader_type['id'] == 2){
                 foreach($data['practices'] as $practice){
                     $practice['leaders'] = $this->leaders->where('leader_type_id', $leader_type['id'])->where('status', 1)->where('practice', $practice['id'])->orderBy('`order` ASC')->findAll();
                     $leader_type['practices'][] = $practice;
@@ -32,9 +32,8 @@ class Leadership extends BaseController
             }else{
                 $leader_type['leaders'] = $this->leaders->where('leader_type_id', $leader_type['id'])->where('status', 1)->orderBy('`order` ASC')->findAll();
             }
-            $leader_types_arr[] = $leader_type;
+            $leader_types_arr[$leader_type['id']] = $leader_type;
         }
-        
         $data['leader_types'] = $leader_types_arr;
         // PAGE HEAD PROCESSING
         return view('components/header', array(

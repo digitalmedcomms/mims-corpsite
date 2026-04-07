@@ -136,7 +136,7 @@
                         <div class="card card-primary card-outline card-outline-tabs">
                             <div class="card-body">
                                 <div class="text-">
-                                    <input type="submit" class="btn btn-primary" value="Save Leader Types">
+                                    <input type="submit" class="btn btn-primary" value="Save Leader">
                                 </div>
                             </div>
                         </div>
@@ -154,7 +154,7 @@
         $("#leader_type_id").change(function(){
             if($(this).val() == 2){
                 $("#countries-field").show();
-                $("#area-of-practice-field").hide();
+                $("#area-of-practice-field").show();
             }else if($(this).val() == 3){
                 $("#countries-field").hide();
                 $("#area-of-practice-field").show();

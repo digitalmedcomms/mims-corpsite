@@ -101,6 +101,9 @@ class Leaders extends AdminController
                 if($this->request->getPost('countries')){
                     $countries = implode(",", $this->request->getPost('countries'));
                 }
+                                $rules['practice'] = ['rules' => 'required'];
+                $rules['practice'] = ['rules' => 'required'];
+                $practice = $this->request->getPost('practice');
             }else if($this->request->getPost('leader_type_id') == 3){
                 $rules['practice'] = ['rules' => 'required'];
                 $practice = $this->request->getPost('practice');
@@ -169,6 +172,9 @@ class Leaders extends AdminController
                     if($this->request->getPost('countries')){
                         $countries = implode(",", $this->request->getPost('countries'));
                     }
+                    $rules['practice'] = ['rules' => 'required'];
+                    $practice = $this->request->getPost('practice');
+
                 }else if($this->request->getPost('leader_type_id') == 3){
                     $rules['practice'] = ['rules' => 'required'];
                     $practice = $this->request->getPost('practice');
