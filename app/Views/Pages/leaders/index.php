@@ -20,9 +20,6 @@
                     <button class="nav-link active" id="executive-committee-tab" data-bs-toggle="tab" data-bs-target="#executive-committee-tab-pane" type="button" role="tab" aria-controls="executive-committee-tab-pane" aria-selected="true">Regional Leaders</button>
                 </li>
                 <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="practice-leaders-tab" data-bs-toggle="tab" data-bs-target="#practice-leaders-tab-pane" type="button" role="tab" aria-controls="practice-leaders-tab-pane" aria-selected="true">Practice Leaders</button>
-                </li>
-                <li class="nav-item" role="presentation">
                     <button class="nav-link" id="country-leaders-tab" data-bs-toggle="tab" data-bs-target="#country-leaders-tab-pane" type="button" role="tab" aria-controls="country-leaders-tab-pane" aria-selected="true">Country Leaders</button>
                 </li>
             </ul>
