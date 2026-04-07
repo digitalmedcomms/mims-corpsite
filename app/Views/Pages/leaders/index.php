@@ -20,6 +20,9 @@
                     <button class="nav-link active" id="executive-committee-tab" data-bs-toggle="tab" data-bs-target="#executive-committee-tab-pane" type="button" role="tab" aria-controls="executive-committee-tab-pane" aria-selected="true">Regional Leaders</button>
                 </li>
                 <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="practice-leaders-tab" data-bs-toggle="tab" data-bs-target="#practice-leaders-tab-pane" type="button" role="tab" aria-controls="practice-leaders-tab-pane" aria-selected="true">Practice Leaders</button>
+                </li>
+                <li class="nav-item" role="presentation">
                     <button class="nav-link" id="country-leaders-tab" data-bs-toggle="tab" data-bs-target="#country-leaders-tab-pane" type="button" role="tab" aria-controls="country-leaders-tab-pane" aria-selected="true">Country Leaders</button>
                 </li>
             </ul>
@@ -59,9 +62,19 @@
                             echo '<div class="leaders-container">';
 
                             foreach($practice['leaders'] as $leader){
+                                
+                                $countries = explode(",", $leader['countries']);    
                                 echo '<div class="leader-item">';
                                     echo '<div class="leader-img"><img src="'.base_url($leader['image_path']).'" alt="'.$leader['name'].'"></div>';
+                                    echo '<div class="leader-countries">';
+                                    if(!empty($countries)){
+                                        foreach($countries as $country){
+                                            echo '<img src="'.IMG_URL . 'flag-circle/'.$country.'.png" alt="'.$country.'">';
+                                        }
+                                    }
+                                    echo '</div>';
                                     echo '<div class="leader-details"><div class="leader-name text-blue">'.$leader['name'].'</div><div class="leader-designation text">'.$leader['designation'].'</div></div>';
+
                                     echo '<div class="leader-bio">'.$leader['biography'].'</div>';
                                     echo '<a href="javascript:;" class="profileLink text-blue text-dmsans">View Profile <i class="fa fa-angle-right"></i></a>';
                                 echo '</div>';
