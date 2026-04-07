@@ -45,16 +45,16 @@
                             </div>
                             <div class="right-side">
                                 <div class="img-featured wow fadeInRight" data-wow-duration="1s" data-wow-delay="2s">
-                                    <img src="<?php echo IMG_URL . 'doctor-banner-1.png'; ?>" alt="">
+                                    <img src="<?php echo IMG_URL . 'doctor-banner-1-updated.png'; ?>" alt="">
 
-                                    <div class="bubble-text">
+                                    <!-- <div class="bubble-text">
                                         <div class="bubble-kicker">Healthcare</div>
                                         <div class="bubble-message text-red">Your partner for healthcare knowledge solutions & services</div>
                                     </div>
                                     <div class="bubble-text">
                                         <div class="bubble-kicker">Corporate</div>
                                         <div class="bubble-message text-red">Get in touch for winning solutions, tailored for your business</div>
-                                    </div>
+                                    </div> -->
                                 </div>
                             </div>
                         </div>
