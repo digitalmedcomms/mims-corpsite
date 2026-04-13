@@ -68,7 +68,7 @@
     <div id="section-2">
         <div id="solutions" class="section">
             <div class="section-container">
-                <div class="kicker text-center">Our Solutions</div>
+                <div class="kicker text-center" style="color:#be1722;">Our Solutions</div>
                 <h2 class="text-blue text-center wow fadeIn" data-wow-duration="2s">We provide high quality services</h2>
                 <div class="section-description text-grayish-blue text-center wow fadeInUp" data-wow-duration="1s"> 
                     of drug information, medical communications, events management, marketing, and recruitment services. Established in 1963, our work empowers healthcare professionals to improve patient outcomes by facilitating knowledge exchange and better decision-making. 
@@ -114,7 +114,7 @@
                         </div>
                     </div>
                     <div class="right-side wow fadeInRight">
-                        <div class="kicker">Join Us</div>
+                        <div class="kicker" style="color:#be1722;">Join Us</div>
                         <h2 class="text-blue">Regional Presence.<br>Diverse Expertise.</h2>
                         <div class="join-us-desc text-grayish-blue">
                             With strategic hubs in Hong Kong and Singapore, and a  business footprint across Asia Pacific, we have an intimate understanding of the regional markets. Supported by a resourceful and talented team who are familiar with the regional markets, we are able to innovate and create solutions catered to the market’s landscape and culture.
@@ -133,7 +133,7 @@
     <div id="news-updates" class="section">
         <div class="container">
             <div class="news-update-container">
-                <div class="kicker text-center">News & Updates</div>
+                <div class="kicker text-center" style="color:#be1722;">News & Updates</div>
                 <h2 class="text-blue text-center wow fadeIn">Stay Informed and Engaged!</h2>
                 <div class="section-three-cols news-container">
                     <?php 

@@ -4,7 +4,7 @@
     <div id="contact-us-section" class="wow fadeInUp" data-wow-duration="1s" data-wow-delay="1s">
         <div class="container">
             <div class="contact-us-section" style="background: url('<?php echo IMG_URL . 'contact-us-bg-pages.png'; ?>') center center no-repeat;background-size: cover;">
-                <div class="contact-us-kicker">Get in touch with a MIMS office near you</div>
+                <div class="contact-us-kicker" style="color:#be1722;">Get in touch with a MIMS office near you</div>
                 <div class="contact-text">Let’s discuss how we can help make your business better</div>
                 <a href="<?php echo base_url('contact-us'); ?>" class="btn btn-blue">Contact Us</a>
             </div>
