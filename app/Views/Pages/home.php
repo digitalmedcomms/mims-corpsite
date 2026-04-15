@@ -18,11 +18,11 @@
 
                                     <div class="bubble-text">
                                         <div class="bubble-kicker">Community</div>
-                                        <div class="bubble-message text-red">Trusted by over 2 Million HCPs</div>
+                                        <div class="bubble-message text-red" style="color: #be1722;">Trusted by over 2 Million HCPs</div>
                                     </div>
                                     <div class="bubble-text">
                                         <div class="bubble-kicker">Since 1963</div>
-                                        <div class="bubble-message text-red">#1 source of medical knowledge</div>
+                                        <div class="bubble-message text-red" style="color: #be1722;">#1 source of medical knowledge</div>
                                     </div>
                                 </div>
                             </div>
