@@ -26,7 +26,7 @@
                                     <div class="row align-items-center">
                                         <div class="col-12 col-sm-4 col-md-3 py-sm-4  border-right">
                                             <h5 class="text-red" style="color:#be1722;">Get to know how MIMS can make the difference for your business</h5>
-                                        </div>
+                                        </div> 
                                         <div class="col-12 col-sm-8 col-md-9">
                                             <div class="solutions-mega-menu">
                                                 <div class="menu-item border-right">
