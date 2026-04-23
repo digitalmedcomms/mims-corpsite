@@ -79,7 +79,7 @@
                                                     <label for="">Area of Practice</label>
                                                     <select name="practice" id="" class="selectpicker form-control" title="Choose area of practice">
                                                         <?php foreach($practices as $practice){ ?>
-                                                            <option  value="<?php echo $practice['id'];?>"><?php echo $practice['name']; ?></option>
+                                                            <option  value="<?php echo $practice['id'];?>" <?php echo ($practice['id'] == $leader['practice'] ? 'selected' : ''); ?>><?php echo $practice['name']; ?></option>
                                                         <?php } ?>
                                                     </select>
                                                 </div>
