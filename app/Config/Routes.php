@@ -237,6 +237,10 @@ $routes->group("admin", ["namespace" => "App\Controllers\Admin"], function ($rou
         $routes->post('posts/table-listing', 'NewsUpdates\Posts::tableListing');
         
     });
+    $routes->group('contact-inquiries', function ($routes) {
+        $routes->get('', 'ContactInquiries::index');
+        $routes->post('table-listing', 'ContactInquiries::tableListing');
+    });
 });
 
 $routes->post('vr-run-internal-cron', 'Common::run_internal_cron');
