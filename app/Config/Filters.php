@@ -28,6 +28,7 @@ class Filters extends BaseConfig
         'check-admin' => \App\Filters\CheckAdmin::class,
         'isMaintenance' => \App\Filters\Maintenance::class,
         'secure-api'     => \App\Filters\SecureAPI::class,
+        'pageVisit'      => \App\Filters\PageVisitFilter::class,
     ];
 
     /**
@@ -38,6 +39,7 @@ class Filters extends BaseConfig
      */
     public $globals = [
         'before' => [
+            'pageVisit' => ['except' => ['assets/*', 'uploads/*', 'admin/*', 'api/*', 'Auth/*']],
             // 'honeypot',
             'csrf' => ['except' => ['vr-run-internal-cron', 'api/*', 'admin/*']],
             // 'invalidchars',

@@ -7,6 +7,7 @@ use App\Models\Locations\CountryModel;
 use App\Models\GeneralSettingModel;
 use App\Models\EmailModel;
 use App\Models\PracticeModel;
+use App\Models\ContactInquiryModel;
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception as MAILER_Exception;
 
@@ -182,6 +183,17 @@ class Contactus extends BaseController
                             --<br>
                             This e-mail was sent from an enquiry form on MIMS Corporate Website.
                         ';
+
+                        // Save to database
+                        $inquiryModel = new ContactInquiryModel();
+                        $inquiryModel->insert([
+                            'name' => $postData['name'],
+                            'organisation' => $postData['organisation'],
+                            'email_recipient' => $postData['emailRecipient'],
+                            'email' => $postData['email'],
+                            'message' => $postData['message']
+                        ]);
+
                         if ($emailModel->send_test_email($email, $subject, $message)) {
                         
                             $data['message'] = 'Message sent';
@@ -206,7 +218,6 @@ class Contactus extends BaseController
                             $data['message'] = 'Unable to send message. Please try again later.';
                         }
                     }
-
 
                 }else{
                     $data['message'] = 'Invalid recaptcha response. Please refresh the page.';
