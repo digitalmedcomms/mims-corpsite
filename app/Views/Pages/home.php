@@ -69,9 +69,9 @@
         <div id="solutions" class="section">
             <div class="section-container">
                 <div class="kicker text-center" style="color:#be1722;">Our Solutions</div>
-                <h2 class="text-blue text-center wow fadeIn" data-wow-duration="2s">We provide high quality services</h2>
+                <h2 class="text-blue text-center wow fadeIn" data-wow-duration="2s">We provide high quality</h2>
                 <div class="section-description text-grayish-blue text-center wow fadeInUp" data-wow-duration="1s"> 
-                    of drug information, medical communications, events management, marketing, and recruitment services. Established in 1963, our work empowers healthcare professionals to improve patient outcomes by facilitating knowledge exchange and better decision-making. 
+                    drug information, medical communications, events management, marketing, and recruitment services. Established in 1963, our work empowers healthcare professionals to improve patient outcomes by facilitating knowledge exchange and better decision-making. 
                 </div>
 
                 <div class="section-three-cols services-container">
