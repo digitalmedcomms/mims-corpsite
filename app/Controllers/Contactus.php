@@ -138,31 +138,31 @@ class Contactus extends BaseController
 
 
             if($this->validate($rules)) {
-                $genSettingsModel = new GeneralSettingModel();
-                $genSettings = $genSettingsModel->find(1);
+                // $genSettingsModel = new GeneralSettingModel();
+                // $genSettings = $genSettingsModel->find(1);
 
                 
-                $secret_key = $genSettings['recaptcha_secret_key']; // Replace with your secret key from reCAPTCHA admin console
-                $verify_url = 'https://www.google.com/recaptcha/api/siteverify';
+                // $secret_key = $genSettings['recaptcha_secret_key']; // Replace with your secret key from reCAPTCHA admin console
+                // $verify_url = 'https://www.google.com/recaptcha/api/siteverify';
 
-                $c_data = array(
-                    'secret' => $secret_key,
-                    'response' => $this->request->getPost('g-recaptcha-response'),
-                    'remoteip' => $_SERVER['REMOTE_ADDR'] // Optional: User's IP address
-                );
+                // $c_data = array(
+                //     'secret' => $secret_key,
+                //     'response' => $this->request->getPost('g-recaptcha-response'),
+                //     'remoteip' => $_SERVER['REMOTE_ADDR'] // Optional: User's IP address
+                // );
 
-                $options = array(
-                    'http' => array(
-                        'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
-                        'method'  => 'POST',
-                        'content' => http_build_query($c_data)
-                    )
-                );
+                // $options = array(
+                //     'http' => array(
+                //         'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
+                //         'method'  => 'POST',
+                //         'content' => http_build_query($c_data)
+                //     )
+                // );
 
-                $context  = stream_context_create($options);
-                $result = file_get_contents($verify_url, false, $context);
-                $captcha_response_data = json_decode($result, true);
-                if($captcha_response_data['success'] == 1){
+                // $context  = stream_context_create($options);
+                // $result = file_get_contents($verify_url, false, $context);
+                // $captcha_response_data = json_decode($result, true);
+                // if($captcha_response_data['success'] == 1){
                     // $mail = new PHPMailer(true);
                     try{
 
@@ -219,9 +219,9 @@ class Contactus extends BaseController
                         }
                     }
 
-                }else{
-                    $data['message'] = 'Invalid recaptcha response. Please refresh the page.';
-                }
+                // }else{
+                //     $data['message'] = 'Invalid recaptcha response. Please refresh the page.';
+                // }
             }else{
                 $errors = $this->validator->getErrors();
                 $errorsArr = [];
