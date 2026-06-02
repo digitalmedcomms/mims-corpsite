@@ -241,6 +241,13 @@ $routes->group("admin", ["namespace" => "App\Controllers\Admin"], function ($rou
         $routes->get('', 'ContactInquiries::index');
         $routes->post('table-listing', 'ContactInquiries::tableListing');
     });
+
+    $routes->group('page-visits', function ($routes) {
+        $routes->get('', 'PageVisits::index');
+        $routes->get('logs', 'PageVisits::logs');
+        $routes->get('delete/(:num)', 'PageVisits::delete/$1');
+        $routes->post('table-listing', 'PageVisits::tableListing');
+    });
 });
 
 $routes->post('vr-run-internal-cron', 'Common::run_internal_cron');

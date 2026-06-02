@@ -27,6 +27,18 @@ class PageVisitFilter implements FilterInterface
         // Only track GET requests and not CLI/AJAX
         if ($request->getMethod() === 'get' && !is_cli() && !$request->isAJAX()) {
             
+            // Exclude admin pages
+            $uriPath = ltrim($request->getUri()->getPath(), '/');
+            if (str_starts_with($uriPath, 'index.php/')) {
+                $uriPath = substr($uriPath, 10);
+            } elseif ($uriPath === 'index.php') {
+                $uriPath = '';
+            }
+            $uriLower = strtolower($uriPath);
+            if (str_starts_with($uriLower, 'admin/') || $uriLower === 'admin') {
+                return;
+            }
+
             $url = current_url();
             
             // Exclude assets by extension
