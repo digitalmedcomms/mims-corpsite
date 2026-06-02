@@ -1,5 +1,8 @@
 <?php
 define('FCPATH', __DIR__ . DIRECTORY_SEPARATOR);
+if (!defined('ENVIRONMENT')) {
+    define('ENVIRONMENT', 'development');
+}
 chdir(__DIR__);
 $pathsConfig = FCPATH . '../app/Config/Paths.php';
 require realpath($pathsConfig) ?: $pathsConfig;
