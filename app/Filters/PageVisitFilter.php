@@ -40,6 +40,10 @@ class PageVisitFilter implements FilterInterface
             }
 
             $url = current_url();
+            $url = str_replace('/index.php/', '/', $url);
+            if (str_ends_with($url, '/index.php')) {
+                $url = substr($url, 0, -10);
+            }
             
             // Exclude assets by extension
             $extension = pathinfo($url, PATHINFO_EXTENSION);

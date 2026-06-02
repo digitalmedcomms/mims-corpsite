@@ -15,24 +15,27 @@ class PageVisits extends AdminController
 
     public function index(){
         $firstDayOfMonth = date('Y-m-01 00:00:00');
+        $db = \Config\Database::connect();
 
-        $totalVisitsAllTime = $this->visitModel->countAllResults();
-        $totalVisitsThisMonth = $this->visitModel->where('created_at >=', $firstDayOfMonth)->countAllResults();
+        $totalVisitsAllTime = $db->table('page_visits')->countAllResults();
+        $totalVisitsThisMonth = $db->table('page_visits')->where('created_at >=', $firstDayOfMonth)->countAllResults();
 
-        $uniqueResult = $this->visitModel->select('COUNT(DISTINCT ip_address) as total')
-                                          ->where('created_at >=', $firstDayOfMonth)
-                                          ->first();
+        $uniqueResult = $db->table('page_visits')
+                           ->select('COUNT(DISTINCT ip_address) as total')
+                           ->where('created_at >=', $firstDayOfMonth)
+                           ->get()->getRowArray();
         $uniqueVisitorsThisMonth = $uniqueResult['total'] ?? 0;
 
-        $visitsToday = $this->visitModel->where('created_at >=', date('Y-m-d 00:00:00'))->countAllResults();
+        $visitsToday = $db->table('page_visits')->where('created_at >=', date('Y-m-d 00:00:00'))->countAllResults();
 
         // Top 10 pages this month
-        $topPagesThisMonth = $this->visitModel->select('url, COUNT(id) as visit_count')
-                                             ->where('created_at >=', $firstDayOfMonth)
-                                             ->groupBy('url')
-                                             ->orderBy('visit_count', 'DESC')
-                                             ->limit(10)
-                                             ->findAll();
+        $topPagesThisMonth = $db->table('page_visits')
+                               ->select('url, COUNT(id) as visit_count')
+                               ->where('created_at >=', $firstDayOfMonth)
+                               ->groupBy('url')
+                               ->orderBy('visit_count', 'DESC')
+                               ->limit(10)
+                               ->get()->getResultArray();
 
         // Main pages classification
         $mainPagesMap = [
@@ -49,10 +52,11 @@ class PageVisits extends AdminController
             "mims-privacy-policy"                         => "Privacy Policy"
         ];
 
-        $urlGroups = $this->visitModel->select('url, COUNT(id) as visit_count')
-                                      ->where('created_at >=', $firstDayOfMonth)
-                                      ->groupBy('url')
-                                      ->findAll();
+        $urlGroups = $db->table('page_visits')
+                        ->select('url, COUNT(id) as visit_count')
+                        ->where('created_at >=', $firstDayOfMonth)
+                        ->groupBy('url')
+                        ->get()->getResultArray();
 
         $mainPagesStats = [];
         foreach ($mainPagesMap as $name) {
@@ -75,6 +79,13 @@ class PageVisits extends AdminController
                 $relativeRoute = ltrim(parse_url($url, PHP_URL_PATH) ?? '', '/');
             }
             $relativeRoute = rtrim($relativeRoute, '/');
+
+            // Strip index.php prefix if present
+            if (str_starts_with($relativeRoute, 'index.php/')) {
+                $relativeRoute = substr($relativeRoute, 10);
+            } elseif ($relativeRoute === 'index.php') {
+                $relativeRoute = '';
+            }
 
             if (isset($mainPagesMap[$relativeRoute])) {
                 $displayName = $mainPagesMap[$relativeRoute];
@@ -107,19 +118,20 @@ class PageVisits extends AdminController
     }
 
     public function logs(){
-        // Get initial stats (unfiltered) just like before for the logs page
-        $totalVisits = $this->visitModel->countAllResults();
+        $db = \Config\Database::connect();
 
-        $uniqueResult = $this->visitModel->select('COUNT(DISTINCT ip_address) as total')->first();
+        $totalVisits = $db->table('page_visits')->countAllResults();
+
+        $uniqueResult = $db->table('page_visits')->select('COUNT(DISTINCT ip_address) as total')->get()->getRowArray();
         $uniqueVisitors = $uniqueResult['total'] ?? 0;
 
-        $visitsToday = $this->visitModel->where('created_at >=', date('Y-m-d 00:00:00'))->countAllResults();
+        $visitsToday = $db->table('page_visits')->where('created_at >=', date('Y-m-d 00:00:00'))->countAllResults();
 
-        $topPageResult = $this->visitModel->select('url, COUNT(id) as visit_count')
+        $topPageResult = $db->table('page_visits')->select('url, COUNT(id) as visit_count')
                                           ->groupBy('url')
                                           ->orderBy('visit_count', 'DESC')
                                           ->limit(1)
-                                          ->first();
+                                          ->get()->getRowArray();
         $topPage = $topPageResult['url'] ?? 'N/A';
         $topPageCount = $topPageResult['visit_count'] ?? 0;
 
@@ -146,13 +158,13 @@ class PageVisits extends AdminController
         }
     }
 
-    private function applyFilters($query)
+    private function applyFilters($builder)
     {
         $search = $this->request->getPost('search');
         $searchValue = $search['value'] ?? '';
 
         if (!empty($searchValue)) {
-            $query = $query->groupStart()
+            $builder = $builder->groupStart()
                 ->like('ip_address', $searchValue)
                 ->orLike('url', $searchValue)
                 ->orLike('user_agent', $searchValue)
@@ -161,25 +173,25 @@ class PageVisits extends AdminController
 
         $filterIp = $this->request->getPost('filter_ip');
         if (!empty($filterIp)) {
-            $query = $query->like('ip_address', $filterIp);
+            $builder = $builder->like('ip_address', $filterIp);
         }
 
         $filterUrl = $this->request->getPost('filter_url');
         if (!empty($filterUrl)) {
-            $query = $query->like('url', $filterUrl);
+            $builder = $builder->like('url', $filterUrl);
         }
 
         $filterStartDate = $this->request->getPost('filter_start_date');
         if (!empty($filterStartDate)) {
-            $query = $query->where('created_at >=', $filterStartDate . ' 00:00:00');
+            $builder = $builder->where('created_at >=', $filterStartDate . ' 00:00:00');
         }
 
         $filterEndDate = $this->request->getPost('filter_end_date');
         if (!empty($filterEndDate)) {
-            $query = $query->where('created_at <=', $filterEndDate . ' 23:59:59');
+            $builder = $builder->where('created_at <=', $filterEndDate . ' 23:59:59');
         }
 
-        return $query;
+        return $builder;
     }
 
     public function tableListing(){
@@ -187,46 +199,45 @@ class PageVisits extends AdminController
         $limit = $input['length'] ?? 10;
         $start = $input['start'] ?? 0;
 
+        $db = \Config\Database::connect();
+
         // Base/Filtered records
-        $query = $this->visitModel;
-        $query = $this->applyFilters($query);
-        
-        $totalRecords = $this->visitModel->countAllResults(); // Unfiltered total
+        $totalRecords = $db->table('page_visits')->countAllResults(); // Unfiltered total
         
         // Clone/Re-apply for counting filtered results
-        $filteredQuery = $this->visitModel;
+        $filteredQuery = $db->table('page_visits');
         $filteredQuery = $this->applyFilters($filteredQuery);
         $recordsFiltered = $filteredQuery->countAllResults();
 
         // Fetch records
-        $recordsQuery = $this->visitModel;
+        $recordsQuery = $db->table('page_visits');
         $recordsQuery = $this->applyFilters($recordsQuery);
-        $records = $recordsQuery->orderBy('id', 'DESC')->findAll($limit, $start);
+        $records = $recordsQuery->orderBy('id', 'DESC')->limit($limit, $start)->get()->getResultArray();
 
         // Stats calculations under current filters
         // 1. Total filtered visits is simply $recordsFiltered
         $statsTotal = $recordsFiltered;
 
         // 2. Unique visitors under filter
-        $uniqueQuery = $this->visitModel;
+        $uniqueQuery = $db->table('page_visits');
         $uniqueQuery = $this->applyFilters($uniqueQuery);
-        $uniqueResult = $uniqueQuery->select('COUNT(DISTINCT ip_address) as total')->first();
+        $uniqueResult = $uniqueQuery->select('COUNT(DISTINCT ip_address) as total')->get()->getRowArray();
         $statsUnique = $uniqueResult['total'] ?? 0;
 
         // 3. Visits today under filter
-        $todayQuery = $this->visitModel;
+        $todayQuery = $db->table('page_visits');
         $todayQuery = $this->applyFilters($todayQuery);
         $todayQuery = $todayQuery->where('created_at >=', date('Y-m-d 00:00:00'));
         $statsToday = $todayQuery->countAllResults();
 
         // 4. Top visited page under filter
-        $topPageQuery = $this->visitModel;
+        $topPageQuery = $db->table('page_visits');
         $topPageQuery = $this->applyFilters($topPageQuery);
         $topPageResult = $topPageQuery->select('url, COUNT(id) as visit_count')
                                       ->groupBy('url')
                                       ->orderBy('visit_count', 'DESC')
                                       ->limit(1)
-                                      ->first();
+                                      ->get()->getRowArray();
         $statsTopPage = $topPageResult['url'] ?? 'N/A';
         $statsTopPageCount = $topPageResult['visit_count'] ?? 0;
 
