@@ -239,6 +239,7 @@ $routes->group("admin", ["namespace" => "App\Controllers\Admin"], function ($rou
     });
     $routes->group('contact-inquiries', function ($routes) {
         $routes->get('', 'ContactInquiries::index');
+        $routes->get('delete/(:num)', 'ContactInquiries::delete/$1');
         $routes->post('table-listing', 'ContactInquiries::tableListing');
     });
 
