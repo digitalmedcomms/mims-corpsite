@@ -1,10 +1,11 @@
 <?php
-define('FCPATH', __DIR__ . '/public/');
+define('FCPATH', __DIR__ . DIRECTORY_SEPARATOR);
 chdir(__DIR__);
-$pathsConfig = 'app/Config/Paths.php';
-require $pathsConfig;
+$pathsConfig = FCPATH . '../app/Config/Paths.php';
+require realpath($pathsConfig) ?: $pathsConfig;
 $paths = new Config\Paths();
-require $paths->systemDirectory . '/bootstrap.php';
+$bootstrap = rtrim($paths->systemDirectory, '\\/ ') . DIRECTORY_SEPARATOR . 'bootstrap.php';
+require realpath($bootstrap) ?: $bootstrap;
 
 $model = new \App\Models\PageVisitModel();
 $visits = $model->findAll();
