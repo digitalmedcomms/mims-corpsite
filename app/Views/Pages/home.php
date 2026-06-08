@@ -47,14 +47,21 @@
                                 <div class="img-featured wow fadeInRight" data-wow-duration="1s" data-wow-delay="2s">
                                     <img src="<?php echo IMG_URL . 'doctor-banner-1-updated.png'; ?>" alt="">
 
-                                    <!-- <div class="bubble-text">
-                                        <div class="bubble-kicker">Healthcare</div>
-                                        <div class="bubble-message text-red">Your partner for healthcare knowledge solutions & services</div>
+                                    <div class="bubble-text-img">
+                                        <div class="bubble-img">
+                                            <img src="<?php echo base_url('assets/img/eMIMS-img.png'); ?>" alt="">
+                                        </div>
                                     </div>
-                                    <div class="bubble-text">
-                                        <div class="bubble-kicker">Corporate</div>
-                                        <div class="bubble-message text-red">Get in touch for winning solutions, tailored for your business</div>
-                                    </div> -->
+                                    <div class="bubble-text-img">
+                                        <div class="bubble-img">
+                                            <img src="<?php echo base_url('assets/img/web-img.png'); ?>" alt="">
+                                        </div>
+                                    </div>
+                                    <div class="bubble-text-img">
+                                        <div class="bubble-img">
+                                            <img src="<?php echo base_url('assets/img/book-img.png'); ?>" alt="">
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
