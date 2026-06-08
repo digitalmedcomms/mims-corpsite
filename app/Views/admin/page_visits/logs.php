@@ -73,6 +73,17 @@
         transform: translateY(-1px);
         box-shadow: 0 4px 10px rgba(0,0,0,0.08);
     }
+    .dashboard-card-custom {
+        border-radius: 12px !important;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.03) !important;
+        border: 1px solid rgba(0,0,0,0.08) !important;
+        margin-bottom: 20px;
+    }
+    .dashboard-card-custom .card-header {
+        background-color: #f8f9fc;
+        border-bottom: 1px solid rgba(0,0,0,0.08);
+        padding: 15px 20px;
+    }
 </style>
 
 <div class="content-wrapper">
@@ -135,6 +146,70 @@
                             <span class="info-box-text text-uppercase text-xs font-weight-bold">Top Visited Page</span>
                             <span class="info-box-number text-truncate d-block" style="font-size: 1.1rem; line-height: 1.2; font-weight: 700;" id="stat-top-page" title="<?php echo esc($stats_top_page); ?>"><?php echo esc($stats_top_page); ?></span>
                             <small class="text-white-50"><span id="stat-top-page-count"><?php echo number_format($stats_top_count); ?></span> visits</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stats Charts row -->
+            <div class="row">
+                <!-- Left column: Top 10 Pages Table -->
+                <div class="col-lg-6 col-md-12">
+                    <div class="card dashboard-card-custom mb-4">
+                        <div class="card-header">
+                            <h3 class="card-title font-weight-bold text-dark mb-0"><i class="fas fa-trophy text-warning mr-1"></i> Top 10 Visited Pages</h3>
+                        </div>
+                        <div class="card-body p-0 table-responsive" style="max-height: 380px; overflow-y: auto;">
+                            <table class="table table-striped table-hover table-bordered mb-0" id="top-pages-table">
+                                <thead class="bg-light" style="position: sticky; top: 0; z-index: 1;">
+                                    <tr>
+                                        <th class="text-center" style="width: 50px;">#</th>
+                                        <th>URL Route</th>
+                                        <th class="text-center" style="width: 130px;">Visit Count</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php if (!empty($top_pages)): ?>
+                                        <?php $i = 1; foreach ($top_pages as $page): ?>
+                                            <tr>
+                                                <td class="text-center font-weight-bold"><?php echo $i++; ?></td>
+                                                <td>
+                                                    <a href="<?php echo esc($page['url']); ?>" target="_blank" class="text-primary text-truncate d-inline-block" style="max-width: 320px;" title="<?php echo esc($page['url']); ?>">
+                                                        <?php echo esc($page['url']); ?>
+                                                    </a>
+                                                </td>
+                                                <td class="text-center">
+                                                    <span class="badge badge-primary px-3 py-2 font-weight-bold" style="border-radius: 20px; font-size: 0.85rem;">
+                                                        <?php echo number_format($page['visit_count']); ?>
+                                                    </span>
+                                                </td>
+                                            </tr>
+                                        <?php endforeach; ?>
+                                    <?php else: ?>
+                                        <tr>
+                                            <td colspan="3" class="text-center text-muted py-4">No visit logs recorded.</td>
+                                        </tr>
+                                    <?php endif; ?>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right column: Pie Graph for Main Pages -->
+                <div class="col-lg-6 col-md-12">
+                    <div class="card dashboard-card-custom mb-4">
+                        <div class="card-header">
+                            <h3 class="card-title font-weight-bold text-dark mb-0"><i class="fas fa-chart-pie text-success mr-1"></i> Main Pages Distribution</h3>
+                        </div>
+                        <div class="card-body d-flex flex-column align-items-center justify-content-center" style="min-height: 380px; max-height: 380px;">
+                            <div style="width: 100%; height: 300px; position: relative;" id="pie-chart-container">
+                                <canvas id="mainPagesPieChart"></canvas>
+                            </div>
+                            <div id="no-pie-data" class="text-center text-muted my-5 d-none">
+                                <i class="fas fa-chart-pie fa-3x mb-3 text-light"></i>
+                                <p>No main pages visits logged.</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -289,8 +364,127 @@ $uri = $request->uri;
                 jQuery('#stat-visits-today').text(json.stats.today);
                 jQuery('#stat-top-page').text(json.stats.top_page).attr('title', json.stats.top_page);
                 jQuery('#stat-top-page-count').text(json.stats.top_page_count);
+
+                // Update Top 10 table and Pie Chart dynamically
+                if (json.stats.top_pages) {
+                    updateTopPagesTable(json.stats.top_pages);
+                }
+                if (json.stats.pie_labels && json.stats.pie_values) {
+                    drawPieChart(json.stats.pie_labels, json.stats.pie_values);
+                }
             }
         };
+
+        var mainPagesPieChart = null;
+
+        function drawPieChart(pieLabels, pieValues) {
+            var ctx = document.getElementById('mainPagesPieChart');
+            if (!ctx) return;
+            
+            if (pieValues.length === 0) {
+                jQuery('#pie-chart-container').addClass('d-none');
+                jQuery('#no-pie-data').removeClass('d-none');
+                if (mainPagesPieChart !== null) {
+                    mainPagesPieChart.destroy();
+                    mainPagesPieChart = null;
+                }
+                return;
+            } else {
+                jQuery('#pie-chart-container').removeClass('d-none');
+                jQuery('#no-pie-data').addClass('d-none');
+            }
+
+            var colors = [
+                '#4e73df', // Primary blue
+                '#1cc88a', // Success green
+                '#36b9cc', // Info cyan
+                '#f6c23e', // Warning yellow
+                '#e74a3b', // Danger red
+                '#6f42c1', // Purple
+                '#fd7e14', // Orange
+                '#20c997', // Teal
+                '#e83e8c', // Pink
+                '#858796', // Slate gray
+                '#5a5c69'  // Dark gray
+            ];
+
+            if (mainPagesPieChart !== null) {
+                mainPagesPieChart.destroy();
+            }
+
+            mainPagesPieChart = new Chart(ctx.getContext('2d'), {
+                type: 'pie',
+                data: {
+                    labels: pieLabels,
+                    datasets: [{
+                        data: pieValues,
+                        backgroundColor: colors.slice(0, pieLabels.length),
+                        borderWidth: 1,
+                        borderColor: '#ffffff'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    legend: {
+                        position: 'right',
+                        labels: {
+                            boxWidth: 15,
+                            fontSize: 12,
+                            padding: 15
+                        }
+                    },
+                    tooltips: {
+                        callbacks: {
+                            label: function(tooltipItem, data) {
+                                var dataset = data.datasets[tooltipItem.datasetIndex];
+                                var total = dataset.data.reduce(function(previousValue, currentValue) {
+                                    return previousValue + currentValue;
+                                }, 0);
+                                var currentValue = dataset.data[tooltipItem.index];
+                                var percentage = total > 0 ? Math.round((currentValue / total) * 100) : 0;
+                                return data.labels[tooltipItem.index] + ': ' + currentValue.toLocaleString() + ' (' + percentage + '%)';
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        function updateTopPagesTable(topPages) {
+            var tbody = jQuery('#top-pages-table tbody');
+            tbody.empty();
+            
+            if (topPages.length === 0) {
+                tbody.append('<tr><td colspan="3" class="text-center text-muted py-4">No visit logs recorded.</td></tr>');
+                return;
+            }
+
+            topPages.forEach(function(page, index) {
+                var urlEsc = jQuery('<div>').text(page.url).html();
+                var countFormatted = Number(page.visit_count).toLocaleString();
+                var row = '<tr>' +
+                    '<td class="text-center font-weight-bold">' + (index + 1) + '</td>' +
+                    '<td>' +
+                        '<a href="' + urlEsc + '" target="_blank" class="text-primary text-truncate d-inline-block" style="max-width: 320px;" title="' + urlEsc + '">' +
+                            urlEsc +
+                        '</a>' +
+                    '</td>' +
+                    '<td class="text-center">' +
+                        '<span class="badge badge-primary px-3 py-2 font-weight-bold" style="border-radius: 20px; font-size: 0.85rem;">' +
+                            countFormatted +
+                        '</span>' +
+                    '</td>' +
+                '</tr>';
+                tbody.append(row);
+            });
+        }
+
+        // Draw initial pie chart using server-rendered data
+        var initialLabels = <?php echo json_encode($pie_labels ?? []); ?>;
+        var initialValues = <?php echo json_encode($pie_values ?? []); ?>;
+        drawPieChart(initialLabels, initialValues);
+
 
         // Override custom DataTableListing init to pass filter values in AJAX request
         DataTableListing.init = function() {
