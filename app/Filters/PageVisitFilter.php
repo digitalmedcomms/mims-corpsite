@@ -44,7 +44,32 @@ class PageVisitFilter implements FilterInterface
             if (str_ends_with($url, '/index.php')) {
                 $url = substr($url, 0, -10);
             }
-            
+                
+            $mainPagesMap = [
+                ""                                            => "Home",
+                "about-us"                                    => "About Us",
+                "our-solutions"                               => "Our Solutions",
+                "our-solutions/for-hcp"                       => "Solutions for HCP",
+                "our-solutions/for-pharmaceutical-companies"  => "Solutions for Pharma",
+                "our-solutions/for-healthcare-institutions"   => "Solutions for Healthcare Institutions",
+                "our-leaders"                                 => "Our Leaders",
+                "contact-us"                                  => "Contact Us",
+                "join-us"                                     => "Join Us",
+                "news-updates"                                => "News & Updates",
+                "mims-privacy-policy"                         => "Privacy Policy"
+            ];
+
+            // do not track visits from crawlers
+            if ($request->getUserAgent()->isRobot()) {
+                return;
+            }
+
+            // track main page only. 
+            // for article pages (under News controller and article method), track it from the controller
+            if (!array_key_exists($uriLower, $mainPagesMap)) {
+                return;
+            }
+
             // Exclude assets by extension
             $extension = pathinfo($url, PATHINFO_EXTENSION);
             if (!empty($extension)) {

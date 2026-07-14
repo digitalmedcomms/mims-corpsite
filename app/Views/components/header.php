@@ -73,6 +73,15 @@
             <?php echo view($key, $style); ?>
         <?php endif; ?>
     <?php endforeach; ?>
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PEFBHN6P08"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-PEFBHN6P08');
+        </script>
 </head>
 <body data-scroll-animation="true">
 <div class="tp-home">

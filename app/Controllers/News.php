@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Models\PostsModel;
 use App\Models\PostCategoriesModel;
 use App\Models\FormsModel;
+use App\Models\PageVisitModel;
 use CodeIgniter\Exceptions\PageNotFoundException;
 
 class News extends BaseController
@@ -78,6 +79,24 @@ class News extends BaseController
         $post = $objPost->where('slug', $article_slug)->where('status', 10)->first();
         if(empty($post)){
             throw new PageNotFoundException('The requested item was not found.');
+        }
+
+        // Track page visit for article page if not a crawler/robot
+        $userAgentObj = $this->request->getUserAgent();
+        if (!$userAgentObj->isRobot()) {
+            $pageVisitModel = new PageVisitModel();
+            $url = current_url();
+            $url = str_replace('/index.php/', '/', $url);
+            if (str_ends_with($url, '/index.php')) {
+                $url = substr($url, 0, -10);
+            }
+
+            $pageVisitModel->insert([
+                'ip_address' => $this->request->getIPAddress(),
+                'user_agent' => $userAgentObj->getAgentString(),
+                'url'        => $url,
+                'referrer'   => $userAgentObj->getReferrer(),
+            ]);
         }
 
         $data['post'] = $post;
