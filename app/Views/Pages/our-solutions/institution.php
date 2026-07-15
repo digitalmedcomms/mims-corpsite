@@ -74,6 +74,7 @@
                                 <div class="item text-center"><a href="https://www.msr.ph/" target="_blank"><img src="<?php echo base_url('assets/img/msr-logo.png'); ?>" alt="" style="max-width: 100px;"></a></div>
                                 <div class="item"><a href="https://cims-recruit.in/" target="_blank"><img src="<?php echo base_url('assets/img/cims-logo.png'); ?>" alt="" style="max-width: 100%;"></a></div>
                                 <div class="item"><a href="https://www.medilabs.co.kr/index.html?lang=en" target="_blank"><img src="<?php echo base_url('assets/img/medilabs.png'); ?>" alt="" style="max-width: 100%;"></a></div>
+                                <div class="item"><a href="https://www.melorita.com/" target="_blank"><img src="<?php echo base_url('assets/img/melorita_nurse_medical_job.png'); ?>" alt="" style="max-width: 100%;"></a></div>
                             </div>
                         </div>
                     </div>
