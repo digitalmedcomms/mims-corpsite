@@ -5,7 +5,7 @@
             <div class="breadcrumbs">
                 <ul>
                     <li><a href="<?php echo base_url(); ?>" class="breadcrumb-link">Home</a></li>
-                    <li><a href="<?php echo base_url('join-us'); ?>" class="breadcrumb-link">Join Us</a></li>
+                    <li><a href="<?php echo base_url('about-us'); ?>" class="breadcrumb-link">About Us</a></li>
                     <li><a href="javascript:;" class="breadcrumb-link">Message from CEO</a></li>
                 </ul>
             </div>
