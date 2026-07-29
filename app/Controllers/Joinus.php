@@ -72,6 +72,50 @@ class Joinus extends BaseController
         .view('components/footer');
     }
 
+    public function message_from_ceo()
+    {
+        return view('components/header', array(
+            'title' => 'Message from CEO | MIMS Group',
+            'description' => 'A message from Sohil Goswami, CEO of MIMS Group, on trust, clinical intelligence, and building for the future across Asia Pacific.',
+            'url' => BASE_URL . 'message-from-ceo',
+            'keywords' => 'MIMS CEO, Sohil Goswami, Message from CEO, MIMS Group',
+            'meta' => array(
+                'title' => 'Message from CEO | MIMS Group',
+                'description' => 'A message from Sohil Goswami, CEO of MIMS Group, on trust, clinical intelligence, and building for the future across Asia Pacific.',
+                'image' => IMG_URL . 'sohil-goswami-img.png'
+            ),
+            'nav' => 'joinus',
+            'styles' => array(
+                'plugins/font_awesome',
+                COMPILED_ASSETS_PATH . 'css/components/bootstrap',
+                COMPILED_ASSETS_PATH . 'css/components/fontawesome',
+                COMPILED_ASSETS_PATH . 'css/components/owl',
+                COMPILED_ASSETS_PATH . 'css/components/bootstrap-main',
+                COMPILED_ASSETS_PATH . 'css/components/buttons',
+                COMPILED_ASSETS_PATH . 'css/components/global',
+                COMPILED_ASSETS_PATH . 'css/components/animations',
+                COMPILED_ASSETS_PATH . 'css/components/navigation_bar',
+                COMPILED_ASSETS_PATH . 'css/components/footer',
+                COMPILED_ASSETS_PATH . 'css/pages/message-from-ceo'
+            )
+        ))
+        .view('Pages/message-from-ceo')
+        .view('components/scripts_render', array(
+            'scripts' => array(
+                'https://code.jquery.com/jquery-3.5.1.min.js' => array(
+                    'integrity' => 'sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=',
+                    'crossorigin' => 'anonymous'
+                ),
+                ASSETS_URL . 'js/plugins/popper.min.js',
+                ASSETS_URL . 'js/plugins/bootstrap/bootstrap.min.js',
+                ASSETS_URL . 'js/components/global.min.js',
+                ASSETS_URL . 'js/components/wow.min.js',
+                ASSETS_URL . 'js/components/navigation_bar.min.js'
+            )
+        ))
+        .view('components/footer');
+    }
+
     public function careers(){
         $data = [
             'message' => 'Invalid request.',
