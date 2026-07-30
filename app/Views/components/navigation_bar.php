@@ -39,7 +39,7 @@
                                                 </div>
                                                 <div class="menu-item">
                                                     <a href="<?php echo base_url('about-us/#our-people'); ?>" class="link-header text-red" style="color:#be1722;">Our People</a>
-                                                    <p>Meet <a href="<?php echo base_url('our-leaders'); ?>" class="text-blue">our leadership</a> and see our various locations in 17 markets</p>
+                                                    <p class="mb-0">Meet <a href="<?php echo base_url('our-leaders'); ?>" class="text-blue">our leadership</a> and see our various locations in 17 markets. <a class="text-blue" href="<?php echo base_url('message-from-ceo'); ?>">Read Message from the CEO</a></p>
                                                 </div>
                                             </div>
                                         </div>

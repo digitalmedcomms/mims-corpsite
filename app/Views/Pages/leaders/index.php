@@ -34,6 +34,11 @@
                                     echo '<div class="leader-details"><div class="leader-name text-blue">'.$leader['name'].'</div><div class="leader-designation text">'.$leader['designation'].'</div></div>';
                                     echo '<div class="leader-bio">'.$leader['biography'].'</div>';
                                     echo '<a href="javascript:;" data-leader="'.$leader['id'].'" class="profileLink text-blue text-dmsans">View Profile <i class="fa fa-angle-right"></i></a>';
+
+                                    if(strtolower($leader['name']) == 'sohil goswami'){
+                                        echo '<br>';
+                                        echo '<a href="'.base_url('message-from-ceo').'"  class="text-blue text-dmsans">Read Message from the CEO <i class="fa fa-angle-right"></i></a>';
+                                    }
                                 echo '</div>';
                             }
                         ?>

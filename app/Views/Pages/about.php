@@ -310,6 +310,7 @@
                         <div class="item-desc text-grayish-blue">
                             <p>Visionaries. Strategists. Enablers.</p>
                             <p>Meet the dynamic leadership who empower and inspire the people at MIMS.</p>
+                            <p><a class="text-blue" href="<?php echo base_url('message-from-ceo'); ?>">Read Message from the CEO</a></p>
                         </div>
                         <div class="buttons">
                             <a href="<?php echo base_url('our-leaders'); ?>" class="btn btn-secondary">Read More</a>
