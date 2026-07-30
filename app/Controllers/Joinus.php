@@ -84,7 +84,7 @@ class Joinus extends BaseController
                 'description' => 'A message from Sohil Goswami, CEO of MIMS Group, on trust, clinical intelligence, and building for the future across Asia Pacific.',
                 'image' => IMG_URL . 'sohil-goswami-img.png'
             ),
-            'nav' => 'joinus',
+            'nav' => 'aboutus',
             'styles' => array(
                 'plugins/font_awesome',
                 COMPILED_ASSETS_PATH . 'css/components/bootstrap',
