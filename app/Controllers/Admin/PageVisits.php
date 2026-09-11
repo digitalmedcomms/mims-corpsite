@@ -143,6 +143,16 @@ class PageVisits extends AdminController
                                ->limit(10)
                                ->get()->getResultArray();
 
+        // Top 10 referrers all time
+        $topReferrers = $this->applyBrowserFilter($db->table('page_visits'))
+                             ->select('referrer, COUNT(id) as visit_count')
+                             ->where('referrer IS NOT NULL')
+                             ->where('referrer !=', '')
+                             ->groupBy('referrer')
+                             ->orderBy('visit_count', 'DESC')
+                             ->limit(10)
+                             ->get()->getResultArray();
+
         // Main pages classification
         $mainPagesMap = [
             ""                                            => "Home",
@@ -216,6 +226,7 @@ class PageVisits extends AdminController
             'stats_top_page'   => $topPage,
             'stats_top_count'  => $topPageCount,
             'top_pages'        => $topPagesAllTime,
+            'top_referrers'    => $topReferrers,
             'pie_labels'       => $pieLabels,
             'pie_values'       => $pieValues
         ]);
@@ -316,9 +327,9 @@ class PageVisits extends AdminController
         $recordsFiltered = $filteredQuery->countAllResults();
 
         // Fetch records
-        $recordsQuery = $this->applyBrowserFilter($db->table('page_visits'));
-        $recordsQuery = $this->applyFilters($recordsQuery);
-        $records = $recordsQuery->orderBy('id', 'DESC')->limit($limit, $start)->get()->getResultArray();
+        // $recordsQuery = $this->applyBrowserFilter($db->table('page_visits'));
+        // $recordsQuery = $this->applyFilters($recordsQuery);
+        // $records = $recordsQuery->orderBy('id', 'DESC')->limit($limit, $start)->get()->getResultArray();
 
         // Stats calculations under current filters
         // 1. Total filtered visits is simply $recordsFiltered
@@ -422,19 +433,19 @@ class PageVisits extends AdminController
         }
 
         $data = [];
-        foreach ($records as $row) {
-            $action = '<a href="'. base_url('admin/page-visits/delete/'.$row['id']) .'" class="btn btn-sm btn-danger btn-delete-item" onclick="return confirm(\'Are you sure you want to delete this visit log?\')"><i class="fa fa-trash"></i> Delete</a>';
+        // foreach ($records as $row) {
+        //     $action = '<a href="'. base_url('admin/page-visits/delete/'.$row['id']) .'" class="btn btn-sm btn-danger btn-delete-item" onclick="return confirm(\'Are you sure you want to delete this visit log?\')"><i class="fa fa-trash"></i> Delete</a>';
 
-            $data[] = [
-                'id' => $row['id'],
-                'ip_address' => $row['ip_address'],
-                'url' => $row['url'],
-                'referrer' => $row['referrer'] ?? 'Direct',
-                'user_agent' => $row['user_agent'],
-                'created_at' => formatted_date($row['created_at']),
-                'action' => $action
-            ];
-        }
+        //     $data[] = [
+        //         'id' => $row['id'],
+        //         'ip_address' => $row['ip_address'],
+        //         'url' => $row['url'],
+        //         'referrer' => $row['referrer'] ?? 'Direct',
+        //         'user_agent' => $row['user_agent'],
+        //         'created_at' => formatted_date($row['created_at']),
+        //         'action' => $action
+        //     ];
+        // }
 
         $output = [
             'draw' => intval($input['draw']),

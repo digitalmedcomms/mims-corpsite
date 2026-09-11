@@ -110,6 +110,77 @@
     
     <section class="content">
         <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                        <!-- Filters Card -->
+                    <div class="card filter-card-custom">
+                        <div class="card-header">
+                            <h3 class="card-title font-weight-bold text-dark"><i class="fas fa-filter text-primary mr-1"></i> Search Filters</h3>
+                            <div class="card-tools">
+                                <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <form id="visit-filter-form">
+                                <div class="row">
+                                    <div class="col-md-3 col-sm-6">
+                                        <div class="form-group">
+                                            <label class="text-xs font-weight-bold text-muted">IP Address</label>
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text"><i class="fas fa-network-wired text-muted"></i></span>
+                                                </div>
+                                                <input type="text" name="filter_ip" id="filter_ip" class="form-control form-control-sm" placeholder="e.g. 192.168.1.1">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3 col-sm-6">
+                                        <div class="form-group">
+                                            <label class="text-xs font-weight-bold text-muted">URL Route</label>
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text"><i class="fas fa-link text-muted"></i></span>
+                                                </div>
+                                                <input type="text" name="filter_url" id="filter_url" class="form-control form-control-sm" placeholder="e.g. /news-updates">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3 col-sm-6">
+                                        <div class="form-group">
+                                            <label class="text-xs font-weight-bold text-muted">Start Date</label>
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text"><i class="fas fa-calendar-alt text-muted"></i></span>
+                                                </div>
+                                                <input type="text" name="filter_start_date" id="filter_start_date" class="form-control form-control-sm datepicker" data-date-format="yyyy-mm-dd" placeholder="YYYY-MM-DD" autocomplete="off">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3 col-sm-6">
+                                        <div class="form-group">
+                                            <label class="text-xs font-weight-bold text-muted">End Date</label>
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text"><i class="fas fa-calendar-alt text-muted"></i></span>
+                                                </div>
+                                                <input type="text" name="filter_end_date" id="filter_end_date" class="form-control form-control-sm datepicker" data-date-format="yyyy-mm-dd" placeholder="YYYY-MM-DD" autocomplete="off">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mt-2">
+                                    <div class="col-md-12 text-right">
+                                        <button type="button" id="btn-reset-filters" class="btn btn-sm btn-secondary btn-custom mr-2"><i class="fas fa-undo mr-1"></i> Reset</button>
+                                        <button type="button" id="btn-apply-filters" class="btn btn-sm btn-primary btn-custom"><i class="fas fa-search mr-1"></i> Apply Filters</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <!-- Metrics row (Optional summary info on logs page too) -->
             <div class="row">
                 <div class="col-lg-3 col-md-6 col-sm-12">
@@ -215,103 +286,54 @@
                 </div>
             </div>
 
-            <!-- Filters Card -->
-            <div class="card filter-card-custom">
-                <div class="card-header">
-                    <h3 class="card-title font-weight-bold text-dark"><i class="fas fa-filter text-primary mr-1"></i> Search Filters</h3>
-                    <div class="card-tools">
-                        <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                            <i class="fas fa-minus"></i>
-                        </button>
+            <!-- Top 10 Sources / Referrers Card -->
+            <div class="row">
+                <div class="col-12">
+                    <div class="card dashboard-card-custom mb-4">
+                        <div class="card-header">
+                            <h3 class="card-title font-weight-bold text-dark mb-0"><i class="fas fa-share-alt text-info mr-1"></i> Top 10 Sources / Referrers</h3>
+                        </div>
+                        <div class="card-body p-0 table-responsive" style="max-height: 420px; overflow-y: auto;">
+                            <table class="table table-striped table-hover table-bordered mb-0" id="top-referrers-table">
+                                <thead class="bg-light" style="position: sticky; top: 0; z-index: 1;">
+                                    <tr>
+                                        <th class="text-center" style="width: 50px;">#</th>
+                                        <th>Referrer URL</th>
+                                        <th class="text-center" style="width: 130px;">Visit Count</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php if (!empty($top_referrers)): ?>
+                                        <?php $i = 1; foreach ($top_referrers as $ref): ?>
+                                            <tr>
+                                                <td class="text-center font-weight-bold"><?php echo $i++; ?></td>
+                                                <td>
+                                                    <a href="<?php echo esc($ref['referrer']); ?>" target="_blank" rel="noopener noreferrer"
+                                                       class="text-primary text-truncate d-inline-block"
+                                                       style="max-width: 600px;"
+                                                       title="<?php echo esc($ref['referrer']); ?>">
+                                                        <?php echo esc($ref['referrer']); ?>
+                                                    </a>
+                                                </td>
+                                                <td class="text-center">
+                                                    <span class="badge badge-info px-3 py-2 font-weight-bold" style="border-radius: 20px; font-size: 0.85rem;">
+                                                        <?php echo number_format($ref['visit_count']); ?>
+                                                    </span>
+                                                </td>
+                                            </tr>
+                                        <?php endforeach; ?>
+                                    <?php else: ?>
+                                        <tr>
+                                            <td colspan="3" class="text-center text-muted py-4">No referrer data recorded.</td>
+                                        </tr>
+                                    <?php endif; ?>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
-                </div>
-                <div class="card-body">
-                    <form id="visit-filter-form">
-                        <div class="row">
-                            <div class="col-md-3 col-sm-6">
-                                <div class="form-group">
-                                    <label class="text-xs font-weight-bold text-muted">IP Address</label>
-                                    <div class="input-group">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text"><i class="fas fa-network-wired text-muted"></i></span>
-                                        </div>
-                                        <input type="text" name="filter_ip" id="filter_ip" class="form-control form-control-sm" placeholder="e.g. 192.168.1.1">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-3 col-sm-6">
-                                <div class="form-group">
-                                    <label class="text-xs font-weight-bold text-muted">URL Route</label>
-                                    <div class="input-group">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text"><i class="fas fa-link text-muted"></i></span>
-                                        </div>
-                                        <input type="text" name="filter_url" id="filter_url" class="form-control form-control-sm" placeholder="e.g. /news-updates">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-3 col-sm-6">
-                                <div class="form-group">
-                                    <label class="text-xs font-weight-bold text-muted">Start Date</label>
-                                    <div class="input-group">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text"><i class="fas fa-calendar-alt text-muted"></i></span>
-                                        </div>
-                                        <input type="text" name="filter_start_date" id="filter_start_date" class="form-control form-control-sm datepicker" data-date-format="yyyy-mm-dd" placeholder="YYYY-MM-DD" autocomplete="off">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-3 col-sm-6">
-                                <div class="form-group">
-                                    <label class="text-xs font-weight-bold text-muted">End Date</label>
-                                    <div class="input-group">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text"><i class="fas fa-calendar-alt text-muted"></i></span>
-                                        </div>
-                                        <input type="text" name="filter_end_date" id="filter_end_date" class="form-control form-control-sm datepicker" data-date-format="yyyy-mm-dd" placeholder="YYYY-MM-DD" autocomplete="off">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row mt-2">
-                            <div class="col-md-12 text-right">
-                                <button type="button" id="btn-reset-filters" class="btn btn-sm btn-secondary btn-custom mr-2"><i class="fas fa-undo mr-1"></i> Reset</button>
-                                <button type="button" id="btn-apply-filters" class="btn btn-sm btn-primary btn-custom"><i class="fas fa-search mr-1"></i> Apply Filters</button>
-                            </div>
-                        </div>
-                    </form>
                 </div>
             </div>
 
-            <!-- Table Card -->
-            <div class="row">
-                <div class="col-12">
-                    <div class="card table-card-custom">
-                        <div class="card-header d-flex align-items-center justify-content-between">
-                            <h3 class="card-title font-weight-bold text-dark mb-0"><i class="fas fa-list text-primary mr-1"></i> Page Visit Logs</h3>
-                        </div>
-                        <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="cs_datatable table table-bordered table-striped cell-border" style="width: 100%;">
-                                    <thead>
-                                        <tr>
-                                            <th class="text-center" style="width: 50px;">ID</th>
-                                            <th style="width: 150px;">IP Address</th>
-                                            <th style="width: 250px;">URL</th>
-                                            <th style="width: 200px;">Referrer</th>
-                                            <th>User Agent</th>
-                                            <th style="width: 150px;">Date</th>
-                                            <th class="text-center" style="width: 100px;">Actions</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
     </section>
 </div>
@@ -485,54 +507,6 @@ $uri = $request->uri;
         var initialValues = <?php echo json_encode($pie_values ?? []); ?>;
         drawPieChart(initialLabels, initialValues);
 
-
-        // Override custom DataTableListing init to pass filter values in AJAX request
-        DataTableListing.init = function() {
-            if (DataTableListing.ajaxURL != '') {
-                DataTableListing.options['ajax'] = jQuery.fn.dataTable.pipeline({
-                    "url": DataTableListing.ajaxURL,
-                    'pages': 5, // Use 5 pages buffer for speed
-                    "method": "POST",
-                    "headers": {
-                        'X-CSRF-TOKEN': jQuery.cookie(csrfCookie)
-                    },
-                    "data": function(d){
-                        d['csrf_token'] = jQuery.cookie(csrfCookie);
-                        d['filter_ip'] = jQuery('#filter_ip').val();
-                        d['filter_url'] = jQuery('#filter_url').val();
-                        d['filter_start_date'] = jQuery('#filter_start_date').val();
-                        d['filter_end_date'] = jQuery('#filter_end_date').val();
-                    }
-                });
-            }
-            
-            DataTableListing.dataTable = jQuery(DataTableListing.selector).DataTable(DataTableListing.options);
-            jQuery('.dataTables_length').addClass('bs-select');
-        };
-
-        // Initialize DataTableListing
-        DataTableListing.init();
-
-        // Apply filters button click handler
-        jQuery('#btn-apply-filters').click(function(){
-            DataTableListing.dataTable.clearPipeline();
-            DataTableListing.dataTable.ajax.reload();
-        });
-
-        // Reset filters button click handler
-        jQuery('#btn-reset-filters').click(function(){
-            jQuery('#visit-filter-form')[0].reset();
-            DataTableListing.dataTable.clearPipeline();
-            DataTableListing.dataTable.ajax.reload();
-        });
-
-        // Add keypress handler for enter key on filter inputs
-        jQuery('#visit-filter-form input').keypress(function(e) {
-            if (e.which == 13) {
-                e.preventDefault();
-                jQuery('#btn-apply-filters').trigger('click');
-            }
-        });
     });
 </script>
 <?php echo $this->endSection() ?>
