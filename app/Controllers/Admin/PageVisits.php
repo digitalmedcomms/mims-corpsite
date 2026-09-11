@@ -143,11 +143,13 @@ class PageVisits extends AdminController
                                ->limit(10)
                                ->get()->getResultArray();
 
-        // Top 10 referrers all time
+        // Top 10 external referrers all time (exclude self-referrers)
+        $siteBaseUrl = rtrim(base_url(), '/');
         $topReferrers = $this->applyBrowserFilter($db->table('page_visits'))
                              ->select('referrer, COUNT(id) as visit_count')
                              ->where('referrer IS NOT NULL')
                              ->where('referrer !=', '')
+                             ->notLike('referrer', $siteBaseUrl, 'after')
                              ->groupBy('referrer')
                              ->orderBy('visit_count', 'DESC')
                              ->limit(10)
