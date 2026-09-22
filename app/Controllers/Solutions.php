@@ -116,12 +116,12 @@ class Solutions extends BaseController
         $carouselSlidesObj = new CarouselDataModel();
 
         $carousel = $carouselObj->find(1);
-        $carousel['slides'] = $carouselSlidesObj->where('carousel_id', 1)->orderBy('slide_order ASC')->findAll();
+        $carousel['slides'] = $carouselSlidesObj->where('carousel_id', 1)->where('status', 1)->orderBy('slide_order ASC')->findAll();
         $data['medcomms_carousel'] = $carousel;
 
 
         $carousel = $carouselObj->find(2);
-        $carousel['slides'] = $carouselSlidesObj->where('carousel_id', 2)->orderBy('slide_order ASC')->findAll();
+        $carousel['slides'] = $carouselSlidesObj->where('carousel_id', 2)->where('status', 1)->orderBy('slide_order ASC')->findAll();
         $data['mpf_carousel'] = $carousel;
 
         // PAGE HEAD PROCESSING

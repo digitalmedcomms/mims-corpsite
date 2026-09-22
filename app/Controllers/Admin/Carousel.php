@@ -248,6 +248,15 @@ class Carousel extends AdminController
         
     }
 
+    public function delete_slide($slide_id){
+        if($this->request->getMethod() === 'post' && !empty($slide_id)){
+
+            $carouselSlide = $this->carouselSlides->find($slide_id);
+            $this->carouselSlides->delete($slide_id);
+            $this->session->setFlashData('success', 'Slide was successfully deleted.');
+            return redirect()->to('admin/carousel/view/'.$carouselSlide['carousel_id']);
+        }
+    }
     public function tableListing(){
         $data = [];
         $input = $_POST;
