@@ -166,7 +166,7 @@ if (isset($is_home) && $is_home) {
         <div class="announcement-bar" id="homepageAnnouncementBar">
             <div class="container">
                 <div class="announcement-bar-wrap">
-                    <a href="https://corporate.mims.com/corporate/mims-accelerates-product-innovation-and-international-growth" class="announcement-bar-link">
+                    <a href="https://corporate.mims.com/corporate/mims-accelerates-product-innovation-and-international-growth" target="_blank" rel="noopener noreferrer" class="announcement-bar-link">
                         <span class="announcement-bar-text">MIMS Accelerates Product Innovation and International Growth</span>
                         <span class="announcement-bar-btn">
                             <span>Read the full press release</span>
