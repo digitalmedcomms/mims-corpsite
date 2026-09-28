@@ -102,4 +102,7 @@
 <img height="1" width="1" style="display:none;" alt="" src="https://px.ads.linkedin.com/collect/?pid=10818433&fmt=gif" />
 </noscript>
 <div class="tp-home">
-    <?php echo view('components/navigation_bar', ['nav' => (isset($nav) ? $nav : '')]); ?>
+    <?php echo view('components/navigation_bar', [
+        'nav' => (isset($nav) ? $nav : ''),
+        'is_home' => (isset($is_home) ? $is_home : false)
+    ]); ?>

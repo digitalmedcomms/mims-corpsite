@@ -23,6 +23,8 @@ class Home extends BaseController
                 'description' => 'MIMS host a wealth of healthcare services to healthcare professionals, pharmaceutical companies and healthcare institutions.',
                 'image' => IMG_URL . ''
             ),
+            'nav' => 'home',
+            'is_home' => true,
             'styles' => array(
                 'plugins/font_awesome',
                 COMPILED_ASSETS_PATH . 'css/components/bootstrap',
