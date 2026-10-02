@@ -132,7 +132,7 @@
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text"><i class="fas fa-network-wired text-muted"></i></span>
                                                 </div>
-                                                <input type="text" name="filter_ip" id="filter_ip" class="form-control form-control-sm" placeholder="e.g. 192.168.1.1">
+                                                <input type="text" name="filter_ip" id="filter_ip" class="form-control form-control-sm" placeholder="e.g. 192.168.1.1" value="<?php echo esc($filter_ip ?? ''); ?>">
                                             </div>
                                         </div>
                                     </div>
@@ -143,7 +143,7 @@
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text"><i class="fas fa-link text-muted"></i></span>
                                                 </div>
-                                                <input type="text" name="filter_url" id="filter_url" class="form-control form-control-sm" placeholder="e.g. /news-updates">
+                                                <input type="text" name="filter_url" id="filter_url" class="form-control form-control-sm" placeholder="e.g. /news-updates" value="<?php echo esc($filter_url ?? ''); ?>">
                                             </div>
                                         </div>
                                     </div>
@@ -154,7 +154,7 @@
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text"><i class="fas fa-calendar-alt text-muted"></i></span>
                                                 </div>
-                                                <input type="text" name="filter_start_date" id="filter_start_date" class="form-control form-control-sm datepicker" data-date-format="yyyy-mm-dd" placeholder="YYYY-MM-DD" autocomplete="off">
+                                                <input type="text" name="filter_start_date" id="filter_start_date" class="form-control form-control-sm datepicker" data-date-format="yyyy-mm-dd" placeholder="YYYY-MM-DD" autocomplete="off" value="<?php echo esc($filter_start_date ?? date('Y-m-01')); ?>">
                                             </div>
                                         </div>
                                     </div>
@@ -165,7 +165,7 @@
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text"><i class="fas fa-calendar-alt text-muted"></i></span>
                                                 </div>
-                                                <input type="text" name="filter_end_date" id="filter_end_date" class="form-control form-control-sm datepicker" data-date-format="yyyy-mm-dd" placeholder="YYYY-MM-DD" autocomplete="off">
+                                                <input type="text" name="filter_end_date" id="filter_end_date" class="form-control form-control-sm datepicker" data-date-format="yyyy-mm-dd" placeholder="YYYY-MM-DD" autocomplete="off" value="<?php echo esc($filter_end_date ?? date('Y-m-t')); ?>">
                                             </div>
                                         </div>
                                     </div>
@@ -345,57 +345,9 @@ $uri = $request->uri;
 
 <script type="text/javascript">
     jQuery(document).ready(function(){
-        // Set AJAX URL endpoint (pointing to table-listing route)
-        DataTableListing.ajaxURL = '<?php echo base_url($uri->getSegment(1) . '/' . $uri->getSegment(2) . '/table-listing'); ?>';
-        DataTableListing.options.pageLength = 25;
-        DataTableListing.options.columns = [
-            { "data": "id" },
-            { "data": "ip_address" },
-            { "data": "url" },
-            { "data": "referrer" },
-            { "data": "user_agent" },
-            { "data": "created_at" },
-            { "data": "action" },
-        ];
-        DataTableListing.options.aoColumnDefs = [
-            { "aTargets": [ 0 ], "bSortable": true },
-            { "aTargets": [ 1 ], "bSortable": true },
-            { "aTargets": [ 2 ], "bSortable": true },
-            { "aTargets": [ 3 ], "bSortable": true },
-            { "aTargets": [ 4 ], "bSortable": false },
-            { "aTargets": [ 5 ], "bSortable": true },
-            { "aTargets": [ 6 ], "bSortable": false },
-        ];
-
-        // Override default DataTableListing drawCallback to support updating stats cards
-        DataTableListing.options.drawCallback = function(settings) {
-            // Default datatable behavior
-            if (jQuery('table#datatable td').hasClass('dataTables_empty')){
-                jQuery('#datatable_paginate').hide();
-            } else {
-                jQuery('#datatable_paginate').show();
-            }
-            jQuery("#datatable_overlay").hide();
-
-            // Dynamic Stats Updating
-            var api = this.api();
-            var json = api.ajax.json();
-            if (json && json.stats) {
-                jQuery('#stat-total-visits').text(json.stats.total);
-                jQuery('#stat-unique-visitors').text(json.stats.unique);
-                jQuery('#stat-visits-today').text(json.stats.today);
-                jQuery('#stat-top-page').text(json.stats.top_page).attr('title', json.stats.top_page);
-                jQuery('#stat-top-page-count').text(json.stats.top_page_count);
-
-                // Update Top 10 table and Pie Chart dynamically
-                if (json.stats.top_pages) {
-                    updateTopPagesTable(json.stats.top_pages);
-                }
-                if (json.stats.pie_labels && json.stats.pie_values) {
-                    drawPieChart(json.stats.pie_labels, json.stats.pie_values);
-                }
-            }
-        };
+        var ajaxURL = '<?php echo base_url('admin/page-visits/table-listing'); ?>';
+        var defaultStartDate = '<?php echo date('Y-m-01'); ?>';
+        var defaultEndDate = '<?php echo date('Y-m-t'); ?>';
 
         var mainPagesPieChart = null;
 
@@ -403,7 +355,7 @@ $uri = $request->uri;
             var ctx = document.getElementById('mainPagesPieChart');
             if (!ctx) return;
             
-            if (pieValues.length === 0) {
+            if (!pieValues || pieValues.length === 0) {
                 jQuery('#pie-chart-container').addClass('d-none');
                 jQuery('#no-pie-data').removeClass('d-none');
                 if (mainPagesPieChart !== null) {
@@ -477,7 +429,7 @@ $uri = $request->uri;
             var tbody = jQuery('#top-pages-table tbody');
             tbody.empty();
             
-            if (topPages.length === 0) {
+            if (!topPages || topPages.length === 0) {
                 tbody.append('<tr><td colspan="3" class="text-center text-muted py-4">No visit logs recorded.</td></tr>');
                 return;
             }
@@ -501,6 +453,117 @@ $uri = $request->uri;
                 tbody.append(row);
             });
         }
+
+        function updateTopReferrersTable(topReferrers) {
+            var tbody = jQuery('#top-referrers-table tbody');
+            tbody.empty();
+
+            if (!topReferrers || topReferrers.length === 0) {
+                tbody.append('<tr><td colspan="3" class="text-center text-muted py-4">No referrer data recorded.</td></tr>');
+                return;
+            }
+
+            topReferrers.forEach(function(ref, index) {
+                var refEsc = jQuery('<div>').text(ref.referrer).html();
+                var countFormatted = Number(ref.visit_count).toLocaleString();
+                var row = '<tr>' +
+                    '<td class="text-center font-weight-bold">' + (index + 1) + '</td>' +
+                    '<td>' +
+                        '<a href="' + refEsc + '" target="_blank" rel="noopener noreferrer" class="text-primary text-truncate d-inline-block" style="max-width: 600px;" title="' + refEsc + '">' +
+                            refEsc +
+                        '</a>' +
+                    '</td>' +
+                    '<td class="text-center">' +
+                        '<span class="badge badge-info px-3 py-2 font-weight-bold" style="border-radius: 20px; font-size: 0.85rem;">' +
+                            countFormatted +
+                        '</span>' +
+                    '</td>' +
+                '</tr>';
+                tbody.append(row);
+            });
+        }
+
+        function applyFilters() {
+            var $btn = jQuery('#btn-apply-filters');
+            var originalBtnHtml = $btn.html();
+            $btn.prop('disabled', true).html('<i class="fas fa-spinner fa-spin mr-1"></i> Filtering...');
+
+            var postData = {
+                filter_ip: jQuery('#filter_ip').val(),
+                filter_url: jQuery('#filter_url').val(),
+                filter_start_date: jQuery('#filter_start_date').val(),
+                filter_end_date: jQuery('#filter_end_date').val()
+            };
+            if (typeof csrfName !== 'undefined' && typeof csrfCookie !== 'undefined') {
+                postData[csrfName] = jQuery.cookie(csrfCookie);
+            }
+
+            var headers = {};
+            if (typeof csrfCookie !== 'undefined') {
+                headers['X-CSRF-TOKEN'] = jQuery.cookie(csrfCookie);
+            }
+
+            jQuery.ajax({
+                url: ajaxURL,
+                type: 'POST',
+                data: postData,
+                dataType: 'json',
+                headers: headers,
+                success: function(json) {
+                    if (json && json.stats) {
+                        jQuery('#stat-total-visits').text(json.stats.total);
+                        jQuery('#stat-unique-visitors').text(json.stats.unique);
+                        jQuery('#stat-visits-today').text(json.stats.today);
+                        jQuery('#stat-top-page').text(json.stats.top_page).attr('title', json.stats.top_page);
+                        jQuery('#stat-top-page-count').text(json.stats.top_page_count);
+
+                        if (json.stats.top_pages) {
+                            updateTopPagesTable(json.stats.top_pages);
+                        }
+                        if (json.stats.top_referrers) {
+                            updateTopReferrersTable(json.stats.top_referrers);
+                        }
+                        if (json.stats.pie_labels && json.stats.pie_values) {
+                            drawPieChart(json.stats.pie_labels, json.stats.pie_values);
+                        }
+                    }
+                },
+                error: function(xhr, status, error) {
+                    console.error('Error applying filters:', error);
+                },
+                complete: function() {
+                    $btn.prop('disabled', false).html(originalBtnHtml);
+                }
+            });
+        }
+
+        // Apply filters button click handler
+        jQuery('#btn-apply-filters').click(function(){
+            applyFilters();
+        });
+
+        // Reset filters button click handler
+        jQuery('#btn-reset-filters').click(function(){
+            jQuery('#filter_ip').val('');
+            jQuery('#filter_url').val('');
+            jQuery('#filter_start_date').val(defaultStartDate);
+            if (jQuery('#filter_start_date').data('datepicker')) {
+                jQuery('#filter_start_date').datepicker('update', defaultStartDate);
+            }
+            jQuery('#filter_end_date').val(defaultEndDate);
+            if (jQuery('#filter_end_date').data('datepicker')) {
+                jQuery('#filter_end_date').datepicker('update', defaultEndDate);
+            }
+            applyFilters();
+        });
+
+        // Add keypress handler for enter key on filter inputs
+        jQuery('#visit-filter-form input').keypress(function(e) {
+            if (e.which == 13) {
+                e.preventDefault();
+                applyFilters();
+            }
+        });
 
         // Draw initial pie chart using server-rendered data
         var initialLabels = <?php echo json_encode($pie_labels ?? []); ?>;

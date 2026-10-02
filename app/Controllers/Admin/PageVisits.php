@@ -58,49 +58,7 @@ class PageVisits extends AdminController
                         ->groupBy('url')
                         ->get()->getResultArray();
 
-        $mainPagesStats = [];
-        foreach ($mainPagesMap as $name) {
-            $mainPagesStats[$name] = 0;
-        }
-
-        $baseUrl = base_url();
-        if (substr($baseUrl, -1) !== '/') {
-            $baseUrl .= '/';
-        }
-
-        foreach ($urlGroups as $group) {
-            $url = $group['url'];
-            $count = (int)$group['visit_count'];
-
-            $relativeRoute = '';
-            if (str_starts_with($url, $baseUrl)) {
-                $relativeRoute = substr($url, strlen($baseUrl));
-            } else {
-                $relativeRoute = ltrim(parse_url($url, PHP_URL_PATH) ?? '', '/');
-            }
-            $relativeRoute = rtrim($relativeRoute, '/');
-
-            // Strip index.php prefix if present
-            if (str_starts_with($relativeRoute, 'index.php/')) {
-                $relativeRoute = substr($relativeRoute, 10);
-            } elseif ($relativeRoute === 'index.php') {
-                $relativeRoute = '';
-            }
-
-            if (isset($mainPagesMap[$relativeRoute])) {
-                $displayName = $mainPagesMap[$relativeRoute];
-                $mainPagesStats[$displayName] += $count;
-            }
-        }
-
-        $pieLabels = [];
-        $pieValues = [];
-        foreach ($mainPagesStats as $name => $count) {
-            if ($count > 0) {
-                $pieLabels[] = $name;
-                $pieValues[] = $count;
-            }
-        }
+        $pieData = $this->calculateMainPagesStats($urlGroups);
 
         $data = array_merge($this->data, [
             'title'                      => 'Page Visits Dashboard',
@@ -110,8 +68,8 @@ class PageVisits extends AdminController
             'stats_unique_this_month'    => $uniqueVisitorsThisMonth,
             'stats_today'                => $visitsToday,
             'top_pages'                  => $topPagesThisMonth,
-            'pie_labels'                 => $pieLabels,
-            'pie_values'                 => $pieValues
+            'pie_labels'                 => $pieData['labels'],
+            'pie_values'                 => $pieData['values']
         ]);
 
         return view('admin/page_visits/index', $data);
@@ -120,32 +78,46 @@ class PageVisits extends AdminController
     public function logs(){
         $db = \Config\Database::connect();
 
-        $totalVisits = $this->applyBrowserFilter($db->table('page_visits'))->countAllResults();
+        $startDate = $this->request->getGet('filter_start_date') ?: date('Y-m-01');
+        $endDate = $this->request->getGet('filter_end_date') ?: date('Y-m-t');
+        $filterIp = $this->request->getGet('filter_ip') ?: '';
+        $filterUrl = $this->request->getGet('filter_url') ?: '';
 
-        $uniqueResult = $this->applyBrowserFilter($db->table('page_visits'))->select('COUNT(DISTINCT ip_address) as total')->get()->getRowArray();
+        // 1. Total Visits
+        $totalVisits = $this->getFilteredVisitsBuilder($db, $startDate, $endDate, $filterIp, $filterUrl)->countAllResults();
+
+        // 2. Unique Visitors
+        $uniqueResult = $this->getFilteredVisitsBuilder($db, $startDate, $endDate, $filterIp, $filterUrl)
+                             ->select('COUNT(DISTINCT ip_address) as total')
+                             ->get()->getRowArray();
         $uniqueVisitors = $uniqueResult['total'] ?? 0;
 
-        $visitsToday = $this->applyBrowserFilter($db->table('page_visits'))->where('created_at >=', date('Y-m-d 00:00:00'))->countAllResults();
+        // 3. Visits Today
+        $todayQuery = $this->getFilteredVisitsBuilder($db, $startDate, $endDate, $filterIp, $filterUrl);
+        $todayQuery->where('created_at >=', date('Y-m-d 00:00:00'));
+        $visitsToday = $todayQuery->countAllResults();
 
-        $topPageResult = $this->applyBrowserFilter($db->table('page_visits'))->select('url, COUNT(id) as visit_count')
-                                          ->groupBy('url')
-                                          ->orderBy('visit_count', 'DESC')
-                                          ->limit(1)
-                                          ->get()->getRowArray();
+        // 4. Top Visited Page
+        $topPageResult = $this->getFilteredVisitsBuilder($db, $startDate, $endDate, $filterIp, $filterUrl)
+                              ->select('url, COUNT(id) as visit_count')
+                              ->groupBy('url')
+                              ->orderBy('visit_count', 'DESC')
+                              ->limit(1)
+                              ->get()->getRowArray();
         $topPage = $topPageResult['url'] ?? 'N/A';
         $topPageCount = $topPageResult['visit_count'] ?? 0;
 
-        // Top 10 pages all time
-        $topPagesAllTime = $this->applyBrowserFilter($db->table('page_visits'))
-                               ->select('url, COUNT(id) as visit_count')
-                               ->groupBy('url')
-                               ->orderBy('visit_count', 'DESC')
-                               ->limit(10)
-                               ->get()->getResultArray();
+        // 5. Top 10 Pages
+        $topPages = $this->getFilteredVisitsBuilder($db, $startDate, $endDate, $filterIp, $filterUrl)
+                         ->select('url, COUNT(id) as visit_count')
+                         ->groupBy('url')
+                         ->orderBy('visit_count', 'DESC')
+                         ->limit(10)
+                         ->get()->getResultArray();
 
-        // Top 10 external referrers all time (exclude self-referrers)
+        // 6. Top 10 External Referrers (exclude self-referrers)
         $siteBaseUrl = rtrim(base_url(), '/');
-        $topReferrers = $this->applyBrowserFilter($db->table('page_visits'))
+        $topReferrers = $this->getFilteredVisitsBuilder($db, $startDate, $endDate, $filterIp, $filterUrl)
                              ->select('referrer, COUNT(id) as visit_count')
                              ->where('referrer IS NOT NULL')
                              ->where('referrer !=', '')
@@ -155,7 +127,67 @@ class PageVisits extends AdminController
                              ->limit(10)
                              ->get()->getResultArray();
 
-        // Main pages classification
+        // 7. Main Pages Distribution
+        $urlGroups = $this->getFilteredVisitsBuilder($db, $startDate, $endDate, $filterIp, $filterUrl)
+                          ->select('url, COUNT(id) as visit_count')
+                          ->groupBy('url')
+                          ->get()->getResultArray();
+
+        $pieData = $this->calculateMainPagesStats($urlGroups);
+
+        $data = array_merge($this->data, [
+            'title'              => 'Page Visit Logs',
+            'active_tab'         => 'page_visits',
+            'filter_start_date'  => $startDate,
+            'filter_end_date'    => $endDate,
+            'filter_ip'          => $filterIp,
+            'filter_url'         => $filterUrl,
+            'stats_total'        => $totalVisits,
+            'stats_unique'       => $uniqueVisitors,
+            'stats_today'        => $visitsToday,
+            'stats_top_page'     => $topPage,
+            'stats_top_count'    => $topPageCount,
+            'top_pages'          => $topPages,
+            'top_referrers'      => $topReferrers,
+            'pie_labels'         => $pieData['labels'],
+            'pie_values'         => $pieData['values']
+        ]);
+
+        return view('admin/page_visits/logs', $data);
+    }
+
+    public function delete($id = ''){
+        if(!empty($id)){
+            $this->visitModel->delete($id);
+            $this->session->setFlashData('success', 'Visit log was successfully deleted.');
+            return redirect()->to('admin/page-visits/logs');
+        }else{
+            return redirect()->to('admin/page-visits/logs');
+        }
+    }
+
+    private function getFilteredVisitsBuilder($db, $startDate = '', $endDate = '', $filterIp = '', $filterUrl = '')
+    {
+        $builder = $this->applyBrowserFilter($db->table('page_visits'));
+
+        if (!empty($startDate)) {
+            $builder->where('created_at >=', $startDate . ' 00:00:00');
+        }
+        if (!empty($endDate)) {
+            $builder->where('created_at <=', $endDate . ' 23:59:59');
+        }
+        if (!empty($filterIp)) {
+            $builder->like('ip_address', $filterIp);
+        }
+        if (!empty($filterUrl)) {
+            $builder->like('url', $filterUrl);
+        }
+
+        return $builder;
+    }
+
+    private function calculateMainPagesStats($urlGroups)
+    {
         $mainPagesMap = [
             ""                                            => "Home",
             "about-us"                                    => "About Us",
@@ -170,11 +202,6 @@ class PageVisits extends AdminController
             "mims-privacy-policy"                         => "Privacy Policy"
         ];
 
-        $urlGroups = $this->applyBrowserFilter($db->table('page_visits'))
-                        ->select('url, COUNT(id) as visit_count')
-                        ->groupBy('url')
-                        ->get()->getResultArray();
-
         $mainPagesStats = [];
         foreach ($mainPagesMap as $name) {
             $mainPagesStats[$name] = 0;
@@ -219,31 +246,7 @@ class PageVisits extends AdminController
             }
         }
 
-        $data = array_merge($this->data, [
-            'title'            => 'Page Visit Logs',
-            'active_tab'       => 'page_visits',
-            'stats_total'      => $totalVisits,
-            'stats_unique'     => $uniqueVisitors,
-            'stats_today'      => $visitsToday,
-            'stats_top_page'   => $topPage,
-            'stats_top_count'  => $topPageCount,
-            'top_pages'        => $topPagesAllTime,
-            'top_referrers'    => $topReferrers,
-            'pie_labels'       => $pieLabels,
-            'pie_values'       => $pieValues
-        ]);
-
-        return view('admin/page_visits/logs', $data);
-    }
-
-    public function delete($id = ''){
-        if(!empty($id)){
-            $this->visitModel->delete($id);
-            $this->session->setFlashData('success', 'Visit log was successfully deleted.');
-            return redirect()->to('admin/page-visits/logs');
-        }else{
-            return redirect()->to('admin/page-visits/logs');
-        }
+        return ['labels' => $pieLabels, 'values' => $pieValues];
     }
 
     private function applyBrowserFilter($builder)
@@ -315,8 +318,7 @@ class PageVisits extends AdminController
 
     public function tableListing(){
         $input = $_POST;
-        $limit = $input['length'] ?? 10;
-        $start = $input['start'] ?? 0;
+        $draw = intval($input['draw'] ?? 1);
 
         $db = \Config\Database::connect();
 
@@ -327,11 +329,6 @@ class PageVisits extends AdminController
         $filteredQuery = $this->applyBrowserFilter($db->table('page_visits'));
         $filteredQuery = $this->applyFilters($filteredQuery);
         $recordsFiltered = $filteredQuery->countAllResults();
-
-        // Fetch records
-        // $recordsQuery = $this->applyBrowserFilter($db->table('page_visits'));
-        // $recordsQuery = $this->applyFilters($recordsQuery);
-        // $records = $recordsQuery->orderBy('id', 'DESC')->limit($limit, $start)->get()->getResultArray();
 
         // Stats calculations under current filters
         // 1. Total filtered visits is simply $recordsFiltered
@@ -369,91 +366,33 @@ class PageVisits extends AdminController
                                   ->limit(10)
                                   ->get()->getResultArray();
 
-        // 6. Main page distribution under current filter
+        // 6. Top 10 external referrers under current filter (exclude self-referrers)
+        $siteBaseUrl = rtrim(base_url(), '/');
+        $topReferrersQuery = $this->applyBrowserFilter($db->table('page_visits'));
+        $topReferrersQuery = $this->applyFilters($topReferrersQuery);
+        $topReferrers = $topReferrersQuery->select('referrer, COUNT(id) as visit_count')
+                                          ->where('referrer IS NOT NULL')
+                                          ->where('referrer !=', '')
+                                          ->notLike('referrer', $siteBaseUrl, 'after')
+                                          ->groupBy('referrer')
+                                          ->orderBy('visit_count', 'DESC')
+                                          ->limit(10)
+                                          ->get()->getResultArray();
+
+        // 7. Main page distribution under current filter
         $urlGroupsQuery = $this->applyBrowserFilter($db->table('page_visits'));
         $urlGroupsQuery = $this->applyFilters($urlGroupsQuery);
         $urlGroups = $urlGroupsQuery->select('url, COUNT(id) as visit_count')
                                     ->groupBy('url')
                                     ->get()->getResultArray();
 
-        $mainPagesMap = [
-            ""                                            => "Home",
-            "about-us"                                    => "About Us",
-            "our-solutions"                               => "Our Solutions",
-            "our-solutions/for-hcp"                       => "Solutions for HCP",
-            "our-solutions/for-pharmaceutical-companies"  => "Solutions for Pharma",
-            "our-solutions/for-healthcare-institutions"   => "Solutions for Healthcare Institutions",
-            "our-leaders"                                 => "Our Leaders",
-            "contact-us"                                  => "Contact Us",
-            "join-us"                                     => "Join Us",
-            "news-updates"                                => "News & Updates",
-            "mims-privacy-policy"                         => "Privacy Policy"
-        ];
-
-        $mainPagesStats = [];
-        foreach ($mainPagesMap as $name) {
-            $mainPagesStats[$name] = 0;
-        }
-
-        $baseUrl = base_url();
-        if (substr($baseUrl, -1) !== '/') {
-            $baseUrl .= '/';
-        }
-
-        foreach ($urlGroups as $group) {
-            $url = $group['url'];
-            $count = (int)$group['visit_count'];
-
-            $relativeRoute = '';
-            if (str_starts_with($url, $baseUrl)) {
-                $relativeRoute = substr($url, strlen($baseUrl));
-            } else {
-                $relativeRoute = ltrim(parse_url($url, PHP_URL_PATH) ?? '', '/');
-            }
-            $relativeRoute = rtrim($relativeRoute, '/');
-
-            // Strip index.php prefix if present
-            if (str_starts_with($relativeRoute, 'index.php/')) {
-                $relativeRoute = substr($relativeRoute, 10);
-            } elseif ($relativeRoute === 'index.php') {
-                $relativeRoute = '';
-            }
-
-            if (isset($mainPagesMap[$relativeRoute])) {
-                $displayName = $mainPagesMap[$relativeRoute];
-                $mainPagesStats[$displayName] += $count;
-            }
-        }
-
-        $pieLabels = [];
-        $pieValues = [];
-        foreach ($mainPagesStats as $name => $count) {
-            if ($count > 0) {
-                $pieLabels[] = $name;
-                $pieValues[] = $count;
-            }
-        }
-
-        $data = [];
-        // foreach ($records as $row) {
-        //     $action = '<a href="'. base_url('admin/page-visits/delete/'.$row['id']) .'" class="btn btn-sm btn-danger btn-delete-item" onclick="return confirm(\'Are you sure you want to delete this visit log?\')"><i class="fa fa-trash"></i> Delete</a>';
-
-        //     $data[] = [
-        //         'id' => $row['id'],
-        //         'ip_address' => $row['ip_address'],
-        //         'url' => $row['url'],
-        //         'referrer' => $row['referrer'] ?? 'Direct',
-        //         'user_agent' => $row['user_agent'],
-        //         'created_at' => formatted_date($row['created_at']),
-        //         'action' => $action
-        //     ];
-        // }
+        $pieData = $this->calculateMainPagesStats($urlGroups);
 
         $output = [
-            'draw' => intval($input['draw']),
+            'draw' => $draw,
             'recordsTotal' => $totalRecords,
             'recordsFiltered' => $recordsFiltered,
-            'data' => $data,
+            'data' => [],
             'stats' => [
                 'total' => number_format($statsTotal),
                 'unique' => number_format($statsUnique),
@@ -461,8 +400,9 @@ class PageVisits extends AdminController
                 'top_page' => esc($statsTopPage),
                 'top_page_count' => number_format($statsTopPageCount),
                 'top_pages' => $topPages,
-                'pie_labels' => $pieLabels,
-                'pie_values' => $pieValues
+                'top_referrers' => $topReferrers,
+                'pie_labels' => $pieData['labels'],
+                'pie_values' => $pieData['values']
             ]
         ];
 
