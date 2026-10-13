@@ -1,3 +1,101 @@
+<style>
+.timeline-kicker{
+    background: #ec1e2845;
+    border-radius: 5px;
+    padding: 5px 10px;
+    line-height: 1em;
+}
+#about #timeline .timeline-container .section-two-cols{
+    min-height: unset;
+}
+#about #timeline .timeline-container .about-2026 .col-item-right{
+    margin-left:5%;
+    width: 50%;
+}
+#about #timeline .timeline-container .about-2026 .col-item-right .img-full{
+    width: 100%;
+    overflow: hidden;
+    border-radius: 20px;
+}
+#about #timeline .timeline-container #mims-ai{
+    display: none;
+}
+#about #timeline .timeline-container .about-2026 .col-item-right .img-full img{
+    max-width: 100%;
+}
+.timeline-tab-toggle{
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    margin-top: 20px;
+    gap: 15px;
+}
+.timeline-tab-toggle .toggle-tab-item{
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    max-width: 285px;
+    border-radius: 10px;
+    border:2px solid #8194992e;
+    font-size: 15px;
+    line-height: 1.2em;
+    cursor: pointer;
+}
+.timeline-tab-toggle .toggle-tab-item.active{
+    border: 2px solid #ec1e28;
+    background: #ec1e2845;
+
+}
+.timeline-tab-toggle .toggle-img{
+    width: 45%;
+    border-radius: 10px;
+    overflow: hidden;
+}
+.timeline-tab-toggle .toggle-img img{
+    max-width: 100%
+}
+.timeline-tab-toggle .toggle-desc{
+    width: 55%;
+}
+.timeline-tab-toggle .toggle-tab-item .toggle-desc .text-blue{
+    font-size: 16px;
+}
+
+.timeline-tab-toggle .toggle-tab-item.active .toggle-desc .text-blue{
+    color: #2a3360;
+}
+.timeline-tab-toggle .toggle-tab-item.active .toggle-desc .text-grayish-blue{
+    color: #ec1e28;
+    font-size: 14px;
+}
+@media (max-width: 767px){
+    #about #timeline .timeline-container .about-2026 .col-item:nth-child(1){
+        order: 1;
+    }
+    #about #timeline .timeline-container .about-2026 .col-item-right{
+        margin-left: 0;
+        order: 0;
+        margin-bottom: 20px;
+    }
+    .timeline-tab-toggle .toggle-img{
+        width: 35%;
+    }
+    .timeline-tab-toggle .toggle-tab-item .toggle-desc .text-blue{
+        font-size: 13px;
+    }
+    .timeline-tab-toggle .toggle-tab-item{
+        line-height: 1em
+    }
+    .timeline-tab-toggle .toggle-tab-item .toggle-desc{
+        width: 60%;
+    }
+    .timeline-tab-toggle .toggle-tab-item .toggle-desc .text-grayish-blue{
+        font-size: 12px;
+    }
+}
+</style>
 <div id="about">
     <div class="page-banner">
         <video autoplay muted loop playsinline id="myVideo" poster="<?php echo base_url('assets/img/map.png'); ?>">
@@ -264,7 +362,7 @@
                                     </div>
                                 </div>
                             </li>
-                            <li data-horizontal-timeline='{"date": "23/05/Present"}'>
+                            <!-- <li data-horizontal-timeline='{"date": "23/05/Present"}'>
                                 <div class="section">
                                     <div class="section-bg-img bg-right" style="background: url('<?php echo IMG_URL . 'timeline/mims-present-bg.png'; ?>') center center no-repeat;background-size: cover;">
                                         <div class="bordered-img" style="background: url('<?php echo IMG_URL . 'timeline/mims-present.png'; ?>') center center no-repeat;background-size: cover;"></div>
@@ -287,7 +385,77 @@
                                         </div>
                                     </div>
                                 </div>
+                            </li> -->
+                            
+                            <li data-horizontal-timeline='{"date": "23/05/2026"}'>
+                                <div class="section">
+                                    <div class="container">
+                                        <div id="mims-pulse" class="about-2026">
+                                            <div class="section-two-cols">
+                                                <div class="col-item">
+                                                    <h2 class="text-red text-dmsans">2026</h2>
+                                                    <div class="timeline-kicker kicker">LAUNCH</div>
+                                                    <h3 class="text-blue text-dmsans mt-3 mb-4">MIMS Pulse</h3>
+                                                    <div class="desc text-grayish-blue">
+                                                        <p>MIMS Pulse represents the next evolution of MIMS clinical decision support. The platform brings trusted medicines information into the rhythm of everyday care through a modern architecture designed for faster integration, greater flexibility, and even better medication decision support.</p>
+                                                    </div>
+                                                    <div class="buttons">
+                                                        <a href="javsacript:;" class="btn btn-secondary">Learn more <i class="fa fa-arrow-right"></i></a>
+                                                    </div>
+
+                                                </div>
+                                                <div class="col-item col-item-right">
+                                                    <div class="img-full">
+                                                        <img src="<?php echo IMG_URL. 'timeline/mims-pulse-img.jpg'; ?>" alt="">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div id="mims-ai" class="about-2026">
+                                            <div class="section-two-cols">
+                                                <div class="col-item">
+                                                    <h2 class="text-red text-dmsans">2026</h2>
+                                                    <h3 class="text-blue text-dmsans mb-4">Introduction of MIMS Semantic AI Search</h3>
+                                                    <div class="desc text-grayish-blue">
+                                                        <p>MIMS Semantic AI Search brings a new way for healthcare professionals to discover and access trusted medical information. Powered by semantic search technology, it enables users to explore medical topics through <strong>Disease Semantic Search</strong>, <strong>Drug Semantic Search</strong> and <strong>Disease Summary</strong>, making it easier to find relevant insights beyond traditional keyword searches.</p>
+                                                        <p>The launch marks MIMS’s continued commitment to leveraging technology and innovation to make medical information more accessible and useful for healthcare professionals across Asia.</p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-item col-item-right">
+                                                    <div class="img-full">
+                                                        <img src="<?php echo IMG_URL. 'timeline/mims-ai.png'; ?>" alt="">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="timeline-tab-toggle">
+                                            <div class="toggle-tab-item active" data-target="#mims-pulse">
+                                                <div class="toggle-img">
+                                                    <img src="<?php echo IMG_URL. 'timeline/mims-pulse-img.jpg'; ?>" alt="">
+                                                </div>
+                                                <div class="toggle-desc">
+                                                    <div class="text-blue mb-1"><strong>MIMS Pulse</strong></div>
+                                                    <div class="text-grayish-blue">LAUNCH</div>
+                                                </div>
+                                            </div>
+                                            <div class="toggle-tab-item" data-target="#mims-ai">
+                                                <div class="toggle-img">
+                                                    <img src="<?php echo IMG_URL. 'timeline/mims-ai.png'; ?>" alt="">
+                                                </div>
+                                                <div class="toggle-desc">
+                                                    <div class="text-blue mb-1"><strong>MIMS Semantic<br>AI Search</strong></div>
+                                                    <div class="text-grayish-blue">INTRODUCTION</div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
                             </li>
+                            
                         </ol>
                     </div>
                 </div>
