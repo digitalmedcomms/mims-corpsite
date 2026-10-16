@@ -5,7 +5,7 @@
     padding: 5px 10px;
     line-height: 1em;
 }
-#about #timeline .timeline-container .section-two-cols{
+#about #timeline .timeline-container .about-2026 .section-two-cols{
     min-height: unset;
 }
 #about #timeline .timeline-container .about-2026 .col-item-right{
@@ -16,6 +16,7 @@
     width: 100%;
     overflow: hidden;
     border-radius: 20px;
+    margin: auto;
 }
 #about #timeline .timeline-container #mims-ai{
     display: none;
@@ -394,15 +395,12 @@
                                             <div class="section-two-cols">
                                                 <div class="col-item">
                                                     <h2 class="text-red text-dmsans">2026</h2>
-                                                    <div class="timeline-kicker kicker">LAUNCH</div>
-                                                    <h3 class="text-blue text-dmsans mt-3 mb-4">MIMS Pulse</h3>
+                                                    <h3 class="text-blue text-dmsans mt-3 mb-4">Launch of MIMS Pulse</h3>
                                                     <div class="desc text-grayish-blue">
-                                                        <p>MIMS Pulse represents the next evolution of MIMS clinical decision support. The platform brings trusted medicines information into the rhythm of everyday care through a modern architecture designed for faster integration, greater flexibility, and even better medication decision support.</p>
+                                                        <p>MIMS Pulse represents the next evolution of MIMS Clinical Decision Support. The platform brings trusted medicines information into the rhythm of everyday care through a modern architecture designed for faster integration, greater flexibility, and even better medication decision support.</p>
+                                                        <p>Built for the evolving needs of healthcare organisations, MIMS Pulse offers flexible deployment options to accommodate different technology environments and operational requirements. It also supports national medicines terminologies and evolving interoperability standards, enabling healthcare organisations to strengthen clinical workflows today while preparing for a more connected digital health ecosystem in the future.</p>                                                        
+                                                        <p>By combining trusted MIMS medicines information with adaptable integration and deployment capabilities, MIMS Pulse supports safer prescribing, more efficient workflows, and more informed medication decisions across the care journey.</p>
                                                     </div>
-                                                    <div class="buttons">
-                                                        <a href="javsacript:;" class="btn btn-secondary">Learn more <i class="fa fa-arrow-right"></i></a>
-                                                    </div>
-
                                                 </div>
                                                 <div class="col-item col-item-right">
                                                     <div class="img-full">
@@ -421,6 +419,10 @@
                                                         <p>MIMS Semantic AI Search brings a new way for healthcare professionals to discover and access trusted medical information. Powered by semantic search technology, it enables users to explore medical topics through <strong>Disease Semantic Search</strong>, <strong>Drug Semantic Search</strong> and <strong>Disease Summary</strong>, making it easier to find relevant insights beyond traditional keyword searches.</p>
                                                         <p>The launch marks MIMS’s continued commitment to leveraging technology and innovation to make medical information more accessible and useful for healthcare professionals across Asia.</p>
                                                     </div>
+                                                    <div class="buttons">
+                                                        <a href="https://mims.com" target="_blank" class="btn btn-secondary">Access now at mims.com <i class="fa fa-arrow-right"></i></a>
+                                                    </div>
+
                                                 </div>
                                                 <div class="col-item col-item-right">
                                                     <div class="img-full">

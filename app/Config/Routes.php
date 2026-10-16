@@ -42,6 +42,7 @@ $routes->get('contact-us', 'Contactus::index');
 $routes->get('join-us', 'Joinus::index');
 $routes->get('news-updates', 'News::index');
 $routes->get('mims-privacy-policy', 'Privacy::index');
+$routes->get('resource_vendor', 'ResourceVendor::index');
 $routes->get('message-from-ceo', 'Joinus::message_from_ceo');
 $routes->get('join-us/message-from-ceo', 'Joinus::message_from_ceo');
 $routes->post('join-us/careers', 'Joinus::careers');
