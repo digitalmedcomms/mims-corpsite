@@ -40,7 +40,7 @@ class BaseController extends Controller
      */
     protected $helpers     = ['cookie', 'date', 'security', 'form', 'menu', 'useraccess', 'custom'];
 
-    public $userModel;
+    protected $userModel;
     public $session;
     public $segment;
     public $db;
@@ -49,7 +49,7 @@ class BaseController extends Controller
     public $lang_base_url;
     public $selected_lang;
     public $general_settings;
-    public $agent;
+    protected $agent;
 
     /**
      * Constructor.

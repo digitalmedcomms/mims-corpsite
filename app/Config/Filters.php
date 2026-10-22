@@ -2,14 +2,18 @@
 
 namespace Config;
 
-use CodeIgniter\Config\BaseConfig;
+use CodeIgniter\Config\Filters as BaseFilters;
+use CodeIgniter\Filters\Cors;
 use CodeIgniter\Filters\CSRF;
 use CodeIgniter\Filters\DebugToolbar;
+use CodeIgniter\Filters\ForceHTTPS;
 use CodeIgniter\Filters\Honeypot;
 use CodeIgniter\Filters\InvalidChars;
+use CodeIgniter\Filters\PageCache;
+use CodeIgniter\Filters\PerformanceMetrics;
 use CodeIgniter\Filters\SecureHeaders;
 
-class Filters extends BaseConfig
+class Filters extends BaseFilters
 {
     /**
      * Configures aliases for Filter classes to
@@ -17,12 +21,16 @@ class Filters extends BaseConfig
      *
      * @var array
      */
-    public $aliases = [
+    public array $aliases = [
         'csrf'          => CSRF::class,
         'toolbar'       => DebugToolbar::class,
         'honeypot'      => Honeypot::class,
         'invalidchars'  => InvalidChars::class,
         'secureheaders' => SecureHeaders::class,
+        'cors'          => Cors::class,
+        'forcehttps'    => ForceHTTPS::class,
+        'pagecache'     => PageCache::class,
+        'performance'   => PerformanceMetrics::class,
         'isLoggedIn'     => \App\Filters\Authentication::class,
         'isGranted'     => \App\Filters\Authorization::class,
         'check-admin' => \App\Filters\CheckAdmin::class,
@@ -37,7 +45,7 @@ class Filters extends BaseConfig
      *
      * @var array
      */
-    public $globals = [
+    public array $globals = [
         'before' => [
             'pageVisit' => ['except' => ['assets/*', 'uploads/*', 'admin/*', 'api/*', 'Auth/*']],
             // 'honeypot',
@@ -63,7 +71,7 @@ class Filters extends BaseConfig
      *
      * @var array
      */
-    public $methods = [];
+    public array $methods = [];
 
     /**
      * List of filter aliases that should run on any
@@ -74,5 +82,5 @@ class Filters extends BaseConfig
      *
      * @var array
      */
-    public $filters = [];
+    public array $filters = [];
 }

@@ -67,7 +67,7 @@
 </div>
 <?php 
 $request = \Config\Services::request();
-$uri = $request->uri;
+$uri = $request->getUri();
 ?>
 <script type="text/javascript">
     jQuery(document).ready(function(){

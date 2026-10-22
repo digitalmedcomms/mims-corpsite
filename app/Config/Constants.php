@@ -79,10 +79,10 @@ defined('EXIT__AUTO_MIN')      || define('EXIT__AUTO_MIN', 9); // lowest automat
 defined('EXIT__AUTO_MAX')      || define('EXIT__AUTO_MAX', 125); // highest automatically-assigned error code
 
 
-define('DOMAIN', $_SERVER['SERVER_NAME']);
-define('DOMAIN_URL', (isset($_SERVER['HTTPS']) ? 'https://' : (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https' ? 'https://' : 'http://')) . $_SERVER['SERVER_NAME'] . '/');
-define('BASE_URL', (isset($_SERVER['HTTPS']) ? 'https://' : (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https' ? 'https://' : 'http://')) . $_SERVER['SERVER_NAME'] . str_replace('index.php', '', $_SERVER['SCRIPT_NAME']));
-define('BASE_URL_PATH', str_replace('index.php', '', $_SERVER['SCRIPT_NAME']));
+define('DOMAIN', $_SERVER['SERVER_NAME'] ?? 'localhost');
+define('DOMAIN_URL', (isset($_SERVER['HTTPS']) ? 'https://' : (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https' ? 'https://' : 'http://')) . ($_SERVER['SERVER_NAME'] ?? 'localhost') . '/');
+define('BASE_URL', (isset($_SERVER['HTTPS']) ? 'https://' : (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https' ? 'https://' : 'http://')) . ($_SERVER['SERVER_NAME'] ?? 'localhost') . str_replace('index.php', '', $_SERVER['SCRIPT_NAME'] ?? 'index.php'));
+define('BASE_URL_PATH', str_replace('index.php', '', $_SERVER['SCRIPT_NAME'] ?? 'index.php'));
 define('IS_HTTPS_ENABLED', isset($_SERVER['HTTPS']) ? true : false);
 
 if (!defined('ENVIRONMENT')) {

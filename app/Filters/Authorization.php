@@ -11,13 +11,15 @@ use App\Models\Users;
 
 class Authorization implements FilterInterface
 {
+	protected $menuModel;
+	protected $permissionModel;
 
 	public function before(RequestInterface $request, $arguments = null)
 	{
 		helper('custom');
 		$this->menuModel  	= new MenuManagementModel();
 		$this->permissionModel  	= new RolesPermissionsModel();
-		$segment 			= $request->uri->getSegment(2);
+		$segment 			= $request->getUri()->getSegment(2);
 
 		if ($segment) :
 			$menu 		= $this->menuModel->getMenuByUrl($segment);
