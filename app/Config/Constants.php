@@ -85,6 +85,10 @@ define('BASE_URL', (isset($_SERVER['HTTPS']) ? 'https://' : (isset($_SERVER['HTT
 define('BASE_URL_PATH', str_replace('index.php', '', $_SERVER['SCRIPT_NAME']));
 define('IS_HTTPS_ENABLED', isset($_SERVER['HTTPS']) ? true : false);
 
+if (!defined('ENVIRONMENT')) {
+    define('ENVIRONMENT', 'development');
+}
+
 switch (ENVIRONMENT) {
     case 'production':
     case 'test001':
