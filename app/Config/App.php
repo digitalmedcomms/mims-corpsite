@@ -26,6 +26,14 @@ class App extends BaseConfig
     public $baseURL = 'http://localhost:8080/';
 
     /**
+     * Allowed Hostnames in the Site URL other than the hostname in the baseURL.
+     * If you want to accept multiple Hostnames, set this.
+     *
+     * @var list<string>
+     */
+    public array $allowedHostnames = [];
+
+    /**
      * --------------------------------------------------------------------------
      * Index File
      * --------------------------------------------------------------------------
@@ -340,9 +348,10 @@ class App extends BaseConfig
      * Comma-separated:	'10.0.1.200,192.168.5.0/24'
      * Array: ['10.0.1.200', '192.168.5.0/24']
      *
-     * @var string|string[]
+    /**
+     * @var array<string, string>
      */
-    public $proxyIPs = '';
+    public array $proxyIPs = [];
 
     /**
      * --------------------------------------------------------------------------

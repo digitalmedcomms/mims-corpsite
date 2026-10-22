@@ -21,6 +21,7 @@ use Psr\Log\LoggerInterface;
  *
  * For security be sure to declare any new methods as protected or private.
  */
+#[\AllowDynamicProperties]
 class BaseController extends Controller
 {
     /**
@@ -38,6 +39,17 @@ class BaseController extends Controller
      * @var array
      */
     protected $helpers     = ['cookie', 'date', 'security', 'form', 'menu', 'useraccess', 'custom'];
+
+    public $userModel;
+    public $session;
+    public $segment;
+    public $db;
+    public $validation;
+    public $encrypter;
+    public $lang_base_url;
+    public $selected_lang;
+    public $general_settings;
+    public $agent;
 
     /**
      * Constructor.
