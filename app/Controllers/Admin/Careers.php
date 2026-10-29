@@ -62,7 +62,7 @@ class Careers extends AdminController
     }
 
     public function insert(){
-        if($this->request->getMethod() === 'post'){
+        if ($this->request->is('post') || strtolower($this->request->getMethod()) === 'post') {
 
             
             $item = [
@@ -88,7 +88,7 @@ class Careers extends AdminController
     
     public function update($id = ''){
         if(!empty($id)){
-            if($this->request->getMethod() === 'post'){
+            if ($this->request->is('post') || strtolower($this->request->getMethod()) === 'post') {
                 
                 $item = [
                     'job_title' => $this->request->getPost('job_title'),

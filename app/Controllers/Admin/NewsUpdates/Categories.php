@@ -47,7 +47,7 @@ class Categories extends AdminController
     }
 
     public function insert(){
-        if($this->request->getMethod() === 'post'){
+        if ($this->request->is('post') || strtolower($this->request->getMethod()) === 'post') {
             $item = [
                 'name' => $this->request->getPost('name'),
                 'slug' => $this->request->getPost('slug'),
@@ -67,7 +67,7 @@ class Categories extends AdminController
     
     public function update($id = ''){
         if(!empty($id)){
-            if($this->request->getMethod() === 'post'){
+            if ($this->request->is('post') || strtolower($this->request->getMethod()) === 'post') {
                 $item = [
                     'name' => $this->request->getPost('name'),
                     'slug' => $this->request->getPost('slug'),

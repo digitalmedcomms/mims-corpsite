@@ -45,7 +45,7 @@ class LeaderTypes extends AdminController
     }
 
     public function insert(){
-        if($this->request->getMethod() === 'post'){
+        if ($this->request->is('post') || strtolower($this->request->getMethod()) === 'post') {
             $item = [
                 'name' => $this->request->getPost('name'),
                 'status' => $this->request->getPost('status'),
@@ -64,7 +64,7 @@ class LeaderTypes extends AdminController
     
     public function update($id = ''){
         if(!empty($id)){
-            if($this->request->getMethod() === 'post'){
+            if ($this->request->is('post') || strtolower($this->request->getMethod()) === 'post') {
                 $item = [
                     'name' => $this->request->getPost('name'),
                     'status' => $this->request->getPost('status'),

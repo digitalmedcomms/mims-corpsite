@@ -64,7 +64,7 @@ class Posts extends AdminController
     }
 
     public function insert(){
-        if($this->request->getMethod() === 'post'){
+        if ($this->request->is('post') || strtolower($this->request->getMethod()) === 'post') {
             $validation =  \Config\Services::validation();
             $rules = [
                 'title' => [
@@ -145,7 +145,7 @@ class Posts extends AdminController
     
     public function update($id = ''){
         if(!empty($id)){
-            if($this->request->getMethod() === 'post'){
+            if ($this->request->is('post') || strtolower($this->request->getMethod()) === 'post') {
 
                 $validation =  \Config\Services::validation();
                 $rules = [

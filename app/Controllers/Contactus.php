@@ -110,7 +110,7 @@ class Contactus extends BaseController
             'csrfHash' => csrf_hash()
         ];
 
-        if($this->request->isAJAX() && $this->request->getMethod() === 'post'){
+        if ($this->request->is('post') || strtolower($this->request->getMethod()) === 'post') {
             $postData = $this->request->getPost();
             $validation =  \Config\Services::validation();
             $rules = [

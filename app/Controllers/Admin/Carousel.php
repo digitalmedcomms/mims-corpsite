@@ -104,7 +104,7 @@ class Carousel extends AdminController
     }
 
     public function insert_slide($carousel_id){
-        if($this->request->getMethod() === 'post' && !empty($carousel_id)){
+        if (($this->request->is('post') || strtolower($this->request->getMethod()) === 'post') && !empty($carousel_id)) {
             $validation =  \Config\Services::validation();
             $rules = [
                 'title' => [
@@ -167,7 +167,7 @@ class Carousel extends AdminController
     
     public function update($id = ''){
         if(!empty($id)){
-            if($this->request->getMethod() === 'post'){
+            if ($this->request->is('post') || strtolower($this->request->getMethod()) === 'post') {
                 $item = [
                     'name' => $this->request->getPost('name'),
                     'status' => $this->request->getPost('status'),
@@ -188,7 +188,7 @@ class Carousel extends AdminController
     }
 
     public function update_slide($slide_id){
-        if($this->request->getMethod() === 'post' && !empty($slide_id)){
+        if (($this->request->is('post') || strtolower($this->request->getMethod()) === 'post') && !empty($slide_id)) {
             $carouselSlide = $this->carouselSlides->find($slide_id);
             $validation =  \Config\Services::validation();
             $rules = [
@@ -249,7 +249,7 @@ class Carousel extends AdminController
     }
 
     public function delete_slide($slide_id){
-        if($this->request->getMethod() === 'post' && !empty($slide_id)){
+        if (($this->request->is('post') || strtolower($this->request->getMethod()) === 'post') && !empty($slide_id)) {
 
             $carouselSlide = $this->carouselSlides->find($slide_id);
             $this->carouselSlides->delete($slide_id);

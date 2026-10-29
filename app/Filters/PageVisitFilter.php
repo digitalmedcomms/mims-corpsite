@@ -25,7 +25,7 @@ class PageVisitFilter implements FilterInterface
     public function before(RequestInterface $request, $arguments = null)
     {
         // Only track GET requests and not CLI/AJAX
-        if ($request->getMethod() === 'get' && !is_cli() && !$request->isAJAX()) {
+        if (($request->getMethod() === 'GET' || strtolower($request->getMethod()) === 'get') && !is_cli() && !$request->isAJAX()) {
             
             // Exclude admin pages
             $uriPath = ltrim($request->getUri()->getPath(), '/');
@@ -73,7 +73,7 @@ class PageVisitFilter implements FilterInterface
             // Exclude assets by extension
             $extension = pathinfo($url, PATHINFO_EXTENSION);
             if (!empty($extension)) {
-                $excluded_extensions = ['css', 'js', 'jpg', 'jpeg', 'png', 'gif', 'svg', 'ico', 'woff', 'woff2', 'ttf', 'otf', 'map', 'json', 'pdf'];
+                $excluded_extensions = ['css', 'js', 'jpg', 'jpeg', 'png', 'gif', 'svg', 'ico', 'woff', 'woff2', 'ttf', 'otf', 'map', 'json', 'pdf', 'env'];
                 if (in_array(strtolower($extension), $excluded_extensions)) {
                     return;
                 }

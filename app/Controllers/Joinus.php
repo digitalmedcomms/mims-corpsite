@@ -124,7 +124,7 @@ class Joinus extends BaseController
             'csrfHash' => csrf_hash()
         ];
 
-        if($this->request->isAJAX() && $this->request->getMethod() === 'post'){
+        if ($this->request->is('post') || strtolower($this->request->getMethod()) === 'post') {
             $search = $this->request->getPost('search');
             $location = $this->request->getPost('location');
             $job_type = $this->request->getPost('job_type');
