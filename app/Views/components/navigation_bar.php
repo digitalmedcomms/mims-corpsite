@@ -162,47 +162,6 @@ if (isset($is_home) && $is_home) {
 }
 ?>
 <header id="navMegaMenu">
-    <?php if ($isHomePage): ?>
-        <div class="announcement-bar" id="homepageAnnouncementBar">
-            <div class="container">
-                <div class="announcement-bar-wrap">
-                    <a href="https://corporate.mims.com/corporate/mims-accelerates-product-innovation-and-international-growth" target="_blank" rel="noopener noreferrer" class="announcement-bar-link">
-                        <span class="announcement-bar-text">MIMS Accelerates Product Innovation and International Growth</span>
-                        <span class="announcement-bar-btn">
-                            <span>Read the full press release</span>
-                            <i class="fa fa-arrow-right" aria-hidden="true"></i>
-                        </span>
-                    </a>
-                </div>
-                <button type="button" class="announcement-bar-close" id="closeAnnouncementBar" aria-label="Close announcement" title="Close">
-                    <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                        <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"/>
-                    </svg>
-                </button>
-            </div>
-        </div>
-        <script>
-            (function() {
-                var closeBtn = document.getElementById('closeAnnouncementBar');
-                var bar = document.getElementById('homepageAnnouncementBar');
-                if (closeBtn && bar) {
-                    closeBtn.addEventListener('click', function(e) {
-                        e.preventDefault();
-                        e.stopPropagation();
-                        bar.style.maxHeight = bar.scrollHeight + 'px';
-                        bar.offsetHeight;
-                        bar.style.opacity = '0';
-                        bar.style.maxHeight = '0px';
-                        bar.style.paddingTop = '0px';
-                        bar.style.paddingBottom = '0px';
-                        setTimeout(function() {
-                            bar.style.display = 'none';
-                        }, 300);
-                    });
-                }
-            })();
-        </script>
-    <?php endif; ?>
     <div class="container">
         <nav class="navbar navbar-expand-lg wow bounceInDown navbar-light" data-wow-duration="0.5s">
             <a class="nav-link nav-logo" href="<?php echo base_url(); ?>"><img class="logo" src="<?php echo base_url('assets/img/mims.png'); ?>"></a>
